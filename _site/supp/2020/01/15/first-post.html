@@ -49,29 +49,43 @@ MathJax = {
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Welcome to Jekyll!</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Machine Learning Introduction</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="2020-01-15T00:06:43-08:00" itemprop="datePublished">Jan 15, 2020
       </time></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <h3 id="what-is-machine-learning">What is Machine Learning?</h3>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>Machine Learning (ML) is, as Tom Mitchell stated, “The study of algorithms that improve their performance P at some task T with experience E”. Another way of looking at it is that we are learning an algorithm that solves an inference problem or a model that describes some data set. We will discuss these two concepts at a basic level below and then introduce some cool things machine learning and deep learning have accomplished to hopefully incite some interest.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<h4 id="inference">Inference</h4>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<p>Inference means making a decision or prediction about some sort of data, perhaps in a probabilistic sense. For example, I might give you an image and say “is there a cat in this image?” or “what is the probability that there is a cat in this image?”</p>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<p><img src="/assets/MLIntro/cat.jpg" alt="cat" width="200" height="120" /><img src="/assets/MLIntro/catinbox.jpg" alt="cat" width="200" height="120" /><img src="/assets/MLIntro/catbowl.jpg" alt="cat" width="200" height="120" /></p>
 
+<p>As you might imagine, it gets more complex and ambiguous when the thing you’re trying to predict is secluded in some way or only represents the idea of the thing you’re trying to predict instead of being the thing itself (e.g. the cat-faced bowl above).</p>
 
-  </div><a class="u-url" href="/jekyll/update/2020/01/15/welcome-to-jekyll.html" hidden></a>
+<p>There are perhaps more interesting inference problems where you don’t have complete information, but you know some related information. For example, if I give you the temperature in San Francisco, San Jose, and Fremont, can you predict (infer) the temperature in Palo Alto? Or If I give you the position and velocity of a car at time $t_{1}$, can you tell me the probability the car will be 5 meters north at time $t_{2}$? The output of an inference algorithm can either be a concrete decision (e.g. the image does have a cat in it) or a probability distribution over the set of possible outcomes (e.g. there is a 60% chance that the temperate in Palo Alto is between 50 and 65 degrees Fahrenheit).</p>
+
+<h4 id="modeling">Modeling</h4>
+
+<p>Modeling allows us to describe data either qualitatively or numerically. There are typically geometric models, which are ones that try to find geometric structure in data and probabilistic models, which try to find a probability distribution given a bunch of samples of random variables.</p>
+
+<p>An example of a geometric model might be: I have (square-footage, location, number of bedrooms) information for 1000 houses. How can I find some combination of these attributes that still comes close to fitting the data? This boils down to finding a lower-dimensional subspace that comes close to containing all the original data.</p>
+
+<figure>
+  <center>
+    <img src="/assets/MLIntro/subspace.png" alt="subspace" width="300" height="200" />
+    <figcaption>Data close to a lower dimensional subspace</figcaption>
+  </center>
+</figure>
+
+<h3 id="why-study-ml">Why study ML?</h3>
+
+  </div><a class="u-url" href="/supp/2020/01/15/first-post.html" hidden></a>
 </article>
 
       </div>
