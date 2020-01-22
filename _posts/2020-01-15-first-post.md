@@ -13,7 +13,7 @@ Machine Learning (ML) is, as Tom Mitchell stated, "The study of algorithms that 
 
 Inference means making a decision or prediction about some sort of data, perhaps in a probabilistic sense. For example, I might give you an image and say "is there a cat in this image?" or "what is the probability that there is a cat in this image?"
 
-<img src="/assets/MLIntro/kit.jpg" alt="cat" width="200" height="150"/><img src="/assets/MLIntro/cat.jpg" alt="cat" width="200" height="150"/><img src="/assets/MLIntro/catinbox.jpg" alt="cat" width="150" height="150"/><img src="/assets/MLIntro/catbowl.jpg" alt="cat" width="150" height="150"/>
+<img src="{{site.baseurl}}/assets/MLIntro/kit.jpg" alt="cat" width="200" height="150"/><img src="{{site.baseurl}}/assets/MLIntro/cat.jpg" alt="cat" width="200" height="150"/><img src="{{site.baseurl}}/assets/MLIntro/catinbox.jpg" alt="cat" width="150" height="150"/><img src="{{site.baseurl}}/assets/MLIntro/catbowl.jpg" alt="cat" width="150" height="150"/>
 
 As you might imagine, it gets more complex and ambiguous when the thing you're trying to predict is secluded in some way or only represents the idea of the thing you're trying to predict instead of being the thing itself (e.g. the cat-faced bowl above).
 
@@ -27,7 +27,7 @@ An example of a geometric model might be: I have (square-footage, location, numb
 
 <figure>
   <center>
-    <img src="/assets/MLIntro/subspace.png" alt="subspace" width="300" height="200"/>
+    <img src="{{site.baseurl}}/assets/MLIntro/subspace.png" alt="subspace" width="300" height="200"/>
     <figcaption>Data close to a lower dimensional subspace</figcaption>
   </center>
 </figure>

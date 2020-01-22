@@ -186,10 +186,11 @@ table {
  * Site header
  */
 .site-header {
-  border-top: 5px solid #424242;
-  border-bottom: 1px solid #e8e8e8;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   min-height: 55.95px;
-  position: relative; }
+  position: relative;
+  background-color:#FF0000; }
 
 .site-title {
   font-size: 26px;
@@ -199,7 +200,7 @@ table {
   margin-bottom: 0;
   float: left; }
   .site-title, .site-title:visited {
-    color: #424242; }
+    color: white; }
 
 .site-nav {
   float: right;
@@ -209,7 +210,7 @@ table {
   .site-nav .menu-icon {
     display: none; }
   .site-nav .page-link {
-    color: #111;
+    color: white;
     line-height: 1.5; }
     .site-nav .page-link:not(:last-child) {
       margin-right: 20px; }
