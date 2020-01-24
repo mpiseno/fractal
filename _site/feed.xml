@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-01-22T00:56:24-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Machine Learning Introduction</title><link href="http://localhost:4000/fractal/supp/2020/01/15/first-post.html" rel="alternate" type="text/html" title="Machine Learning Introduction" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/supp/2020/01/15/first-post</id><content type="html" xml:base="http://localhost:4000/fractal/supp/2020/01/15/first-post.html">&lt;h3 id=&quot;what-is-machine-learning&quot;&gt;What is Machine Learning?&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-01-24T00:44:48-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
+
+&lt;p&gt;We will begin our study of the mathematical foundations of machine learning by considering the idea of a vector space. A vector space $\mathbf{S}$ is a set of elements called vectors that obey the following&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;For $\mathbf{x, y, z} \in \mathbf{S}$:
+    &lt;ul&gt;
+      &lt;li&gt;$\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}$ (commutative)&lt;/li&gt;
+      &lt;li&gt;$\mathbf{x} + (\mathbf{y} + \mathbf{z}) = (\mathbf{x} + \mathbf{y}) + \mathbf{z}$ (associative)&lt;/li&gt;
+      &lt;li&gt;$\mathbf{x} + 0 = \mathbf{x}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Scalar multiplication is distributive and associative&lt;/li&gt;
+  &lt;li&gt;$\mathbf{S}$ is closed under scalar multiplication and vector addition. i.e.
+$\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S \quad \forall a, b \in \mathbb{R}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last bullet is arguably the most important and describes the more descriptive “linear vector space”.&lt;/p&gt;
+
+&lt;p&gt;A couple examples of linear vectors spaces are:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\mathbb{R}^{N}$&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}&lt;/script&gt;
+
+    &lt;p&gt;Note that the addition of any two vectors in $\mathbb{R}^{N}$ is also a vector in $\mathbb{R}^{N}$.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Polynomials of degree $N$&lt;/p&gt;
+
+    &lt;p&gt;Note that for polynomials $p(x) = \alpha_{N}x^{N} + … + \alpha_{1}x + \alpha_{0}$ and $t(x) = \beta_{N}x^{N} + … + \beta_{1}x + \beta_{0}$, $ap(x) + bt(x)$ is still a polynomial of degree $N$ for any choice of $a$ and $b$, therefore the space of all degree $N$ polynomials is a linear vector space.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Thinking of functions as elements of a vector space might seem strange, but we will soon see that functions can be represented as discrete sets of numbers (i.e. vectors) and manipulated the same way that we normally think about manipulating vectors in $\mathbb{R}^{N}$.&lt;/p&gt;
+
+&lt;h4 id=&quot;linear-subspaces&quot;&gt;Linear Subspaces&lt;/h4&gt;</content><author><name></name></author><summary type="html">Vector Spaces</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Machine Learning Introduction</title><link href="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html" rel="alternate" type="text/html" title="Machine Learning Introduction" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/supp/2020/01/15/what-is-ml</id><content type="html" xml:base="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html">&lt;h3 id=&quot;what-is-machine-learning&quot;&gt;What is Machine Learning?&lt;/h3&gt;
 
 &lt;p&gt;Machine Learning (ML) is, as Tom Mitchell stated, “The study of algorithms that improve their performance P at some task T with experience E”. Another way of looking at it is that we are learning an algorithm that solves an inference problem or a model that describes some data set. We will discuss these two concepts at a basic level below and then introduce some cool things machine learning and deep learning have accomplished to hopefully incite some interest.&lt;/p&gt;
 
@@ -25,16 +73,13 @@
   &lt;/center&gt;
 &lt;/figure&gt;
 
-&lt;h3 id=&quot;why-study-ml&quot;&gt;Why study ML?&lt;/h3&gt;</content><author><name></name></author><summary type="html">What is Machine Learning?</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;h3 id=&quot;why-study-ml&quot;&gt;Why study ML?&lt;/h3&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;Besides all the buzzwords, machine learning, and indeed artificial intelligence in general, can do some pretty amazing stuff. More than 20 years ago we created AIs that could beat the world’s best chess player, and more recently DeepMind’s AlphaGo beat the world’s best Go player. These are well known examples. As we will learn soon, machine learning provides us with powerful tools to describe data. However, my personal favorite reason for studying machine learning is that it gives us a solid foundation to study more advanced topics such as those typically referred to as deep learning. This umbrella term includes everything from convolutional neural networks to generative adversarial networks to reinforcement learning agents that learn to play hide and seek. Studying ML provides us with mathematical and algorithmic frameworks for analyzing these exciting topics.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;I’ll end with a relatively recent video by OpenAI, where agents learn how to coordinate with other agents to play hide and seek.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;center&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/kopoLzvh5jY&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;
+  &lt;figcaption&gt;Credit: OpenAI&lt;/figcaption&gt;
+&lt;/center&gt;</content><author><name></name></author><summary type="html">What is Machine Learning?</summary></entry></feed>

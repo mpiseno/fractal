@@ -11,20 +11,24 @@
 <link rel="canonical" href="{{site.baseurl}}" />
 <meta property="og:url" content="{{site.baseurl}}" />
 <meta property="og:site_name" content="Fractal" />
+
 <script type="application/ld+json">
 {"url":"{{site.baseurl}}","headline":"Fractal","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","name":"Fractal","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="{{site.baseurl}}/assets/style.css"><link type="application/atom+xml" rel="alternate" href="{{site.baseurl}}/feed.xml" title="Fractal" />
+<link rel="stylesheet" href="{{site.baseurl}}/assets/main.css"><link type="application/atom+xml" rel="alternate" href="{{site.baseurl}}/feed.xml" title="Fractal" />
 
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
 </script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 </head>

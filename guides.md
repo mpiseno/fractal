@@ -3,6 +3,8 @@ layout: page
 title: Guides
 permalink: /guides/
 ---
+
+<p>These guides build upon one another. Mathematical foundations is intended to provide a solid understanding of the mathematics from which more advanced topics are built. This section is based off content from a first-year PhD course. Traditional machine learning covers topics typically seen in an undergraduate or masters level machine learning course such as models and algorithms for supervised learning, clustering, and introductory reinforcement learning. Deep learning covers topics typically seen in a masters or first-year PhD course that form the building blocks of many advanced models used in current research.</p>
 ---
 ### Supplementary Material
 <ul>
@@ -15,8 +17,6 @@ permalink: /guides/
 </ul>
 
 ### Mathematical Foundations
-<p>This section contains tutorials related to mathematical concepts as they relate to traditional machine learning. The idea is that a strong understanding of the theory behind these algorithms will force a deeper understanding (and greater appreciation) for machine learning. If this section feels too theoretical and the reader prefers to just understand machine learning and deep learning at a higher level, this section can be skipped.</p>
-
 
 <ul>
 {% assign mfml_posts = site.posts | where:"categories", "mfml" %}

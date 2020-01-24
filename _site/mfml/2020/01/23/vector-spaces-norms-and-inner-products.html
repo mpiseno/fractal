@@ -56,26 +56,56 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
-<h2 class="post-list-heading">Posts</h2>
-    <ul class="post-list"><li><span class="post-meta">Jan 23, 2020</span>
-        <h3>
-          <a class="post-link" href="/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">
-            Vector Spaces, Norms, and Inner Products
-          </a>
-        </h3></li><li><span class="post-meta">Jan 15, 2020</span>
-        <h3>
-          <a class="post-link" href="/fractal/supp/2020/01/15/what-is-ml.html">
-            Machine Learning Introduction
-          </a>
-        </h3></li><li><span class="post-meta">Jan 15, 2020</span>
-        <h3>
-          <a class="post-link" href="/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html">
-            Welcome to Jekyll!
-          </a>
-        </h3></li></ul>
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-    <p class="rss-subscribe">subscribe <a href="/fractal/feed.xml">via RSS</a></p></div>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Vector Spaces, Norms, and Inner Products</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-01-23T00:06:43-08:00" itemprop="datePublished">Jan 23, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="vector-spaces">Vector Spaces</h3>
+
+<p>We will begin our study of the mathematical foundations of machine learning by considering the idea of a vector space. A vector space $\mathbf{S}$ is a set of elements called vectors that obey the following</p>
+<ul>
+  <li>For $\mathbf{x, y, z} \in \mathbf{S}$:
+    <ul>
+      <li>$\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}$ (commutative)</li>
+      <li>$\mathbf{x} + (\mathbf{y} + \mathbf{z}) = (\mathbf{x} + \mathbf{y}) + \mathbf{z}$ (associative)</li>
+      <li>$\mathbf{x} + 0 = \mathbf{x}$</li>
+    </ul>
+  </li>
+  <li>Scalar multiplication is distributive and associative</li>
+  <li>$\mathbf{S}$ is closed under scalar multiplication and vector addition. i.e.
+$\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S \quad \forall a, b \in \mathbb{R}$</li>
+</ul>
+
+<p>The last bullet is arguably the most important and describes the more descriptive “linear vector space”.</p>
+
+<p>A couple examples of linear vectors spaces are:</p>
+<ol>
+  <li>
+    <p>$\mathbb{R}^{N}$</p>
+
+    <script type="math/tex; mode=display">\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}</script>
+
+    <p>Note that the addition of any two vectors in $\mathbb{R}^{N}$ is also a vector in $\mathbb{R}^{N}$.</p>
+  </li>
+  <li>
+    <p>Polynomials of degree $N$</p>
+
+    <p>Note that for polynomials $p(x) = \alpha_{N}x^{N} + … + \alpha_{1}x + \alpha_{0}$ and $t(x) = \beta_{N}x^{N} + … + \beta_{1}x + \beta_{0}$, $ap(x) + bt(x)$ is still a polynomial of degree $N$ for any choice of $a$ and $b$, therefore the space of all degree $N$ polynomials is a linear vector space.</p>
+  </li>
+</ol>
+
+<p>Thinking of functions as elements of a vector space might seem strange, but we will soon see that functions can be represented as discrete sets of numbers (i.e. vectors) and manipulated the same way that we normally think about manipulating vectors in $\mathbb{R}^{N}$.</p>
+
+<h4 id="linear-subspaces">Linear Subspaces</h4>
+
+  </div><a class="u-url" href="/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" hidden></a>
+</article>
 
       </div>
     </main><footer class="site-footer h-card">
