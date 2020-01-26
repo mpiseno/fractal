@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-01-24T00:44:48-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-01-26T15:44:21-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+
+&lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
 
 &lt;p&gt;We will begin our study of the mathematical foundations of machine learning by considering the idea of a vector space. A vector space $\mathbf{S}$ is a set of elements called vectors that obey the following&lt;/p&gt;
 &lt;ul&gt;
@@ -26,7 +28,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
     &lt;p&gt;Note that the addition of any two vectors in $\mathbb{R}^{N}$ is also a vector in $\mathbb{R}^{N}$.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Polynomials of degree $N$&lt;/p&gt;
+    &lt;p&gt;The set of all polynomials of degree $N$&lt;/p&gt;
 
     &lt;p&gt;Note that for polynomials $p(x) = \alpha_{N}x^{N} + … + \alpha_{1}x + \alpha_{0}$ and $t(x) = \beta_{N}x^{N} + … + \beta_{1}x + \beta_{0}$, $ap(x) + bt(x)$ is still a polynomial of degree $N$ for any choice of $a$ and $b$, therefore the space of all degree $N$ polynomials is a linear vector space.&lt;/p&gt;
   &lt;/li&gt;
@@ -34,7 +36,113 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;p&gt;Thinking of functions as elements of a vector space might seem strange, but we will soon see that functions can be represented as discrete sets of numbers (i.e. vectors) and manipulated the same way that we normally think about manipulating vectors in $\mathbb{R}^{N}$.&lt;/p&gt;
 
-&lt;h4 id=&quot;linear-subspaces&quot;&gt;Linear Subspaces&lt;/h4&gt;</content><author><name></name></author><summary type="html">Vector Spaces</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;h4 id=&quot;linear-subspaces&quot;&gt;Linear Subspaces&lt;/h4&gt;
+
+&lt;p&gt;Now that we have the notion of a vector space, we can introduce the idea of a linear subspace, which is a mathematical tool that will soon become useful. A linear subspace is a subset $\mathbf{T}$ of a vector space $\mathbf{S}$ that contains the zero vector (i.e. $\mathbf{0} \in \mathbf{T}$) and is closed under vector addition and scalar multiplication.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T \quad \forall a, b \in \mathbb{R}&lt;/script&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
+      &lt;figure class=&quot;figure&quot;&gt;
+        &lt;img src=&quot;/fractal/assets/Vector_Spaces/subspace_counterexample.png&quot; /&gt;
+        &lt;figcaption class=&quot;figure-caption text-center&quot;&gt;T is not a linear subspace&lt;/figcaption&gt;
+      &lt;/figure&gt;   
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
+      &lt;figure class=&quot;figure&quot;&gt;
+        &lt;img src=&quot;/fractal/assets/Vector_Spaces/subspace_example.png&quot; /&gt;
+        &lt;figcaption class=&quot;figure-caption text-center&quot;&gt;T is a linear subspace&lt;/figcaption&gt;
+      &lt;/figure&gt;   
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the figure above we see on the left a counter example of a linear subspace. It is a counter example because it does not contain the zero vector and also because it is easy to see we could take a linear combination of two vectors in $\mathbf{T}$ to get a vector outside $\mathbf{T}$, so both conditions are violated. This is not the case for the subspace on the right, and it is in fact a linear subspace of $\mathbf{S} = \mathbb{R}^{2}$.&lt;/p&gt;
+
+&lt;h3 id=&quot;norms&quot;&gt;Norms&lt;/h3&gt;
+
+&lt;p&gt;A Vector space is a set of elements that obey certain properties. By introducing a norm to a particular vector space, we are giving it a sense of distance. A norm $\norm{\cdot}$ is a mapping from a vector space $\mathbf{S}$ to $\mathbb{R}$ such that for all $\mathbf{x, y} \in \mathbf{S}$,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$\norm{\mathbf{x}} \geq 0$ and $\norm{\mathbf{x}} = 0 \iff \mathbf{x} = \mathbf{0}$&lt;/li&gt;
+  &lt;li&gt;$\norm{\mathbf{x} + \mathbf{y}} \leq \norm{\mathbf{x}} + \norm{\mathbf{y}}$ (triangle inequality)&lt;/li&gt;
+  &lt;li&gt;$\norm{a\mathbf{x}} = |a|\norm{\mathbf{x}}$ (homogeneity)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This definition should feel familiar. The norm of a vector $\norm{\mathbf{x}}$ is its distance from the origin and the norm of the difference of two vectors $\norm{\mathbf{x - y}}$ is the distance between the two vectors. Here are some examples of norms that we will be using later on.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;The standard euclidean norm (aka the $\ell_{2}$ norm): $\mathbf{S} = \mathbb{R}^{N}$&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{2} = \sqrt{\sum_{n=1}^{N}|x_{n}|^{2}}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\mathbf{S} = $ the set of continuous functions on $\mathbb{R}$ ($\mathbf{x}$ is a function)&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{2} = \sqrt{\int_{-\infty}^{\infty}|x(t)|^{2}dt}&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;inner-products&quot;&gt;Inner Products&lt;/h3&gt;
+
+&lt;p&gt;By now we have introduced vector spaces and normed vector spaces, the latter being a subset of the former. Now we will introduce the inner product. The inner product $\langle\cdot, \cdot\rangle$ is a function that takes two vectors in a vector space and produces a real number (or complex number, but we will ignore this for now).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\cdot,\cdot\rangle: \mathbf{S}\times\mathbf{S}\rightarrow \mathbb{R}&lt;/script&gt;
+
+&lt;p&gt;A valid inner product obeys three rules for $\mathbf{x, y, z}\in\mathbf{S}$:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle$ (symmetry)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For $a, b \in \mathbb{R}$&lt;/p&gt;
+
+    &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z}\rangle = a\langle\mathbf{x}, \mathbf{z}\rangle + b\langle\mathbf{y}, \mathbf{z}\rangle&lt;/script&gt; (linearity)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\langle\mathbf{x}, \mathbf{x}\rangle \geq 0$ and $\langle\mathbf{x}, \mathbf{x}\rangle = 0 \iff \mathbf{x} = \mathbf{0}$&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Two important examples of inner products are&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;The standard inner product (aka the dot product): $\mathbf{S} = \mathbb{R}^{N}$&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x},\mathbf{y}\rangle = \sum_{n=1}^{N}x_{n}y_{n} = \mathbf{y}^{T}\mathbf{x}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The standard inner product for continuous functions on $\mathbb{R}^{N}$. If $\mathbf{x, y}$ are two such functions&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x}, \mathbf{y}\rangle = \int_{-\infty}^{\infty}x(t)y(t)dt&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The last concept I want to introduce is the idea of an induced norm. It is a fact that every valid inner product induces a valid norm (but not the other way around). This induces norm has very useful properties that not all other norms have. For some inner product $\langle\cdot,\cdot\rangle_{\mathbf{S}}$ on a vector space $\mathbf{S}$, the induced norm is defined as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{\mathbf{S}} = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle_{\mathbf{S}}}&lt;/script&gt;
+
+&lt;p&gt;The standard inner product induces the standard euclidean norm. Two important properties of induced norms (not all norms!) are&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;The Cauchy-Schwartz Inequality:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;|\langle\mathbf{x},\mathbf{y}\rangle| \leq \norm{\mathbf{x}}\norm{\mathbf{y}}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pythagorean Theorem:&lt;/p&gt;
+
+    &lt;p&gt;If $\langle\mathbf{x},\mathbf{y}\rangle = 0$ then $\mathbf{x}$ and $\mathbf{y}$ are orthogonal and $\norm{\mathbf{x} + \mathbf{y}} = \norm{\mathbf{x}} + \norm{\mathbf{y}}$&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;All the ideas presented in these notes are important foundational mathematical concepts that we will make use of in later notes. You should become very familiar with them and know how to determine if an inner product or a norm is valid or not. Now that we have some mathematical tools, next time we will discuss a foundational problem is machine learning - linear approximation.&lt;/p&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/fractal/jekyll/update/2020/01/15/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
