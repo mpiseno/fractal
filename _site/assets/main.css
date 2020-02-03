@@ -525,3 +525,8 @@ table {
 .site-nav .page-link {
   color: white;
   line-height: 1.5; }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }

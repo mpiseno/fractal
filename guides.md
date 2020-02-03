@@ -29,4 +29,22 @@ permalink: /guides/
 
 ### Traditional Machine Learning
 
+<ul>
+{% assign ml_posts = site.posts | where:"categories", "ml" %}
+{% for page in ml_posts %}
+  <li>
+    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+  </li>
+{% endfor %}
+</ul>
+
 ### Deep Learning
+
+<ul>
+{% assign dl_posts = site.posts | where:"categories", "dl" %}
+{% for page in dl_posts %}
+  <li>
+    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+  </li>
+{% endfor %}
+</ul>

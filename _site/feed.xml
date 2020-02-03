@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-01-26T15:44:21-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-03T00:56:06-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Reinforcement Learning Introduction</title><link href="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Introduction" /><published>2020-02-02T00:06:43-08:00</published><updated>2020-02-02T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;Reinforcement learning (RL) is difference from supervised and unsupervised learning. In supervised learning, we have truth data (labels) for our problem that we use to check the output of our model against, correcting for mistakes accordingly. In unsupervised learning, we are learning some structure to the data. In RL we don’t have data necessarily, but instead we have an environment and a set of rules. There exists an agent that lives in this environment and its objective is to take actions that will eventually lead to reward. Whereas supervised learning tries to match data to its corresponding label, in RL we try to maximize reward. In other words, we are learning how to make the agent make a good sequence of actions.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/RL_Intro/rl-schema.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;h3 id=&quot;framing-an-rl-problem&quot;&gt;Framing an RL Problem&lt;/h3&gt;
+
+&lt;p&gt;We well frame an RL problem as a Markov Decision Process (MDP), which is a fancy-sounding way of formulating decision making under uncertainty. We will define the following ideas that will guide us in formulating the problem:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\mathbf{S}$: The set of possible states&lt;/li&gt;
+  &lt;li&gt;$\mathbf{A}$: The set of possible actions the agent can take&lt;/li&gt;
+  &lt;li&gt;$R(s, a, s’)$: A probability distribution of the reward given for being in state $s$, taking action $a$ and ending up in a new state $s’$&lt;/li&gt;
+  &lt;li&gt;$\mathbb{T}(s, a, s’)$: A probability distribution of state transitions&lt;/li&gt;
+  &lt;li&gt;$\gamma \in [0, 1)$: A scalar discount factor (will come in handy later)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some literature will also use $\mathbf{O}$ which is the set of possible observations given to the agent by the environment. This is sometimes the same as $\mathbf{S}$ and sometimes not. In a fully observable MDP, the agent has has all information about the state of the environment, so when the agent receives an observation $o_{i} \in \mathbf{O}$, it contains the same information as the state of the environment $s_{i} \in \mathbf{S}$. An example of this is chess - each player (agent) knows exactly what the state of the game is at any time. In a partially observable MDP this is not the case. The agent does not have access to the full state of the environment, so when it received an observation, it does not contain the same information as the state of the environment, hence these are two difference concepts. An example of this is poker - each player does not know the cards of the other players and therefore does not have access to the full state of the game.&lt;/p&gt;
+
+&lt;p&gt;The last concept is a policy, which is a function $\pi(s) : \mathbf{S} \Rightarrow \mathbf{A}$ that tells us which action to take given a state. The whole idea of RL is to learn a good policy; one that will tell us good actions to take in each state of the environment. A policy can interpreted deterministically $\pi(s)$ (The action taken when we are in state $s$), or stochastically $\pi(a|s)$ (the probability of taking action $a$ in state $s$).&lt;/p&gt;
+
+&lt;p&gt;Most of the time in RL, we do not have access to the true distributions $R(s, a, s’)$ and $\mathbb{T}(s, a, s’)$. If we had these distributions, we could easily calculate the optimal policy, however without this information we have to estimate them by trying out actions in our environment and seeing if we get reward or not.&lt;/p&gt;
+
+&lt;h3 id=&quot;grid-world&quot;&gt;Grid World&lt;/h3&gt;
+
+&lt;p&gt;For now, we will assume we have access to the distributions $R(s, a, s’)$ and $\mathbb{T}(s, a, s’)$ so that we can really drive home the point that if we have the true distributions at hand, we can calculate the optimal policy. Image we have the following problem.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The agent lives in a grid, where each square is a state. This is the state space.&lt;/li&gt;
+  &lt;li&gt;The agent can move North, South, East, or West (N, S, E, W). This is the action space.&lt;/li&gt;
+  &lt;li&gt;80% of the time, the action the agent takes does as it is intended. 10% of the time the agent slips and moves to one side, and 10% of the time the agent slips to the other side. For example if the agent chooses to move north, there is a 80% chance it will do so, a 10% chance it will move west, and a 10% chance it will move east. This is the transition probability distribution.&lt;/li&gt;
+  &lt;li&gt;There is a destination state that deterministically gives the agent a reward of +1 for reaching it and a terminal state that deterministically gives the agent a reward of -1 for reaching it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/RL_Intro/gridworld-example.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;h3 id=&quot;finding-optimal-policies&quot;&gt;Finding Optimal Policies&lt;/h3&gt;
+
+&lt;p&gt;So now that we have a concrete example of a problem, we can discuss what it means to find an optimal policy for it. Some questions that come when determining what a “good” policy is are “does it maximize the reward right now?” and “does is maximize the future reward?”. Typically, we maximize the discounted future reward; the idea being that we want policies that take future state into consideration, but we also don’t want the policy to focus so much on optimizing for future rewards that it doesn’t take actions that would put the agent in a good state now. Therefore we define the optimal policy $\pi^{\ast}$ in the following way.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi^{\ast} = \arg \max_{\pi} \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|\pi\bigg]&lt;/script&gt;
+
+&lt;p&gt;Here, time is indexed by $t$. This means we want to maximize the expected value of the discounted reward given some policy. Notice since $\gamma$ is between 0 and 1, we will optimize for states closer in time more than ones further.&lt;/p&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Support Vector Machines</title><link href="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html" rel="alternate" type="text/html" title="Support Vector Machines" /><published>2020-01-26T00:06:43-08:00</published><updated>2020-01-26T00:06:43-08:00</updated><id>http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels</id><content type="html" xml:base="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+
+&lt;h3 id=&quot;test&quot;&gt;Test&lt;/h3&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
 
