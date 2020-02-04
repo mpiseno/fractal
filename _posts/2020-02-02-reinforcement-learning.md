@@ -54,4 +54,62 @@ So now that we have a concrete example of a problem, we can discuss what it mean
 
 $$\pi^{\ast} = \arg \max_{\pi} \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|\pi\bigg]$$
 
-Here, time is indexed by $t$. This means we want to maximize the expected value of the discounted reward given some policy. Notice since $\gamma$ is between 0 and 1, we will optimize for states closer in time more than ones further.
+Here, time is indexed by $t$. This means we want to maximize the expectation of the discounted reward given some policy. Notice since $\gamma$ is between 0 and 1, we will optimize for states closer in time more than ones further.
+
+#### Value Function and Q-Function
+
+We have a notion of what a "good" policy is, but how do we actually find it? This is where the Value function and Q function come in. The value function is a prediction of future reward and basically answers the question "how good is the current state $s$ that I'm in?". We denote $V^{\pi}(s)$ as the expected cumulative reward of being in state $s$ and then following policy $\pi$ thereafter.
+
+$$V^{\pi}(s) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, \pi\bigg]$$
+
+We also have the notion of an optimal value function $V^{\ast}(s)$, which is the expected cumulative reward of being in state $s$ and then following the optimal policy $\pi^{\ast}$ thereafter. The Q function represents a similar idea - $Q^{\pi}(s, a)$ is the expected cumulative reward for taking action $a$ in state $s$ and then following policy $\pi$ thereafter. Similarly $Q^{\ast}(s, a)$ is the expected cumulative reward of taking action $a$ in state $s$ and following the optimal policy thereafter.
+
+$$Q^{\pi}(s, a) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, a_{0}=a, \pi\bigg]$$
+
+Remember, the value function only deals with states, and the Q function deals with state-action pairs! Now we can go about defining the optimal value and policy from the Q function values. It is clear that the optimal value and policy for a state can be defined in terms of the Q function as follows.
+
+$$V^{\ast}(s) = \max_{a}Q^{\ast}(s, a)$$
+
+$$\pi^{\ast}(s) = \arg \max_{a}Q^{\ast}(s, a)$$
+
+These optimal values can be calculated recursively using what are called the Bellman equations, defined below. Notice how the calculation of these values requires we have access to the true distributions $\mathbb{T}(s', a, s)$ (denoted with $p(\cdot)$ below) and $R(s', a, s)$ (denoted with $r(\cdot)$ below).
+
+$$V^{\ast}(s) = \max_{a}\sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]$$
+
+$$Q^{\ast}(s, a) = \sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]$$
+
+The summation over all possible next-states $s'$ of $p(s'\|s, a)$ comes from the definition of expectation in probability $\mathbb{E}[f(\cdot)] = \sum_{x}p(x) \cdot f(x)$. We are summing over all subsequent states the probability of being in that state, given the current state and action, then multiplying by the reward we get for being in that next state. It should be clear that the expected reward of being in state $s$, taking action $a$ and ending up in state $s'$ is exactly $r(s, a) + \gamma V^{\ast}(s')$.
+
+To reiterate, if we know the distributions $\mathbb{T}$ and $R$, we have a recursive way of calculating the optimal Q value of any state-action pair, and hence we can extract the optimal policy. Now we will go over two algorithms for doing so.
+
+### Value Iteration
+
+The idea of value iteration pretty much exactly follows the logic we described above. The algorithm is as follows.
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/RL_Intro/VI-algorithm.png"/>  
+  </div>
+</center>
+
+Each iteration of Value Iteration costs $O(\|\mathbf{S}\|^{2}\|\mathbf{A}\|)$ time and is very expensive for large state spaces. Recall our grid world game with values for each state initialized to 0.
+
+<center>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/RL_Intro/gridworld-VI-step1.png"/>  
+  </div>
+</center>
+
+Let's do an example calculation of one iteration of Value Iteration on the state (3, 3) (where the agent is pictured).
+
+$$
+\begin{align*}
+V^{2}((3, 3)) &= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1}(s')] \\
+&= \sum_{s'\in \{(4, 3), (3, 2)\}} p(s'|(3, 3), \text{right})[r((3, 3), \text{right}) + \gamma V^{1}(s')] \\
+&= (0.8 * (0 + \gamma * 1)) + (0.1 (0 + \gamma * 0)) + (0.1 (0 + \gamma * 0)) \\
+&= 0.8\gamma
+\end{align*}$$
+
+Note that the above calculation did not include other actions for brevity since we already knew the max operation would give us right as the optimal action. Now state (3, 3) has value $0.8\gamma$ and we can keep recursing to calculate the values of all the other states. After doing so, this would be 1 iteration of Value Iteration. We would repeat this process until the values converge.
+
+### Policy Iteration
