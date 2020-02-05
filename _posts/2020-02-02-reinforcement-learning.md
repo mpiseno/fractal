@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Reinforcement Learning Introduction"
+title:  "Reinforcement Learning Background"
 date:   2020-02-02 00:06:43 -0800
 categories: ["dl"]
 ---
@@ -113,3 +113,15 @@ V^{2}((3, 3)) &= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1}(s'
 Note that the above calculation did not include other actions for brevity since we already knew the max operation would give us right as the optimal action. Now state (3, 3) has value $0.8\gamma$ and we can keep recursing to calculate the values of all the other states. After doing so, this would be 1 iteration of Value Iteration. We would repeat this process until the values converge.
 
 ### Policy Iteration
+
+The next algorithm we will discuss is called Policy Iteration. The idea is that we start with some policy $\pi_{0}$ and iteratively refine it until the policy does not change anymore (i.e. it has converged). The algorithm involves two steps: computing the value of a policy, then using those values to greedily change the actions chosen by the previous policy to create a new policy.
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/RL_Intro/PI-algorithm.png"/>  
+  </div>
+</center>
+
+Policy Iteration has time complexity $O(\|\mathbf{S}\|^{3})$ for each iteration because of the linear system of equations, but in practice it often converges faster than Value Iteration because the policy becomes locked in place faster than the values in Value Iteration.
+
+Next time we will discuss how to find good policies even when the distributions $\mathbb{T}$ and $R$ are not known. This will largely amount to taking exploratory actions in the environment to collect data about what sequences of actions give good rewards and what sequences don't. This opens up the door to the field of RL which we will soon begin exploring.
