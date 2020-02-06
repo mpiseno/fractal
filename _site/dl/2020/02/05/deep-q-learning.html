@@ -101,64 +101,27 @@
 </nav>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Guides</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Deep Q-Learning</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-02-05T00:06:43-08:00" itemprop="datePublished">Feb 5, 2020
+      </time></p>
   </header>
 
-  <div class="post-content">
-    <p>These guides build upon one another. Mathematical foundations is intended to provide a solid understanding of the mathematics from which more advanced topics are built. This section is based off content from a first-year PhD course. Traditional machine learning covers topics typically seen in an undergraduate or masters level machine learning course such as models and algorithms for supervised learning, clustering, and introductory reinforcement learning. Deep learning covers topics typically seen in a masters or first-year PhD course that form the building blocks of many advanced models used in current research.</p>
-<hr />
-<h3 id="supplementary-material">Supplementary Material</h3>
-<ul>
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="learning-based-methods">Learning-Based Methods</h3>
 
+<p>Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.</p>
 
-  <li>
-    <a href="/fractal//supp/2020/01/15/what-is-ml.html" title="Machine Learning Introduction">Machine Learning Introduction</a>
-  </li>
+<p>Another issue we face is large state spaces. Policy and Value iteration worked fine for Gridworld (small state space), but when the total number of states becomes large, these algorithms become intractable - they contain a $|\mathbf{S}|^{3}$ and a $|\mathbf{S}|^{2}$ term respectively in their time complexities! Our solution to this issue is to learn a lower-dimensional representation of the state using neural networks. This is known as deep reinforcement learning, and the type we will be exploring in this guide is called deep Q-Learning.</p>
 
-</ul>
+<h3 id="deep-q-learning">Deep Q-Learning</h3>
 
-<h3 id="mathematical-foundations">Mathematical Foundations</h3>
+<p>Essentially what we are trying to do is approximate $Q^{\ast}(s, a)$ using a neural network. If we can get a good approximation of $Q^{\ast}$, we can extract a good policy. This neural network will be parameterized by a generic term $\theta$, will take as input the state $s$ and output value for each possible action, which we can perform a max operation over to get the best action to take.</p>
 
-<ul>
-
-
-  <li>
-    <a href="/fractal//mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" title="Vector Spaces, Norms, and Inner Products">Vector Spaces, Norms, and Inner Products</a>
-  </li>
-
-</ul>
-
-<h3 id="traditional-machine-learning">Traditional Machine Learning</h3>
-
-<ul>
-
-
-  <li>
-    <a href="/fractal//ml/2020/01/26/SVMs-and-kernels.html" title="Support Vector Machines">Support Vector Machines</a>
-  </li>
-
-</ul>
-
-<h3 id="deep-learning">Deep Learning</h3>
-
-<ul>
-
-
-  <li>
-    <a href="/fractal//dl/2020/02/05/deep-q-learning.html" title="Deep Q-Learning">Deep Q-Learning</a>
-  </li>
-
-  <li>
-    <a href="/fractal//dl/2020/02/02/reinforcement-learning.html" title="Reinforcement Learning Background">Reinforcement Learning Background</a>
-  </li>
-
-</ul>
-
-  </div>
-
+  </div><a class="u-url" href="/fractal/dl/2020/02/05/deep-q-learning.html" hidden></a>
 </article>
 
       </div>
