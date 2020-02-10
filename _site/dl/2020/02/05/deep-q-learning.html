@@ -121,6 +121,52 @@
 
 <p>Essentially what we are trying to do is approximate $Q^{\ast}(s, a)$ using a neural network. If we can get a good approximation of $Q^{\ast}$, we can extract a good policy. This neural network will be parameterized by a generic term $\theta$, will take as input the state $s$ and output value for each possible action, which we can perform a max operation over to get the best action to take.</p>
 
+<p>In order to learn such a function, we need to define a loss function so that our network knows what it’s optimizing for. Recall that the optimal Q function satisfies</p>
+
+<script type="math/tex; mode=display">Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]</script>
+
+<p>Assume we have a bunch of data in the form ${(s, a, r, s’)}_{i=1}^{N}$. Then for one of the data points, we can measure how close our Q network approximates the optimal Q function by the following equation.</p>
+
+<script type="math/tex; mode=display">\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}</script>
+
+<p>Where $Q_{t}$ and $Q_{t-1}$ represent the network output before and after a single weight update. Notice how the first term in the square is our network’s current output and the second term is the target Q-value that we want, but based on the old network weights. The training pipeline looks something like below. First we college a batch of data (i.e. the agent takes actions in the environment) of size $B$, then we feed that data into the network, compute the loss, and update our network weights. Below, $D$ is the dimensionality of the state representation (e.g. the number of pixels in an image).</p>
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="/fractal/assets/Deep_Q_Learning/q-network-training.png" />
+  </div>
+</center>
+
+<h3 id="epsilon-greedy-and-experience-replay">Epsilon Greedy and Experience Replay</h3>
+
+<p>This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let’s consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s’)$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+a_{t} =
+\begin{cases}
+\arg\max_{a}Q_{t}(s, a) & \text{with probability } 1 - \epsilon \\
+\text{random action} & \text{with probability } \epsilon
+\end{cases} %]]></script>
+
+<p>This will allow our agent to do some exploring to find good state-action combinations. Typically, it is good to do a lot of exploration when the network first starts training by using a high value for epsilon, reducing epsilon gradually as training progresses.</p>
+
+<p>The next issue we run into is that consecutive data is highly correlated, which can lead to feedback loops or just really slow training. For example, if we are gathering data under a policy that tells the agent to move down, then data that represents this type of action will be overrepresented in the next iteration of training even though the better option might be to go right and we just haven’t explored that yet. To solve this, one solution is to maintain a buffer that stores data $(s, a, r, s’)$ that we continually update while the agent moves through the environment, removing old data as the buffer gets full. When it comes time to sample a batch of data for training, we randomly sample from this buffer rather that take a bunch of consecutive data like before. This approach is called experience replay.</p>
+
+<p>Armed with the knowledge of these common problems and some solid ways to address them, we present the full Deep Q-Learning algorithm with Experience Replay.</p>
+
+<center>
+  <figure>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <img src="/fractal/assets/Deep_Q_Learning/DQN-algorithm.png" />
+      <figcaption>Credit: Fei-Fei Li, Justin Johnson, Serena Yeung: CS231n</figcaption>
+    </div>
+  </figure>
+</center>
+
+<p>The function $\phi$ is just a preprocessing step before inputting the data into the neural network and can be ignored for our purposes. The curious reader can explore the full paper from DeepMind: <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Playing Atari with Deep Reinforcement Learning</a>.</p>
+
+<p>We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.</p>
+
   </div><a class="u-url" href="/fractal/dl/2020/02/05/deep-q-learning.html" hidden></a>
 </article>
 

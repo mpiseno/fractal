@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-05T20:46:10-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-09T22:19:05-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 
@@ -6,7 +6,53 @@
 
 &lt;h3 id=&quot;deep-q-learning&quot;&gt;Deep Q-Learning&lt;/h3&gt;
 
-&lt;p&gt;Essentially what we are trying to do is approximate $Q^{\ast}(s, a)$ using a neural network. If we can get a good approximation of $Q^{\ast}$, we can extract a good policy. This neural network will be parameterized by a generic term $\theta$, will take as input the state $s$ and output value for each possible action, which we can perform a max operation over to get the best action to take.&lt;/p&gt;</content><author><name></name></author><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T00:06:43-08:00</published><updated>2020-02-02T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+&lt;p&gt;Essentially what we are trying to do is approximate $Q^{\ast}(s, a)$ using a neural network. If we can get a good approximation of $Q^{\ast}$, we can extract a good policy. This neural network will be parameterized by a generic term $\theta$, will take as input the state $s$ and output value for each possible action, which we can perform a max operation over to get the best action to take.&lt;/p&gt;
+
+&lt;p&gt;In order to learn such a function, we need to define a loss function so that our network knows what it’s optimizing for. Recall that the optimal Q function satisfies&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]&lt;/script&gt;
+
+&lt;p&gt;Assume we have a bunch of data in the form ${(s, a, r, s’)}_{i=1}^{N}$. Then for one of the data points, we can measure how close our Q network approximates the optimal Q function by the following equation.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}&lt;/script&gt;
+
+&lt;p&gt;Where $Q_{t}$ and $Q_{t-1}$ represent the network output before and after a single weight update. Notice how the first term in the square is our network’s current output and the second term is the target Q-value that we want, but based on the old network weights. The training pipeline looks something like below. First we college a batch of data (i.e. the agent takes actions in the environment) of size $B$, then we feed that data into the network, compute the loss, and update our network weights. Below, $D$ is the dimensionality of the state representation (e.g. the number of pixels in an image).&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/Deep_Q_Learning/q-network-training.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;h3 id=&quot;epsilon-greedy-and-experience-replay&quot;&gt;Epsilon Greedy and Experience Replay&lt;/h3&gt;
+
+&lt;p&gt;This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let’s consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s’)$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+a_{t} =
+\begin{cases}
+\arg\max_{a}Q_{t}(s, a) &amp; \text{with probability } 1 - \epsilon \\
+\text{random action} &amp; \text{with probability } \epsilon
+\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This will allow our agent to do some exploring to find good state-action combinations. Typically, it is good to do a lot of exploration when the network first starts training by using a high value for epsilon, reducing epsilon gradually as training progresses.&lt;/p&gt;
+
+&lt;p&gt;The next issue we run into is that consecutive data is highly correlated, which can lead to feedback loops or just really slow training. For example, if we are gathering data under a policy that tells the agent to move down, then data that represents this type of action will be overrepresented in the next iteration of training even though the better option might be to go right and we just haven’t explored that yet. To solve this, one solution is to maintain a buffer that stores data $(s, a, r, s’)$ that we continually update while the agent moves through the environment, removing old data as the buffer gets full. When it comes time to sample a batch of data for training, we randomly sample from this buffer rather that take a bunch of consecutive data like before. This approach is called experience replay.&lt;/p&gt;
+
+&lt;p&gt;Armed with the knowledge of these common problems and some solid ways to address them, we present the full Deep Q-Learning algorithm with Experience Replay.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;figure&gt;
+    &lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+      &lt;img src=&quot;/fractal/assets/Deep_Q_Learning/DQN-algorithm.png&quot; /&gt;
+      &lt;figcaption&gt;Credit: Fei-Fei Li, Justin Johnson, Serena Yeung: CS231n&lt;/figcaption&gt;
+    &lt;/div&gt;
+  &lt;/figure&gt;
+&lt;/center&gt;
+
+&lt;p&gt;The function $\phi$ is just a preprocessing step before inputting the data into the neural network and can be ignored for our purposes. The curious reader can explore the full paper from DeepMind: &lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;Playing Atari with Deep Reinforcement Learning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.&lt;/p&gt;</content><author><name></name></author><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T00:06:43-08:00</published><updated>2020-02-02T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
 
 &lt;p&gt;Reinforcement learning (RL) is difference from supervised and unsupervised learning. In supervised learning, we have truth data (labels) for our problem that we use to check the output of our model against, correcting for mistakes accordingly. In unsupervised learning, we are learning some structure to the data. In RL we don’t have data necessarily, but instead we have an environment and a set of rules. There exists an agent that lives in this environment and its objective is to take actions that will eventually lead to reward. Whereas supervised learning tries to match data to its corresponding label, in RL we try to maximize reward. In other words, we are learning how to make the agent make a good sequence of actions.&lt;/p&gt;
 
