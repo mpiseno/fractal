@@ -101,68 +101,29 @@
 </nav>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Guides</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Policy Gradient and Actor Critic</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-02-10T00:06:43-08:00" itemprop="datePublished">Feb 10, 2020
+      </time></p>
   </header>
 
-  <div class="post-content">
-    <p>These guides build upon one another. Mathematical foundations is intended to provide a solid understanding of the mathematics from which more advanced topics are built. This section is based off content from a first-year PhD course. Traditional machine learning covers topics typically seen in an undergraduate or masters level machine learning course such as models and algorithms for supervised learning, clustering, and introductory reinforcement learning. Deep learning covers topics typically seen in a masters or first-year PhD course that form the building blocks of many advanced models used in current research.</p>
-<hr />
-<h3 id="supplementary-material">Supplementary Material</h3>
-<ul>
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="policy-gradient">Policy Gradient</h3>
 
+<p>What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.</p>
 
-  <li>
-    <a href="/fractal//supp/2020/01/15/what-is-ml.html" title="Machine Learning Introduction">Machine Learning Introduction</a>
-  </li>
+<p>Let’s note define a metric $J$ which can be used to evaluate the quality of a policy $\pi_{\theta}$. What we really want to do is maximize the expected future reward, so naturally we can write</p>
 
-</ul>
+<script type="math/tex; mode=display">J(\pi_{\theta}) = \mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]</script>
 
-<h3 id="mathematical-foundations">Mathematical Foundations</h3>
+<p>where $R(s_{t}, a_{t})$ is the reward given by taking action $a$ in state $s$ and time $t$. The optimal set of parameters for the policy can then be written as</p>
 
-<ul>
+<script type="math/tex; mode=display">\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]</script>
 
-
-  <li>
-    <a href="/fractal//mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" title="Vector Spaces, Norms, and Inner Products">Vector Spaces, Norms, and Inner Products</a>
-  </li>
-
-</ul>
-
-<h3 id="traditional-machine-learning">Traditional Machine Learning</h3>
-
-<ul>
-
-
-  <li>
-    <a href="/fractal//ml/2020/01/26/SVMs-and-kernels.html" title="Support Vector Machines">Support Vector Machines</a>
-  </li>
-
-</ul>
-
-<h3 id="deep-learning">Deep Learning</h3>
-
-<ul>
-
-
-  <li>
-    <a href="/fractal//dl/2020/02/10/policy-gradient-actor-critic.html" title="Policy Gradient and Actor Critic">Policy Gradient and Actor Critic</a>
-  </li>
-
-  <li>
-    <a href="/fractal//dl/2020/02/05/deep-q-learning.html" title="Deep Q-Learning">Deep Q-Learning</a>
-  </li>
-
-  <li>
-    <a href="/fractal//dl/2020/02/02/reinforcement-learning.html" title="Reinforcement Learning Background">Reinforcement Learning Background</a>
-  </li>
-
-</ul>
-
-  </div>
-
+  </div><a class="u-url" href="/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" hidden></a>
 </article>
 
       </div>
