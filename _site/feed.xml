@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-18T01:33:53-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-18T21:26:29-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
 
 &lt;p&gt;What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.&lt;/p&gt;
 
@@ -8,7 +8,32 @@
 
 &lt;p&gt;where $R(s_{t}, a_{t})$ is the reward given by taking action $a$ in state $s$ and time $t$. The optimal set of parameters for the policy can then be written as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]&lt;/script&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]&lt;/script&gt;
+
+&lt;p&gt;Now consider a trajectory $\tau = (s_{1}, a_{1}, s_{2}, a_{2}, …, s_{T})$ which is a sequence of state-action pairs until the terminal state. We are trying to learn $\theta$ that maximizes the reward of some trajectory. So in the spirit of gradient descent, we are going to take actions within our environment to sample a trajectory and then use the rewards gained from that trajectory to adjust our parameters. We can write our loss function as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)]&lt;/script&gt;
+
+&lt;p&gt;where $R(\tau)$ is the cumulative reward gained by our trajectory. Our objective is to take the gradient of this function with respect to $\theta$ so that we can use the gradient descent update rule to adjust our parameters, but the reward function is not known and may not even be differentiable, but with a few clever tricks we can estimate the gradient. Recall that for any continuous function $f(x)$, $\mathbb{E}[f(x)] = \int_{-\infty}^{\infty}p(x)f(x)dx$ where $p(x)$ is the probability of event $x$ occurring. So we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
+&amp;= \int p(\tau)R(\tau)d\tau \\
+&amp;= \int \pi_{\theta}(\tau)R(\tau)d\tau
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\nabla_{\theta}J(\theta) &amp;= \nabla_{\theta} \int \pi_{\theta}(\tau)R(\tau)d\tau \\
+&amp;= \int \nabla_{\theta}\pi_{\theta}(\tau)R(\tau)d\tau \\
+&amp;= \int \pi_{\theta}(\tau)\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)d\tau \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$.&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 

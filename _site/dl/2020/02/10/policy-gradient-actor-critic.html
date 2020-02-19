@@ -123,6 +123,31 @@
 
 <script type="math/tex; mode=display">\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]</script>
 
+<p>Now consider a trajectory $\tau = (s_{1}, a_{1}, s_{2}, a_{2}, …, s_{T})$ which is a sequence of state-action pairs until the terminal state. We are trying to learn $\theta$ that maximizes the reward of some trajectory. So in the spirit of gradient descent, we are going to take actions within our environment to sample a trajectory and then use the rewards gained from that trajectory to adjust our parameters. We can write our loss function as</p>
+
+<script type="math/tex; mode=display">J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)]</script>
+
+<p>where $R(\tau)$ is the cumulative reward gained by our trajectory. Our objective is to take the gradient of this function with respect to $\theta$ so that we can use the gradient descent update rule to adjust our parameters, but the reward function is not known and may not even be differentiable, but with a few clever tricks we can estimate the gradient. Recall that for any continuous function $f(x)$, $\mathbb{E}[f(x)] = \int_{-\infty}^{\infty}p(x)f(x)dx$ where $p(x)$ is the probability of event $x$ occurring. So we have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+J(\theta) &= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
+&= \int p(\tau)R(\tau)d\tau \\
+&= \int \pi_{\theta}(\tau)R(\tau)d\tau
+\end{align*} %]]></script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\nabla_{\theta}J(\theta) &= \nabla_{\theta} \int \pi_{\theta}(\tau)R(\tau)d\tau \\
+&= \int \nabla_{\theta}\pi_{\theta}(\tau)R(\tau)d\tau \\
+&= \int \pi_{\theta}(\tau)\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)d\tau \\
+&= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
+\end{align*} %]]></script>
+
+<p>Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$.</p>
+
   </div><a class="u-url" href="/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" hidden></a>
 </article>
 
