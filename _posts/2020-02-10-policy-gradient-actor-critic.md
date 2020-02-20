@@ -38,4 +38,42 @@ $$\begin{align*}
 &= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
 \end{align*}$$
 
-Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$.
+Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$. Note that we can rewrite $\pi_{\theta}(\tau)$ as
+
+$$\begin{align*}
+\pi_{\theta}(\tau) = \pi_{\theta}(a_{1}, s_{1}, a_{2}, s_{2}, ..., s_{T}) &= p(s_{1}) \prod_{t=1}^{T} p(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t}) \\
+&= p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})
+\end{align*}$$
+
+Convince yourself that the above relation is true. $\pi_{\theta}(\tau)$ is the probability of trajectory $\tau$ happening. It is the probability of starting in $s_{1}$, then taking action $a_{1}$ given $s_{1}$, then transitioning to state $s_{2}$ given $a_{1}$ in $s_{1}$, and so on. This joint probability can be factored out. The last step is to realize $p(a_{t}\|s_{t})$ is the definition of $\pi_{\theta}(a_{t}\|s_{t})$. Now
+
+$$\begin{align*}
+\nabla_{\theta} \log(\pi_{\theta}(\tau)) &= \nabla_{\theta}\log\bigg[p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})\bigg] \\
+&= \nabla_{\theta}\bigg[\log(p(s_{1})) + \sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + \sum_{t=1}^{T}\log(p(s_{t+1}|a_{t}, s_{t}))\bigg] \\
+&= 0 + \nabla_{\theta}\sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + 0
+\end{align*}$$
+
+This simplication is enough for us to completed our estimate of the policy gradient $\nabla_{\theta}J(\theta)$.
+
+$$
+\nabla_{\theta}J(\theta) \approx \frac{1}{N}\sum_{n=1}^{N}\Bigg[\bigg(\sum_{t=1}^{T} \nabla_{\theta}\log(\pi_{\theta}(a_{n,t}|s_{n,t}))\bigg)\bigg(\sum_{t=1}^{T}r(s_{n,t},a_{n,t})\bigg)\Bigg]
+$$
+
+Where $N$ is just the number of episodes (analogous to epochs) we do. Having a set of $N$ trajectories and then averaging the policy gradient estimate over each of them makes this estimate more robust. Now that we can estimate the policy gradient, we simply would update our parameters in the familiar way
+
+$$\theta \leftarrow \theta - \alpha\nabla_{\theta}J(\theta)$$
+
+One interpretation of this result is that we are trying to maximize the log likelihood of trajectories that give good rewards and minimize the log likelihood of those that don't. This is the idea behind the REINFORCE algorithm which is
+
+1. sample $N$ trajectories by running the policy
+2. estimate the policy gradient like above
+3. update the parameters $\theta$
+4. Repeat until converged
+
+### Actor Critic
+
+One issue with vanilla policy gradients is that its very hard to assign credit to state-action pairs that resulted in good reward because we only consider the total reward $\sum_{t=1}^{T}R(a_{t}, s_{t})$. The trajectories are noisy. But if we had the $Q$ function, we would know what state-action pairs were good. In other words, we would estimate the gradient of $J$ as
+
+$$\nabla_{\theta}J(\theta) = \mathbb{E}[\nabla_{\theta}\log(\pi_{\theta}(\tau))Q_{\pi_{\theta}}(\tau)]$$
+
+The idea of actor-critic is that we have an actor that samples trajectories using the policy, and a critic that critiques the policy using the $Q$ function. Since we don't have the optimal $Q$ functions, we can estimate it like we did in deep Q learning. So we could have a policy network that takes in a state and returns a probability distribution over the action space (i.e. \pi_{\theta}(a\|s)) and a $Q$ network that takes in a state-action pair and returns its Q value estimate. Let's say this network is parameterized by a generic variable $\beta$. Note that these don't have to be neural networks, but for the sake of this guide I'll just say "network". So we have networks $\pi_{\theta}$ and $Q_{\beta}$.

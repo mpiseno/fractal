@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-18T21:26:29-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-19T22:20:15-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
 
 &lt;p&gt;What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.&lt;/p&gt;
 
@@ -33,7 +33,47 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
 \end{align*} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$.&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+&lt;p&gt;Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$. Note that we can rewrite $\pi_{\theta}(\tau)$ as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\pi_{\theta}(\tau) = \pi_{\theta}(a_{1}, s_{1}, a_{2}, s_{2}, ..., s_{T}) &amp;= p(s_{1}) \prod_{t=1}^{T} p(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t}) \\
+&amp;= p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Convince yourself that the above relation is true. $\pi_{\theta}(\tau)$ is the probability of trajectory $\tau$ happening. It is the probability of starting in $s_{1}$, then taking action $a_{1}$ given $s_{1}$, then transitioning to state $s_{2}$ given $a_{1}$ in $s_{1}$, and so on. This joint probability can be factored out. The last step is to realize $p(a_{t}|s_{t})$ is the definition of $\pi_{\theta}(a_{t}|s_{t})$. Now&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\nabla_{\theta} \log(\pi_{\theta}(\tau)) &amp;= \nabla_{\theta}\log\bigg[p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})\bigg] \\
+&amp;= \nabla_{\theta}\bigg[\log(p(s_{1})) + \sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + \sum_{t=1}^{T}\log(p(s_{t+1}|a_{t}, s_{t}))\bigg] \\
+&amp;= 0 + \nabla_{\theta}\sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + 0
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This simplication is enough for us to completed our estimate of the policy gradient $\nabla_{\theta}J(\theta)$.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta}J(\theta) \approx \frac{1}{N}\sum_{n=1}^{N}\Bigg[\bigg(\sum_{t=1}^{T} \nabla_{\theta}\log(\pi_{\theta}(a_{n,t}|s_{n,t}))\bigg)\bigg(\sum_{t=1}^{T}r(s_{n,t},a_{n,t})\bigg)\Bigg]&lt;/script&gt;
+
+&lt;p&gt;Where $N$ is just the number of episodes (analogous to epochs) we do. Having a set of $N$ trajectories and then averaging the policy gradient estimate over each of them makes this estimate more robust. Now that we can estimate the policy gradient, we simply would update our parameters in the familiar way&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta \leftarrow \theta - \alpha\nabla_{\theta}J(\theta)&lt;/script&gt;
+
+&lt;p&gt;One interpretation of this result is that we are trying to maximize the log likelihood of trajectories that give good rewards and minimize the log likelihood of those that don’t. This is the idea behind the REINFORCE algorithm which is&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;sample $N$ trajectories by running the policy&lt;/li&gt;
+  &lt;li&gt;estimate the policy gradient like above&lt;/li&gt;
+  &lt;li&gt;update the parameters $\theta$&lt;/li&gt;
+  &lt;li&gt;Repeat until converged&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;actor-critic&quot;&gt;Actor Critic&lt;/h3&gt;
+
+&lt;p&gt;One issue with vanilla policy gradients is that its very hard to assign credit to state-action pairs that resulted in good reward because we only consider the total reward $\sum_{t=1}^{T}R(a_{t}, s_{t})$. The trajectories are noisy. But if we had the $Q$ function, we would know what state-action pairs were good. In other words, we would estimate the gradient of $J$ as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta}J(\theta) = \mathbb{E}[\nabla_{\theta}\log(\pi_{\theta}(\tau))Q_{\pi_{\theta}}(\tau)]&lt;/script&gt;
+
+&lt;p&gt;The idea of actor-critic is that we have an actor that samples trajectories using the policy, and a critic that critiques the policy using the $Q$ function. Since we don’t have the optimal $Q$ functions, we can estimate it like we did in deep Q learning. So we could have a policy network that takes in a state and returns a probability distribution over the action space (i.e. \pi_{\theta}(a|s)) and a $Q$ network that takes in a state-action pair and returns its Q value estimate. Let’s say this network is parameterized by a generic variable $\beta$. Note that these don’t have to be neural networks, but for the sake of this guide I’ll just say “network”. So we have networks $\pi_{\theta}$ and $Q_{\beta}$.&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 
