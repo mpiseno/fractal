@@ -76,4 +76,21 @@ One issue with vanilla policy gradients is that its very hard to assign credit t
 
 $$\nabla_{\theta}J(\theta) = \mathbb{E}[\nabla_{\theta}\log(\pi_{\theta}(\tau))Q_{\pi_{\theta}}(\tau)]$$
 
-The idea of actor-critic is that we have an actor that samples trajectories using the policy, and a critic that critiques the policy using the $Q$ function. Since we don't have the optimal $Q$ functions, we can estimate it like we did in deep Q learning. So we could have a policy network that takes in a state and returns a probability distribution over the action space (i.e. \pi_{\theta}(a\|s)) and a $Q$ network that takes in a state-action pair and returns its Q value estimate. Let's say this network is parameterized by a generic variable $\beta$. Note that these don't have to be neural networks, but for the sake of this guide I'll just say "network". So we have networks $\pi_{\theta}$ and $Q_{\beta}$.
+The idea of actor-critic is that we have an actor that samples trajectories using the policy, and a critic that critiques the policy using the $Q$ function. Since we don't have the optimal $Q$ functions, we can estimate it like we did in deep Q learning. So we could have a policy network that takes in a state and returns a probability distribution over the action space (i.e. $\pi_{\theta}(a\|s))$ and a $Q$ network that takes in a state-action pair and returns its Q value estimate. Let's say this network is parameterized by a generic variable $\beta$. Note that these don't have to be neural networks, but for the sake of this guide I'll just say "network". So we have networks $\pi_{\theta}$ and $Q_{\beta}$. The general actor-critic algorithm then goes like
+
+1. Initialize $s, \theta, \beta$
+2. Repeat until converged:
+  * Sample action $a$ from $\pi_{\theta}(\cdot\|s)$
+  * Receive reward $r$ and sample next state $s' \sim p(s'\|s, a)$
+  * Use the critic to evaluate the actor and update the policy similar to like we did in policy gradients:
+      $$\theta \leftarrow \theta - \alpha\nabla_{\theta}\log(\pi_{\theta}(a|s))Q_{\beta}(s, a)$$
+  * Update the critic according to some loss metric: $\text{MSE Loss} = (Q_{t+1}(s, a) - (r + \max_{a'}Q_{t}(s', a')))^{2}$
+  * Update $\beta$ using backprop or whatever update rule
+
+Of course you can sample whole trajectories instead of one state-action pair at a time. Different types of actor-critic result from changing the "critic". In REINFORCE, the critic was simply the reward we got from the trajectory. In actor-critic, the critic is the Q function. Another popular choice is called advantage actor-critic, in which the critic is the advantage functions
+
+$$A_{\pi_{\theta}}(s, a) = Q_{\pi_{\theta}}(s, a) - V_{\pi_{\theta}}(s)$$
+
+Where V is the value function (recall value iteration). The advantage function A tells us how much better is taking action $a$ in state $s$ than the expected cumulative reward of being in state $s$.
+
+This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I'll do my best to respond!

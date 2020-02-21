@@ -118,4 +118,6 @@ The standard inner product induces the standard euclidean norm. Two important pr
     If $\langle\mathbf{x},\mathbf{y}\rangle = 0$ then $\mathbf{x}$ and $\mathbf{y}$ are orthogonal and $\norm{\mathbf{x} + \mathbf{y}} = \norm{\mathbf{x}} + \norm{\mathbf{y}}$
 
 
+A Hilbert space is an inner product space that is also complete, which means that for every infinite sequence of elements $\mathbf{x_{1}}, \mathbf{x_{2}}, ... $ that gets closer and closer to one another, these elements also approach some precise element in the space. In more rigorous terms, it means that every Cauchy sequence is convergent, but the spaces we discuss in these guides will have this completeness property unless otherwise stated, so I will use Hilbert space and inner product space more or less interchangeably. Just keep the completeness requirement in the back of your mind.
+
 All the ideas presented in these notes are important foundational mathematical concepts that we will make use of in later notes. You should become very familiar with them and know how to determine if an inner product or a norm is valid or not. Now that we have some mathematical tools, next time we will discuss a foundational problem is machine learning - linear approximation.
