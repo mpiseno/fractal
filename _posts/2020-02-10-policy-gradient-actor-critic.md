@@ -70,6 +70,18 @@ One interpretation of this result is that we are trying to maximize the log like
 3. update the parameters $\theta$
 4. Repeat until converged
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ### Actor Critic
 
 One issue with vanilla policy gradients is that its very hard to assign credit to state-action pairs that resulted in good reward because we only consider the total reward $\sum_{t=1}^{T}R(a_{t}, s_{t})$. The trajectories are noisy. But if we had the $Q$ function, we would know what state-action pairs were good. In other words, we would estimate the gradient of $J$ as
@@ -94,3 +106,15 @@ $$A_{\pi_{\theta}}(s, a) = Q_{\pi_{\theta}}(s, a) - V_{\pi_{\theta}}(s)$$
 Where V is the value function (recall value iteration). The advantage function A tells us how much better is taking action $a$ in state $s$ than the expected cumulative reward of being in state $s$.
 
 This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I'll do my best to respond!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
