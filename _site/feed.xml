@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-21T01:15:45-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-22T15:45:14-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+
+&lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
 
 &lt;p&gt;Linear approximation is a fundamental problem in machine learning, and one that has a surprising amount of mathematical structure built around it for such a seemingly simple problem. Consider the following problem: We have a Hilbert space $\mathbf{S}$ and a subspace $\mathbf{T} \subseteq \mathbf{S}$. We also have an element $\mathbf{x} \in \mathbf{S}$. What is the closest element $\mathbf{\hat{x}} \in \mathbf{T}$ to $\mathbf{x}$?&lt;/p&gt;
 
@@ -6,7 +8,107 @@
   &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
     &lt;img src=&quot;/fractal/assets/Linear_Approx/linear-approx-problem.png&quot; /&gt;  
   &lt;/div&gt;
-&lt;/center&gt;</content><author><name></name></author><summary type="html">Linear Approximation</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
+&lt;/center&gt;
+
+&lt;p&gt;This Hilbert space $\mathbf{S}$ has an inner product $\langle\cdot, \cdot\rangle$ and induced norm $\norm{\cdot}$. So we can frame the problem as finding the point $\mathbf{\hat{x}} \in \mathbf{T}$ such that $\norm{\mathbf{\hat{x} - x}}$ is minimized.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation} \tag{1}
+\text{minimize}_{\mathbf{y\in T}} \norm{\mathbf{y - x}}
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;We can find a unique minimizer by exploiting orthogonality. In fact, $\mathbf{\hat{x} \in T}$ is the closest point to $\mathbf{x \in S}$ if $\mathbf{\hat{x} - x}$ is orthogonal to all other points $\mathbf{y \in T}$. This means that $\langle \mathbf{\hat{x} - x}, y\rangle = 0$ for all $\mathbf{y \in T}$&lt;/p&gt;
+
+&lt;p&gt;Lets show that if $\langle\mathbf{\hat{x} - x}, \mathbf{y}\rangle = 0$ for all $\mathbf{y \neq \hat{x} \in T}$ then $\mathbf{\hat{x}}$ is minimizer of $(1)$.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\norm{\mathbf{x - y}}^{2} &amp;= \norm{(\mathbf{x - \hat{x}}) - (y - \mathbf{\hat{x}})}^{2} \\
+&amp;= \norm{\mathbf{x - \hat{x}}}^{2} + \norm{\mathbf{y} - \mathbf{\hat{x}}}^{2}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The last equality follows from the Pythagorean theorem. This is valid because we required that $\mathbf{x - \hat{x}}$ was orthogonal to all points in $\mathbf{T}$, and $\mathbf{y} - \mathbf{\hat{x}}$ is certainly in $\mathbf{T}$!&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/Linear_Approx/closest-point.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Therefore, if $\norm{\mathbf{y} - \mathbf{\hat{x}}}^{2} \neq 0$ (i.e. $\mathbf{y} \neq \mathbf{\hat{x}}$), then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x} - \mathbf{y}}^{2} &gt; \norm{\mathbf{x - \hat{x}}}^{2}&lt;/script&gt;
+
+&lt;p&gt;where equality is achievd only when $\mathbf{y} = \mathbf{\hat{x}}$. This implies that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$. This is a pretty intuitive result: If $\mathbf{x - y}$ is not orthogonal to $\mathbf{T}$, then there is some other point $\mathbf{\hat{x}}$ that comes closer to $\mathbf{x}$ while still remaining inside $\mathbf{T}$. This can be seen visually in the image above.&lt;/p&gt;
+
+&lt;h4 id=&quot;computing-the-closest-point&quot;&gt;Computing the closest point&lt;/h4&gt;
+
+&lt;p&gt;So we know that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$ if $\langle\mathbf{x - \hat{x}}, y\rangle = 0$ for all $\mathbf{y} \neq \mathbf{\hat{x}}$ in $\mathbf{T}$, but how do we actually compute $\mathbf{\hat{x}}$? If $\mathbf{T}$ is an $N$-dimensional subspace, that means we can represent any point in the space by a linear combination of $N$ basis vectors - call them $\mathbf{v_{1}}, \mathbf{v_{2}}, …, \mathbf{v_{N}}$.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}} + ... + \alpha_{N}\mathbf{v_{N}} = \sum_{n=1}^{N}\alpha_{n}\mathbf{v}_{N}&lt;/script&gt;
+
+&lt;p&gt;for some constants $\{ \alpha \}_{1}^{N}$. Orthogonality also tells us&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle = 0&lt;/script&gt;
+
+&lt;p&gt;If we take the inner product of $\mathbf{x - \hat{x}}$ with one of the basis vectors we generate a linear equation.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle &amp;= \big\langle\mathbf{x} - \sum_{n=1}^{N}\alpha_{n}\mathbf{v_{n}}, \mathbf{v_{k}}\big\rangle \\
+&amp;= \langle\mathbf{x}, \mathbf{v_{k}}\rangle - \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle - ... - \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle \\
+\Rightarrow \langle\mathbf{x}, \mathbf{v_{k}}\rangle &amp;= \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle + ... + \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;In fact, we can generate $N$ different linear equations by taking the inner product with each of the basis vector separately. That means we can solve this linear system of equations for $\mathbf{\alpha}$, the vector of coefficients!&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\begin{bmatrix}\langle\mathbf{x}, \mathbf{v_{1}}\rangle \\ \vdots \\ \langle\mathbf{x}, \mathbf{v_{N}}\rangle\end{bmatrix} &amp;=
+\begin{bmatrix}
+\langle\mathbf{v_{1}}, \mathbf{v_{1}}\rangle &amp;  ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{1}}\rangle \\
+\vdots &amp; \ddots &amp; \vdots \\
+\langle\mathbf{v_{1}}, \mathbf{v_{N}}\rangle &amp; ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{N}}\rangle
+\end{bmatrix}\begin{bmatrix}\alpha_{1} \\ \vdots \\ \alpha_{N}\end{bmatrix} \\
+\\
+\mathbf{b} &amp;= \mathbf{G\alpha} \\
+\Rightarrow \mathbf{\alpha} &amp;= \mathbf{G^{-1}b}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Where $\mathbf{G}$ is the matrix if inner products and is called the Gram Matrix or Grammian of the basis $\{\mathbf{v}\}_{n=1}^{N}$. After we solve for our coeeficientls, we can easily reconstruct the closest point in $\mathbf{T}$ to $\mathbf{x}$ by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + ... + \alpha_{N}\mathbf{v_{N}}&lt;/script&gt;
+
+&lt;p&gt;Take a second to appreciate what we did. We took a minimization problem, converted it to a finite dimensional linear algebra problem by exploiting our basis to ask the question “what basis coefficients will create a $\mathbf{\hat{x}}$ that minimizes the objective?”. This idea is central to many more topics we will cover.&lt;/p&gt;
+
+&lt;p&gt;$\mathbf{G}$ is invertible because the basis vectors are linearly independent. Also, since the inner product is a symmetric function, the Gram Matrix is also symmetric. Because the Gram matrix is square and invertible, $\mathbf{b} = \mathbf{G\alpha}$ always has a solution. Further, if we have an orthogonal basis, then the Gram Matrix is exactly the Identity transformation, and the coefficients can be calculated by simply taking inner products of $\mathbf{x}$ with each basis vector.&lt;/p&gt;
+
+&lt;h5 id=&quot;example&quot;&gt;Example&lt;/h5&gt;
+
+&lt;p&gt;We will close with an example to drive this idea home. Let our Hilbert space $\mathbf{S} = \mathbb{R}^{3}$ with the standard inner product and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{T} = \text{Span}\Bigg(\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}, \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix}\Bigg), \mathbf{x} = \begin{bmatrix}2 \\ 1 \\ 0\end{bmatrix}&lt;/script&gt;
+
+&lt;p&gt;The vectors we defined $\mathbf{T}$ with form a basis for the subspace. What is the closest point in $\mathbf{T}$ to $\mathbf{x}$? We can write $\mathbf{\hat{x}}$ as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}}&lt;/script&gt;
+
+&lt;p&gt;and our Gram Matrix and $\mathbf{b}$ are&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\mathbf{G} = \begin{bmatrix}
+2 &amp; 0 \\
+0 &amp; 2
+\end{bmatrix}, \mathbf{b} = \begin{bmatrix}2 \\ -2\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The inverse Gram Matrix is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+\frac{1}{2} &amp; 0 \\
+0 &amp; \frac{1}{2}
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Finally, $\mathbf{\alpha} = \begin{bmatrix}1 &amp;amp; -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 &amp;amp; 0 &amp;amp; 0\end{bmatrix}^{T}$&lt;/p&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
 
 &lt;p&gt;What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.&lt;/p&gt;
 
@@ -75,6 +177,14 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
   &lt;li&gt;Repeat until converged&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;actor-critic&quot;&gt;Actor Critic&lt;/h3&gt;
 
 &lt;p&gt;One issue with vanilla policy gradients is that its very hard to assign credit to state-action pairs that resulted in good reward because we only consider the total reward $\sum_{t=1}^{T}R(a_{t}, s_{t})$. The trajectories are noisy. But if we had the $Q$ function, we would know what state-action pairs were good. In other words, we would estimate the gradient of $J$ as&lt;/p&gt;
@@ -103,7 +213,15 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;Where V is the value function (recall value iteration). The advantage function A tells us how much better is taking action $a$ in state $s$ than the expected cumulative reward of being in state $s$.&lt;/p&gt;
 
-&lt;p&gt;This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I’ll do my best to respond!&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+&lt;p&gt;This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I’ll do my best to respond!&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 
