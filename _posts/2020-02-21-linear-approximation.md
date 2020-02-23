@@ -46,6 +46,17 @@ $$\norm{\mathbf{x} - \mathbf{y}}^{2} > \norm{\mathbf{x - \hat{x}}}^{2}$$
 
 where equality is achievd only when $\mathbf{y} = \mathbf{\hat{x}}$. This implies that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$. This is a pretty intuitive result: If $\mathbf{x - y}$ is not orthogonal to $\mathbf{T}$, then there is some other point $\mathbf{\hat{x}}$ that comes closer to $\mathbf{x}$ while still remaining inside $\mathbf{T}$. This can be seen visually in the image above.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="5147890219"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 #### Computing the closest point
 
 So we know that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$ if $\langle\mathbf{x - \hat{x}}, y\rangle = 0$ for all $\mathbf{y} \neq \mathbf{\hat{x}}$ in $\mathbf{T}$, but how do we actually compute $\mathbf{\hat{x}}$? If $\mathbf{T}$ is an $N$-dimensional subspace, that means we can represent any point in the space by a linear combination of $N$ basis vectors - call them $\mathbf{v_{1}}, \mathbf{v_{2}}, ..., \mathbf{v_{N}}$.
@@ -112,3 +123,14 @@ $$\begin{bmatrix}
 \end{bmatrix}$$
 
 Finally, $\mathbf{\alpha} = \begin{bmatrix}1 & -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 & 0 & 0\end{bmatrix}^{T}$
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="5147890219"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
