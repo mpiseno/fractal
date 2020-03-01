@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-22T15:45:14-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-29T18:36:01-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
 
@@ -39,6 +39,18 @@
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x} - \mathbf{y}}^{2} &gt; \norm{\mathbf{x - \hat{x}}}^{2}&lt;/script&gt;
 
 &lt;p&gt;where equality is achievd only when $\mathbf{y} = \mathbf{\hat{x}}$. This implies that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$. This is a pretty intuitive result: If $\mathbf{x - y}$ is not orthogonal to $\mathbf{T}$, then there is some other point $\mathbf{\hat{x}}$ that comes closer to $\mathbf{x}$ while still remaining inside $\mathbf{T}$. This can be seen visually in the image above.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h4 id=&quot;computing-the-closest-point&quot;&gt;Computing the closest point&lt;/h4&gt;
 
@@ -108,7 +120,19 @@
 0 &amp; \frac{1}{2}
 \end{bmatrix} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;Finally, $\mathbf{\alpha} = \begin{bmatrix}1 &amp;amp; -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 &amp;amp; 0 &amp;amp; 0\end{bmatrix}^{T}$&lt;/p&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
+&lt;p&gt;Finally, $\mathbf{\alpha} = \begin{bmatrix}1 &amp;amp; -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 &amp;amp; 0 &amp;amp; 0\end{bmatrix}^{T}$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T00:06:43-08:00</published><updated>2020-02-10T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
 
 &lt;p&gt;What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.&lt;/p&gt;
 
@@ -177,6 +201,8 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
   &lt;li&gt;Repeat until converged&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;hr /&gt;
+
 &lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- horizontal --&gt;
@@ -184,6 +210,8 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 &lt;script&gt;
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&quot;actor-critic&quot;&gt;Actor Critic&lt;/h3&gt;
 
@@ -215,13 +243,17 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I’ll do my best to respond!&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- horizontal --&gt;
 &lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
 &lt;script&gt;
      (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T00:06:43-08:00</published><updated>2020-02-05T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 
@@ -246,6 +278,18 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
     &lt;img src=&quot;/fractal/assets/Deep_Q_Learning/q-network-training.png&quot; /&gt;
   &lt;/div&gt;
 &lt;/center&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&quot;epsilon-greedy-and-experience-replay&quot;&gt;Epsilon Greedy and Experience Replay&lt;/h3&gt;
 
@@ -275,7 +319,19 @@ a_{t} =
 
 &lt;p&gt;The function $\phi$ is just a preprocessing step before inputting the data into the neural network and can be ignored for our purposes. The curious reader can explore the full paper from DeepMind: &lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;Playing Atari with Deep Reinforcement Learning&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.&lt;/p&gt;</content><author><name></name></author><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T00:06:43-08:00</published><updated>2020-02-02T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+&lt;p&gt;We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T00:06:43-08:00</published><updated>2020-02-02T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
 
 &lt;p&gt;Reinforcement learning (RL) is difference from supervised and unsupervised learning. In supervised learning, we have truth data (labels) for our problem that we use to check the output of our model against, correcting for mistakes accordingly. In unsupervised learning, we are learning some structure to the data. In RL we don’t have data necessarily, but instead we have an environment and a set of rules. There exists an agent that lives in this environment and its objective is to take actions that will eventually lead to reward. Whereas supervised learning tries to match data to its corresponding label, in RL we try to maximize reward. In other words, we are learning how to make the agent make a good sequence of actions.&lt;/p&gt;
 
@@ -319,6 +375,18 @@ a_{t} =
     &lt;img src=&quot;/fractal/assets/RL_Intro/gridworld-example.png&quot; /&gt;  
   &lt;/div&gt;
 &lt;/center&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&quot;finding-optimal-policies&quot;&gt;Finding Optimal Policies&lt;/h3&gt;
 
@@ -396,7 +464,19 @@ V^{2}((3, 3)) &amp;= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1
 
 &lt;p&gt;Policy Iteration has time complexity $O(|\mathbf{S}|^{3})$ for each iteration because of the linear system of equations, but in practice it often converges faster than Value Iteration because the policy becomes locked in place faster than the values in Value Iteration.&lt;/p&gt;
 
-&lt;p&gt;Next time we will discuss how to find good policies even when the distributions $\mathbb{T}$ and $R$ are not known. This will largely amount to taking exploratory actions in the environment to collect data about what sequences of actions give good rewards and what sequences don’t. This opens up the door to the field of RL which we will soon begin exploring.&lt;/p&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Support Vector Machines</title><link href="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html" rel="alternate" type="text/html" title="Support Vector Machines" /><published>2020-01-26T00:06:43-08:00</published><updated>2020-01-26T00:06:43-08:00</updated><id>http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels</id><content type="html" xml:base="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;p&gt;Next time we will discuss how to find good policies even when the distributions $\mathbb{T}$ and $R$ are not known. This will largely amount to taking exploratory actions in the environment to collect data about what sequences of actions give good rewards and what sequences don’t. This opens up the door to the field of RL which we will soon begin exploring.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Support Vector Machines</title><link href="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html" rel="alternate" type="text/html" title="Support Vector Machines" /><published>2020-01-26T00:06:43-08:00</published><updated>2020-01-26T00:06:43-08:00</updated><id>http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels</id><content type="html" xml:base="http://localhost:4000/fractal/ml/2020/01/26/SVMs-and-kernels.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;test&quot;&gt;Test&lt;/h3&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T00:06:43-08:00</published><updated>2020-01-23T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
@@ -460,6 +540,18 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 &lt;/div&gt;
 
 &lt;p&gt;In the figure above we see on the left a counter example of a linear subspace. It is a counter example because it does not contain the zero vector and also because it is easy to see we could take a linear combination of two vectors in $\mathbf{T}$ to get a vector outside $\mathbf{T}$, so both conditions are violated. This is not the case for the subspace on the right, and it is in fact a linear subspace of $\mathbf{S} = \mathbb{R}^{2}$.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&quot;norms&quot;&gt;Norms&lt;/h3&gt;
 
@@ -544,7 +636,19 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;p&gt;A Hilbert space is an inner product space that is also complete, which means that for every infinite sequence of elements $\mathbf{x_{1}}, \mathbf{x_{2}}, … $ that gets closer and closer to one another, these elements also approach some precise element in the space. In more rigorous terms, it means that every Cauchy sequence is convergent, but the spaces we discuss in these guides will have this completeness property unless otherwise stated, so I will use Hilbert space and inner product space more or less interchangeably. Just keep the completeness requirement in the back of your mind.&lt;/p&gt;
 
-&lt;p&gt;All the ideas presented in these notes are important foundational mathematical concepts that we will make use of in later notes. You should become very familiar with them and know how to determine if an inner product or a norm is valid or not. Now that we have some mathematical tools, next time we will discuss a foundational problem is machine learning - linear approximation.&lt;/p&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Machine Learning Introduction</title><link href="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html" rel="alternate" type="text/html" title="Machine Learning Introduction" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/supp/2020/01/15/what-is-ml</id><content type="html" xml:base="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html">&lt;h3 id=&quot;what-is-machine-learning&quot;&gt;What is Machine Learning?&lt;/h3&gt;
+&lt;p&gt;All the ideas presented in these notes are important foundational mathematical concepts that we will make use of in later notes. You should become very familiar with them and know how to determine if an inner product or a norm is valid or not. Now that we have some mathematical tools, next time we will discuss a foundational problem is machine learning - linear approximation.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Machine Learning Introduction</title><link href="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html" rel="alternate" type="text/html" title="Machine Learning Introduction" /><published>2020-01-15T00:06:43-08:00</published><updated>2020-01-15T00:06:43-08:00</updated><id>http://localhost:4000/fractal/supp/2020/01/15/what-is-ml</id><content type="html" xml:base="http://localhost:4000/fractal/supp/2020/01/15/what-is-ml.html">&lt;h3 id=&quot;what-is-machine-learning&quot;&gt;What is Machine Learning?&lt;/h3&gt;
 
 &lt;p&gt;Machine Learning (ML) is, as Tom Mitchell stated, “The study of algorithms that improve their performance P at some task T with experience E”. Another way of looking at it is that we are learning an algorithm that solves an inference problem or a model that describes some data set. We will discuss these two concepts at a basic level below and then introduce some cool things machine learning and deep learning have accomplished to hopefully incite some interest.&lt;/p&gt;
 

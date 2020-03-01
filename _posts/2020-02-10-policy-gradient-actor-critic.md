@@ -70,6 +70,8 @@ One interpretation of this result is that we are trying to maximize the log like
 3. update the parameters $\theta$
 4. Repeat until converged
 
+<hr>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- horizontal -->
 <ins class="adsbygoogle"
@@ -81,6 +83,8 @@ One interpretation of this result is that we are trying to maximize the log like
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+<hr>
 
 ### Actor Critic
 
@@ -107,6 +111,8 @@ Where V is the value function (recall value iteration). The advantage function A
 
 This concludes our discussion of RL for the Deep Learning section. In the future I will make more RL-related guides that focus on more advanced topics and current research. Feel free to reach out with any questions or if you notice something you think is inaccurate and I'll do my best to respond!
 
+<hr>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- horizontal -->
 <ins class="adsbygoogle"
@@ -118,3 +124,5 @@ This concludes our discussion of RL for the Deep Learning section. In the future
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+<hr>

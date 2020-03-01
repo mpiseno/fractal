@@ -59,6 +59,22 @@ $$\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T
 
 In the figure above we see on the left a counter example of a linear subspace. It is a counter example because it does not contain the zero vector and also because it is easy to see we could take a linear combination of two vectors in $\mathbf{T}$ to get a vector outside $\mathbf{T}$, so both conditions are violated. This is not the case for the subspace on the right, and it is in fact a linear subspace of $\mathbf{S} = \mathbb{R}^{2}$.
 
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>
+
 ### Norms
 
 A Vector space is a set of elements that obey certain properties. By introducing a norm to a particular vector space, we are giving it a sense of distance. A norm $\norm{\cdot}$ is a mapping from a vector space $\mathbf{S}$ to $\mathbb{R}$ such that for all $\mathbf{x, y} \in \mathbf{S}$,
@@ -121,3 +137,19 @@ The standard inner product induces the standard euclidean norm. Two important pr
 A Hilbert space is an inner product space that is also complete, which means that for every infinite sequence of elements $\mathbf{x_{1}}, \mathbf{x_{2}}, ... $ that gets closer and closer to one another, these elements also approach some precise element in the space. In more rigorous terms, it means that every Cauchy sequence is convergent, but the spaces we discuss in these guides will have this completeness property unless otherwise stated, so I will use Hilbert space and inner product space more or less interchangeably. Just keep the completeness requirement in the back of your mind.
 
 All the ideas presented in these notes are important foundational mathematical concepts that we will make use of in later notes. You should become very familiar with them and know how to determine if an inner product or a norm is valid or not. Now that we have some mathematical tools, next time we will discuss a foundational problem is machine learning - linear approximation.
+
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>

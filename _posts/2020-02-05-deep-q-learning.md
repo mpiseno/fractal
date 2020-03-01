@@ -31,6 +31,22 @@ Where $Q_{t}$ and $Q_{t-1}$ represent the network output before and after a sing
   </div>
 </center>
 
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>
+
 ### Epsilon Greedy and Experience Replay
 
 This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let's consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s')$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.
@@ -59,3 +75,19 @@ Armed with the knowledge of these common problems and some solid ways to address
 The function $\phi$ is just a preprocessing step before inputting the data into the neural network and can be ignored for our purposes. The curious reader can explore the full paper from DeepMind: [Playing Atari with Deep Reinforcement Learning](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf).
 
 We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.
+
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>

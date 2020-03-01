@@ -139,6 +139,18 @@
   </div>
 </center>
 
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<hr />
+
 <h3 id="epsilon-greedy-and-experience-replay">Epsilon Greedy and Experience Replay</h3>
 
 <p>This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let’s consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s’)$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.</p>
@@ -169,12 +181,37 @@ a_{t} =
 
 <p>We have seen a method for approximating Q function using neural networks by gathering experience data from within the environment and using it to train the network as well as some problems that arise from this approach. We have also seen reasonable ways to deal with these problems. Next, we will learn methods for estimating the optimal policy without going through the middle-man of estimating a Q function.</p>
 
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<hr />
+
+
   </div><a class="u-url" href="/fractal/dl/2020/02/05/deep-q-learning.html" hidden></a>
 </article>
 
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/fractal/"></data>
+
+  <div class="newsletter-container wrapper">
+    <h4 class="newsletter-title" style="font-size: 1.0em;">Subscribe</h4>
+    <!-- <p class="newsletter-text"></p> -->
+    <form class="newsletter-form" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=michaelpiseno/hEuW', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+      <p class="newsletter-text" style="font-size: 1.0em;">Get new posts to your inbox</p>
+      <input type="hidden" value="Fractal" name="uri" />
+      <input type="hidden" name="loc" value="en_US" />
+      <input class="newsletter-email" type="text" name="email" placeholder="name@example.com" />
+      <input class="newsletter-submit" type="submit" value="Subscribe" />
+    </form>
+  </div>
 
   <div class="wrapper">
     <h2 class="footer-heading">Fractal</h2>

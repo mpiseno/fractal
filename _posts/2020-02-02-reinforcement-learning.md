@@ -48,6 +48,22 @@ For now, we will assume we have access to the distributions $R(s, a, s')$ and $\
   </div>
 </center>
 
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>
+
 ### Finding Optimal Policies
 
 So now that we have a concrete example of a problem, we can discuss what it means to find an optimal policy for it. Some questions that come when determining what a "good" policy is are "does it maximize the reward right now?" and "does is maximize the future reward?". Typically, we maximize the discounted future reward; the idea being that we want policies that take future state into consideration, but we also don't want the policy to focus so much on optimizing for future rewards that it doesn't take actions that would put the agent in a good state now. Therefore we define the optimal policy $\pi^{\ast}$ in the following way.
@@ -125,3 +141,19 @@ The next algorithm we will discuss is called Policy Iteration. The idea is that 
 Policy Iteration has time complexity $O(\|\mathbf{S}\|^{3})$ for each iteration because of the linear system of equations, but in practice it often converges faster than Value Iteration because the policy becomes locked in place faster than the values in Value Iteration.
 
 Next time we will discuss how to find good policies even when the distributions $\mathbb{T}$ and $R$ are not known. This will largely amount to taking exploratory actions in the environment to collect data about what sequences of actions give good rewards and what sequences don't. This opens up the door to the field of RL which we will soon begin exploring.
+
+<hr>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8495937332177101"
+     data-ad-slot="8539861386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr>
