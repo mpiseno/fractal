@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-29T18:36:01-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-29T20:53:44-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/fractal/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T00:06:43-08:00</published><updated>2020-02-29T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+
+&lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)&lt;/script&gt;
+
+&lt;p&gt;As you might imagine, this requires us to maintain an extremely large number of parameters. For example, consider a 28 by 28 image being input into a two-layer FC network with 100 neurons in the first layer and 10 neurons in the output layer. First we flatten our image into a 28 x 28 = 784 dimensional vector. This vector is being projected into 100 dimensions, so $\mathbf{W_{1}}$ will be of shape $100 \times 784$, or equivalently, $\mathbf{W_{1}}\in \mathbb{R}^{100 \times 784}$. That 100 dimensional vector then has to pass through the output layer and be turned into a 10 dimensional vector, so $\mathbf{W_{2}}\in \mathbb{R}^{10 \times 100}$. So just with this simple network on a small image, we are using $100 \cdot 784 + 10 \cdot 100 = 79400$ parameters!&lt;/p&gt;
+
+&lt;p&gt;What if instead we considered groups of locally-connected elements in the input? In other words, if we had a filter that gathered local parts of the input, performed some operation on them, and then output the result. In this way, each element of the output would only result from a small locally-connected group in the input. Certainly this would result in less parameters, since every element of the input is not connected to each element in the output, but rather a subset of the elements in the input are connected to each element of the output.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/cnn-visual-1.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;We can accomplish this using convolutions. In mathematics, a convolutions is an operation on two functions that produces another function. We can borrow this idea and create a discrete form of convolution to implement this filter idea. We will say a filter $\mathbf{W}$, which is just a matrix is convolved with the input image $\mathbf{X}$, producing the output $\mathbf{Y}$, where each element of $\mathbf{Y}$ is determined in the following way&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]&lt;/script&gt;
+
+&lt;p&gt;where $k_{1}$ and $k_{2}$ are the dimensions of the filter (also called the kernel). So each element of the output is a weighted sum of a local subset of input elements. This is a 2D discrete convolution (actually it’s a cross-correlation, but that’s a technical detail and I’ll just say convolution), but convolutions using filters of differing numbers of dimensions are equally valid.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/cnn-visual-2.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Each element of the output is created by this convolution, and the filter “slides” across the input until the the output is filled up. The idea is to learn good weights for this filter in the same way we learned the parameters of FC networks. Also, we could have multiple filters, each of which slide across the whole input and produce an output channel. These output channels are concatenated together so that if we have $n$ filters, output will have $n$ channels, or activation maps.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/cnn-visual-3.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;h3 id=&quot;convolutional-networks&quot;&gt;Convolutional Networks&lt;/h3&gt;
+
+&lt;p&gt;A Convolutional Neural Network, or CNN, is a combination of convolutional layers with interconnected activation functions and/or pooling layers, which we will discuss shortly.&lt;/p&gt;</content><author><name></name></author><summary type="html">Convolutional Layers</summary></entry><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
 
