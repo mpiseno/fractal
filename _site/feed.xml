@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-02-29T20:53:44-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/fractal/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T00:06:43-08:00</published><updated>2020-02-29T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-03-01T19:39:34-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/fractal/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T00:06:43-08:00</published><updated>2020-02-29T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
 
 &lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
 
@@ -34,9 +34,69 @@
   &lt;/div&gt;
 &lt;/center&gt;
 
+&lt;p&gt;Each filter slides across the input. The amount by which the filter slides each time is called the stride. The output dimensions are determined by the input size, the filter size, and the stride in the following way. Let the input and output heights and widths be denoted by $h_{\text{in}}, w_{\text{in}}, h_{\text{out}}, w_{\text{out}}$ respectively, and let the filter dimensions be $k_{1}, k_{2}$.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1&lt;/script&gt;
+
+&lt;p&gt;A similar formula holds for the widths. If this doesn’t produce a whole number, it is common to pad the outsides of the input with zeros enough so that the output dimensions will be whole numbers. Now if we consider out example from earlier, a $28 \times 28$ image, we can see the reduction in parameters afforded by a convolutional layer. Let’s say we have the same network as earlier, but this time the first layer is a convolutional layer and not a FC layer. Let’s also say we have 16 $4 \times 4$ filters with stride 2. Then the output size for our convolutional layer will be&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+h_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13 \\
+w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The number of parameters for this layer is just the combined filter size: $16 \cdot 4 \cdot 4 = 256$. Now if we take the convolutional layer output, flatten it to size $16 \cdot 13 \cdot 13 = 2704$, and feed it to the output layer of size 10, this takes $2704 \cdot 10 = 27040$ parameters. So the total number of parameters in our network has been reduced from 79400 to 27296.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
 &lt;h3 id=&quot;convolutional-networks&quot;&gt;Convolutional Networks&lt;/h3&gt;
 
-&lt;p&gt;A Convolutional Neural Network, or CNN, is a combination of convolutional layers with interconnected activation functions and/or pooling layers, which we will discuss shortly.&lt;/p&gt;</content><author><name></name></author><summary type="html">Convolutional Layers</summary></entry><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;h4 id=&quot;pooling-layers&quot;&gt;Pooling layers&lt;/h4&gt;
+
+&lt;p&gt;A Convolutional Neural Network, or CNN, is a combination of convolutional layers with interconnected activation functions and/or pooling layers. Pooling layers usually go hand-in-hand with convolutional layers, and are used to improve the robustness of convolutional layers with respect to the exact location of certain features in the input. For example, if the input is a photo of a face, the nose might be in the center of the image, or it might be slightly to the left of the center, or it might be somewhere else in the image entirely. We can be more robust to this spatial noise by using a special type of filter that takes the maximum over a group of activations, these activations being the ones output by the convolutional layer followed by some activation function. By doing this, even if the strongest activation coming out of the convolutional layer is slightly offset, the max filter will still capture it. This is what a pooling layer does. Assuming a $2 \times 2$ pooling max filter with stride 1, the pooling layer will look something like this.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/pooling-layer-visual.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Pooling makes the activation maps smaller as is usually done over each activation map (i.e. each channel of the output) separately. There are different types of pooling layers such as max pooling, average pooling, and several others.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-full-network&quot;&gt;The Full Network&lt;/h4&gt;
+
+&lt;p&gt;After a series of convolutional layers with intermixed pooling layers and activations, CNNs usually have a FC layer or a series of FC layers referred to as the “classifier” of the network. The purpose of the convolutional layer and pooling layers are to extract useful features for eventual input into the classifier, which will give us the actual predictive output of the network. The full network can be visualized like below.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/full-conv-net.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;h4 id=&quot;backprop-through-conv-layers&quot;&gt;Backprop Through Conv Layers&lt;/h4&gt;
+
+&lt;p&gt;Placeholder.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">Convolutional Layers</summary></entry><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T00:06:43-08:00</published><updated>2020-02-21T00:06:43-08:00</updated><id>http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/fractal/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
 
