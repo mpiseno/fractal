@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-03-01T19:39:34-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/fractal/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T00:06:43-08:00</published><updated>2020-02-29T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/fractal/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/fractal/" rel="alternate" type="text/html" /><updated>2020-03-07T22:12:47-08:00</updated><id>http://localhost:4000/fractal/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/fractal/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T00:06:43-08:00</published><updated>2020-02-29T00:06:43-08:00</updated><id>http://localhost:4000/fractal/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/fractal/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
 
 &lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
 
@@ -83,9 +83,94 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
   &lt;/div&gt;
 &lt;/center&gt;
 
+&lt;hr /&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- horizontal --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block&quot; data-ad-client=&quot;ca-pub-8495937332177101&quot; data-ad-slot=&quot;8539861386&quot; data-ad-format=&quot;auto&quot; data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
 &lt;h4 id=&quot;backprop-through-conv-layers&quot;&gt;Backprop Through Conv Layers&lt;/h4&gt;
 
-&lt;p&gt;Placeholder.&lt;/p&gt;
+&lt;p&gt;Just like FC layers, we have to figure out how to propagate gradients thought convolutional layers. Assume we have input $\mathbf{X}$, output $\mathbf{Y}$, of size $h_{1} \times w_{1}$ and $h_{2} \times w_{2}$ respectively, and kernel $\mathbf{W}$ of size $k_{1} \times k_{2}$. We assume we have access to the upstream gradient $\frac{\partial L}{\partial \mathbf{Y}}$, where $L$ is the loss function. We need to calculate $\frac{\partial L}{\partial \mathbf{X}}$  and $\frac{\partial L}{\partial \mathbf{W}}$. We also assume that the stride is 1 in all dimensions for the kernel to simplify indexing.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/backprop-cnn.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Recall that for an output at index $r, c$ of $\mathbf{Y}$, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]&lt;/script&gt;
+
+&lt;p&gt;Now we will see how to calculate the unknown gradients.&lt;/p&gt;
+
+&lt;h5 id=&quot;fracpartial-lpartial-w&quot;&gt;$\frac{\partial L}{\partial W}$:&lt;/h5&gt;
+
+&lt;p&gt;We will consider the gradient one pixel at a time. I.e. let’s consider $\frac{\partial L}{\partial \mathbf{W}[a, b]}$. This kernel weight affects everything in the output, and we’ll sum all its contributions to compute the gradient. Below we can see this visually.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/backprop-cnn-1.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Note that because each output pixel is just a weighted sum of some elements of the input with the kernel weights, we have the following.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\mathbf{Y}[r, c] &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+&amp;= \mathbf{X}[r + a, c + b]
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We can accumulate the contribution of this kernel weight by considering every pixel in the output as follows.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\frac{\partial L}{\partial \mathbf{W}[a, b]} &amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
+&amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Note that this is exactly a convolution between $\mathbf{X}$ and $\frac{\partial L}{\partial \mathbf{Y}}$ but clipped to be the dimensions of the kernel.&lt;/p&gt;
+
+&lt;h5 id=&quot;fracpartial-lpartial-x&quot;&gt;$\frac{\partial L}{\partial X}$:&lt;/h5&gt;
+
+&lt;p&gt;Note $\frac{\partial L}{\partial \mathbf{X}}$ is the same size as $\mathbf{X}$ and we will also compute  pixel-by-pixel. Consider $\frac{\partial L}{\partial \mathbf{X}[r’, c’]}$. This pixel only affects elements of the output that are produced when the kernel is over that pixel of the input. $\mathbf{X}[r’, c’]$ only affects a region of $\mathbf{Y}$.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/fractal/assets/CNNs/backprop-cnn-2.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;Thinking about this in the general sense reveals that $\mathbf{X}[r’, c’]$ affects a box of output pixels whose upper left corner is $\mathbf{Y}[r’ - (k_{1} - 1), c’ - (k_{2} - 1)]$ and whose lower right pixel is $\mathbf{Y}[r’, c’]$. Therefore we can wright&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\frac{\partial L}{\partial \mathbf{X}[r', c']} &amp;= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Using the equation for the discrete convolution we already know, we can see that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\mathbf{Y}[r' - i, c' - j] &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+
+\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+&amp;= \mathbf{W}[i, j]
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This is because $\mathbf{X}[r’, c’]$ only appears once in this sum when $i=n$ and $j=m$. So finally we can write&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]&lt;/script&gt;
+
+&lt;p&gt;Now we know how to compute the gradients needed for backprop through convolutional layers. We have shown that given $\frac{\partial L}{\partial \mathbf{Y}}$, we can compute $\frac{\partial L}{\partial \mathbf{W}}$ and $\frac{\partial L}{\partial \mathbf{X}}$.&lt;/p&gt;
 
 &lt;hr /&gt;
 
