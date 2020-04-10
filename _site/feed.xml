@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-09T23:04:15-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-10T00:15:59-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
 
 &lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
 
@@ -659,9 +659,7 @@ V^{2}((3, 3)) &amp;= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Support Vector Machines</title><link href="http://localhost:4000/ml/2020/01/26/SVMs-and-kernels.html" rel="alternate" type="text/html" title="Support Vector Machines" /><published>2020-01-26T03:06:43-05:00</published><updated>2020-01-26T03:06:43-05:00</updated><id>http://localhost:4000/ml/2020/01/26/SVMs-and-kernels</id><content type="html" xml:base="http://localhost:4000/ml/2020/01/26/SVMs-and-kernels.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
-
-&lt;h3 id=&quot;test&quot;&gt;Test&lt;/h3&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T03:06:43-05:00</published><updated>2020-01-23T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T03:06:43-05:00</published><updated>2020-01-23T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
 
@@ -839,7 +837,20 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;p&gt;Inference means making a decision or prediction about some sort of data, perhaps in a probabilistic sense. For example, I might give you an image and say “is there a cat in this image?” or “what is the probability that there is a cat in this image?”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/MLIntro/kit.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;&lt;img src=&quot;/assets/MLIntro/cat.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;&lt;img src=&quot;/assets/MLIntro/catinbox.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;&lt;img src=&quot;/assets/MLIntro/catbowl.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;container&quot; style=&quot;padding: 10px;&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
+      &lt;img src=&quot;/assets/MLIntro/kit.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
+      &lt;img src=&quot;/assets/MLIntro/catinbox.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
+      &lt;img src=&quot;/assets/MLIntro/catbowl.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- &lt;img src=&quot;/assets/MLIntro/kit.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/cat.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/catinbox.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/catbowl.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot;/&gt; --&gt;
 
 &lt;p&gt;As you might imagine, it gets more complex and ambiguous when the thing you’re trying to predict is secluded in some way or only represents the idea of the thing you’re trying to predict instead of being the thing itself (e.g. the cat-faced bowl above).&lt;/p&gt;
 

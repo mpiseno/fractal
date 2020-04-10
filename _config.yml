@@ -23,7 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 #twitter_username: jekyllrb
 
 baseurl: ""
-url: "http://www.fractalai.org/"
+url: "http://www.fractalai.org"
 github_username:  mpiseno
 
 # Build settings

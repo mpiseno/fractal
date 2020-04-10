@@ -22,7 +22,7 @@ permalink: /guides/
 {% assign mfml_posts = site.posts | where:"categories", "mfml" %}
 {% for page in mfml_posts %}
   <li>
-    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    <a href="{{site.url}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
   </li>
 {% endfor %}
 </ul>
@@ -33,7 +33,7 @@ permalink: /guides/
 {% assign ml_posts = site.posts | where:"categories", "ml" %}
 {% for page in ml_posts %}
   <li>
-    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    <a href="{{site.url}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
   </li>
 {% endfor %}
 </ul>
@@ -44,7 +44,7 @@ permalink: /guides/
 {% assign dl_posts = site.posts | where:"categories", "dl" %}
 {% for page in dl_posts %}
   <li>
-    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    <a href="{{site.url}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
   </li>
 {% endfor %}
 </ul>
@@ -55,7 +55,7 @@ permalink: /guides/
 {% assign adv_posts = site.posts | where:"categories", "adv" %}
 {% for page in adv_posts %}
   <li>
-    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    <a href="{{site.url}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
   </li>
 {% endfor %}
 </ul>
