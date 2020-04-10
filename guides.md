@@ -48,3 +48,14 @@ permalink: /guides/
   </li>
 {% endfor %}
 </ul>
+
+### Advanced Topics
+
+<ul>
+{% assign adv_posts = site.posts | where:"categories", "adv" %}
+{% for page in adv_posts %}
+  <li>
+    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+  </li>
+{% endfor %}
+</ul>
