@@ -1,0 +1,163 @@
+---
+layout: post
+title:  "Neural Networks"
+date:   2020-04-12 00:06:43 -0800
+categories: ["ml"]
+---
+
+$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
+
+Before we begin, I should preface this by saying this will be a lot of information, and I assume you are at least somewhat familiar with how classifiers and loss functions work, but I will provide a brief recap. This guide will be structured in the following order.
+
+1. A recap of classifiers, loss functions, and regularization
+2. Introduction to neural network structure and the forward pass
+3. Training neural networks and backpropagation
+
+This guide is key for understanding later concepts, particularly those in deep learning. With that said, let's get started.
+
+### Recap
+
+#### Classifiers
+
+Recall training classifiers in the context of a supervised learning problem. We have a set of data $\\{(x_{1}, y_{1}), ..., (x_{m}, y_{m})\\}$, where each $x_{i} \in X$ is the input to our classifier (e.g. an image or a block of text or simply a set of abstract features that represent something else) and each $y_{i} \in Y$ is the label associated with that input (e.g. cat, dog, ship). We are trying to learn a function $f : X \rightarrow Y$ that is a good approximation of the relationship between our input and the associated output. We also have a hypothesis space $H = \\{h \| h : X \rightarrow Y\\}$ which is the set of all functions that map $X$ to $Y$ in a certain way. For example, we might only be considering linear classifiers, which are functions of the form $h(x; \mathbf{W, b}) = \mathbf{W}x + \mathbf{b}$ (linear mappings of x onto the output space).
+
+For the simplistic example of a linear classifier trained to take in images and classify them as an image of a dog or not an image of a dog, we can visualize the classifier like below
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/linear-dog.png"/>  
+  </div>
+</center>
+
+where the bias term has been left out for simplicity.
+
+#### Loss and Regularization
+
+Classifiers usually output either a score for each of its possible classes or a probability mass function over the possible classes. For example, a linear classifier trained to classify across 10 different classes would output a 10-dimensional vector where each entry is the score for that class (i.e. how strongly the classifier feels that the input belongs to each class). We need some way to measure the performance of our classifier, which is where the loss function comes in. The loss function answers the question "how good is my classifier with respect to my data?". You might imagine we have some function $\ell_{i}(x_{i}, y_{i})$ that takes in the input and its corresponding label and tells us how good our classifier does at predicting $y_{i}$. Then we can sum up the loss for each data point to get our total loss.
+
+$$L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})$$
+
+There are many different choices for $\ell(x, y)$ depending on the context of our problem and the type of classifier we have. The loss function is a design choice. The loss function I will introduce explicitly is the one we will use as I continue to introduce neural networks because it works well with the problem of image classification; it's called the softmax loss or cross-entropy loss.
+
+##### Softmax loss
+
+Recall the softmax function which takes the output vector of scores $\mathbf{s}$ from our classifier and tells us the probability of each class $k$. $P(y = k \| \mathbf{s}) = \frac{e^{\mathbf{s_{k}}}}{\sum_{j}e^{\mathbf{s_{j}}}}$
+
+The softmax loss tries to maximize the log-likelihood of the correct class, or equivalently minimize the negative log-likelihood of the correct class
+
+$$\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}$$
+
+where $\mathbf{s}$ is again the scores given by the classifier which of course depends on $x_{i}$.
+
+##### Regularization
+
+Typically we add a regularization term to our loss to prevent our model overfitting the training data too much. The traditional way to do this is by adding an extra term to the loss function.
+
+$L =  \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{y}) + \lambda R(\mathbf{W})$
+
+Where R is the regularization function and $\lambda$ is the regularization strength and is a hyperparameter. A common choice for R is $L_{2}$ regularization
+
+$$R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}$$
+
+where $\mathbf{W} \in \mathbb{R}^{K \times D}$.
+
+
+### Neural Networks and Forward Propagation
+
+Our simple linear classifier we mentioned before is a function that looks like $f(X) = WX$; it's a linear function. But some data cannot be perfectly classified with a linear function. Consider the example below with input data $x \in \mathbb{R}^{2}$ and the output is one of two classes (i.e. $y \in \\{+, -\\}$).
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/inseparable.png"/>  
+  </div>
+</center>
+
+We can't draw a line anywhere in the input space that perfectly classifies this dataset. This is what's called linearly inseparable. It's clear that we need some sort of non-linear function to achieve perfect classification of this dataset. One such function can be depicted by the separating boundary below, which is clearly a nonlinear function.
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/separable.png"/>  
+  </div>
+</center>
+
+So we have to change our classifier from something that looks like $f(X) = WX$ to something that looks like $f(X) = \text{Nonlinearity}(WX)$. This nonlinearity is called the activation function in neural networks. A simple two-layer neural network might look something like $f(X) = W_{2}\max(0, W_{1}X)$, where the max function acts as the nonlinearity. Pictographically, this function/network can be visualized like below.
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/classic-view.png"/>  
+  </div>
+</center>
+
+The input is flattened into a tall vector, multiplied by $W_{1}$, and run through the activation function to produce the output of the first layer. That output is then multiplied by $W_{2}$ to produce the output of the second layer. One "layer" typically consists of a matrix multiplication followed by the activation function. This type of layer is also referred to as a "fully connected (FC) layer". In the image above, the middle layer is sometimes called the "hidden layer".
+
+The flattened input vector is dotted with each row of the weight matrix to produce an output vector which serves as the input to the next layer, after being run through the activation function of course. More concretely, the hidden layer output $h_{1} = \text{ReLU}(W_{1}X)$, where ReLU is the activation function.
+
+As a concrete example, let's say we have a 28 x 28 image for the input and we want to classify these images across 10 different classes. We will use a hidden layer of size 100, which is chosen somewhat arbitrarily. First we flatten the image into a vector of size 784. Since we want the hidden layer to be output size 100, we are projecting a vector in $\mathbb{R}^{784}$ to $\mathbb{R}^{100}$, and hence $W_{1} \in \mathbb{R}^{100 \times 784}$. The same logic is applied for projecting the outut of the hidden layer to the output size which is 10, hence $W_{2} \in \mathbb{R}^{10 \times 100}$.
+
+##### How Does it Work?
+
+Consider the case where we want to classify images of hand-written digits into 10 different classes (0-9). The output layer is a 10-dimensional vector where each entry is the score corresponding to each digit. The maximum score's index is the predicted digit. How does the network determine this score? Consider an input image of a 7. The last layer predicts the digit. The hidden layers learn to predict pieces of the digit in certain positions (i.e. it would learn that a 7 is made up of a horizontal edge toward the top of the image and a slanted edge going down the middle).
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/7-classification.png"/>
+  </div>
+</center>
+
+In order for the network to detect a horizontal edge at the top of the image, the activations corresponding to those pixels in the input need to be larger, while the surrounding pixels should have low activations. So the activation function assigns a value to a certain weighted sum of the previous layer.
+
+Common activation functions include $\text{ReLU}(x) = \max(0, x)$, $\sigma(x) = \frac{1}{1 + e^{-x}}$ (pronounced "sigmoid of x"), and $\tanh(x)$ to name a few.
+
+
+### Training Neural Networks and Backpropagation
+
+In order to update our model parameters we use the gradient update rule
+
+$$W \leftarrow W - \alpha \nabla_{W} L(X, Y)$$
+
+which means we need to compute the gradient of the weight matrix for every layer. We can do this in a modular fashion called backpropagation or "backprop".
+
+In forward propagation, the computation takes in an input and a weight matrix and produces an output. In backprop, we assume we have access to the gradient of the loss w.r.t. the layer output $h_{i}$.
+
+<center>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <img src="{{site.baseurl}}/assets/Neural_Networks/forward-back.png"/>
+  </div>
+</center>
+
+ We can use this gradient to compute the gradient of the loss w.r.t. the weight matrix $W_{i}$ using the chain rule. In order to compute the gradients for other layers, we also need to compute the gradient of the loss w.r.t. the input. After we have these gradients, we can simply apply the update rule.
+
+ $$\begin{align*}
+ \frac{\partial L}{\partial W_{i}} &= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
+ \frac{\partial L}{\partial h_{i-1}} &= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
+ \end{align*}$$
+
+ for a typical FC layer $h_{i} = \max(0, W_{i}h_{i-1})$, we can step through the computations of the necessary gradients. Let's define another variable $z = W_{i}h_{i-1}$ so that $h_{i} = \max(0, z)$
+
+$$\begin{align*}
+\frac{\partial h_{i}}{\partial W_{i}} &= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
+&= \mathbb{1}[z \geq 0] \cdot h_{i-1}
+\end{align*}$$
+
+where $\mathbb{1}[\cdot]$ is the indicator function. Similarly we have
+
+$$\begin{align*}
+\frac{\partial h_{i}}{\partial h_{i-1}} &= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
+&= \mathbb{1}[z \geq 0] \cdot W_{i}
+\end{align*}$$
+
+Now that we know how to compute the necessary gradients a FC layer, we have everything we need to train our network. Pseudocode for a typical training loop would look like this.
+
+```python
+Initialize W1 randomly
+Initialize W2 randomly
+
+for epoch in range(num_epochs):
+  for batch in range(num_batches):
+    output = forward_pass(batch)
+    loss = loss_function(output, labels)
+
+    dLdW1, dLdW2 = backward_pass(loss)
+    W1 = W1 - alpha * dLdW1
+    W2 = W2 - alpha * dLdW2
+```

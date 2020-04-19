@@ -11,7 +11,7 @@ permalink: /guides/
 {% assign supp_posts = site.posts | where:"categories", "supp" %}
 {% for page in supp_posts %}
   <li>
-    <a href="{{site.baseurl}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    <a href="{{site.url}}/{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
   </li>
 {% endfor %}
 </ul>

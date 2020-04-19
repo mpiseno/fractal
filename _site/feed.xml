@@ -1,4 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-10T00:15:59-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-19T06:45:02-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Neural Networks</title><link href="http://localhost:4000/ml/2020/04/12/neural-networks.html" rel="alternate" type="text/html" title="Neural Networks" /><published>2020-04-12T04:06:43-04:00</published><updated>2020-04-12T04:06:43-04:00</updated><id>http://localhost:4000/ml/2020/04/12/neural-networks</id><content type="html" xml:base="http://localhost:4000/ml/2020/04/12/neural-networks.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+
+&lt;p&gt;Before we begin, I should preface this by saying this will be a lot of information, and I assume you are at least somewhat familiar with how classifiers and loss functions work, but I will provide a brief recap. This guide will be structured in the following order.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A recap of classifiers, loss functions, and regularization&lt;/li&gt;
+  &lt;li&gt;Introduction to neural network structure and the forward pass&lt;/li&gt;
+  &lt;li&gt;Training neural networks and backpropagation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This guide is key for understanding later concepts, particularly those in deep learning. With that said, let’s get started.&lt;/p&gt;
+
+&lt;h3 id=&quot;recap&quot;&gt;Recap&lt;/h3&gt;
+
+&lt;h4 id=&quot;classifiers&quot;&gt;Classifiers&lt;/h4&gt;
+
+&lt;p&gt;Recall training classifiers in the context of a supervised learning problem. We have a set of data $\{(x_{1}, y_{1}), …, (x_{m}, y_{m})\}$, where each $x_{i} \in X$ is the input to our classifier (e.g. an image or a block of text or simply a set of abstract features that represent something else) and each $y_{i} \in Y$ is the label associated with that input (e.g. cat, dog, ship). We are trying to learn a function $f : X \rightarrow Y$ that is a good approximation of the relationship between our input and the associated output. We also have a hypothesis space $H = \{h | h : X \rightarrow Y\}$ which is the set of all functions that map $X$ to $Y$ in a certain way. For example, we might only be considering linear classifiers, which are functions of the form $h(x; \mathbf{W, b}) = \mathbf{W}x + \mathbf{b}$ (linear mappings of x onto the output space).&lt;/p&gt;
+
+&lt;p&gt;For the simplistic example of a linear classifier trained to take in images and classify them as an image of a dog or not an image of a dog, we can visualize the classifier like below&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/linear-dog.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;where the bias term has been left out for simplicity.&lt;/p&gt;
+
+&lt;h4 id=&quot;loss-and-regularization&quot;&gt;Loss and Regularization&lt;/h4&gt;
+
+&lt;p&gt;Classifiers usually output either a score for each of its possible classes or a probability mass function over the possible classes. For example, a linear classifier trained to classify across 10 different classes would output a 10-dimensional vector where each entry is the score for that class (i.e. how strongly the classifier feels that the input belongs to each class). We need some way to measure the performance of our classifier, which is where the loss function comes in. The loss function answers the question “how good is my classifier with respect to my data?”. You might imagine we have some function $\ell_{i}(x_{i}, y_{i})$ that takes in the input and its corresponding label and tells us how good our classifier does at predicting $y_{i}$. Then we can sum up the loss for each data point to get our total loss.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})&lt;/script&gt;
+
+&lt;p&gt;There are many different choices for $\ell(x, y)$ depending on the context of our problem and the type of classifier we have. The loss function is a design choice. The loss function I will introduce explicitly is the one we will use as I continue to introduce neural networks because it works well with the problem of image classification; it’s called the softmax loss or cross-entropy loss.&lt;/p&gt;
+
+&lt;h5 id=&quot;softmax-loss&quot;&gt;Softmax loss&lt;/h5&gt;
+
+&lt;p&gt;Recall the softmax function which takes the output vector of scores $\mathbf{s}$ from our classifier and tells us the probability of each class $k$. $P(y = k | \mathbf{s}) = \frac{e^{\mathbf{s_{k}}}}{\sum_{j}e^{\mathbf{s_{j}}}}$&lt;/p&gt;
+
+&lt;p&gt;The softmax loss tries to maximize the log-likelihood of the correct class, or equivalently minimize the negative log-likelihood of the correct class&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}&lt;/script&gt;
+
+&lt;p&gt;where $\mathbf{s}$ is again the scores given by the classifier which of course depends on $x_{i}$.&lt;/p&gt;
+
+&lt;h5 id=&quot;regularization&quot;&gt;Regularization&lt;/h5&gt;
+
+&lt;p&gt;Typically we add a regularization term to our loss to prevent our model overfitting the training data too much. The traditional way to do this is by adding an extra term to the loss function.&lt;/p&gt;
+
+&lt;p&gt;$L =  \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{y}) + \lambda R(\mathbf{W})$&lt;/p&gt;
+
+&lt;p&gt;Where R is the regularization function and $\lambda$ is the regularization strength and is a hyperparameter. A common choice for R is $L_{2}$ regularization&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}&lt;/script&gt;
+
+&lt;p&gt;where $\mathbf{W} \in \mathbb{R}^{K \times D}$.&lt;/p&gt;
+
+&lt;h3 id=&quot;neural-networks-and-forward-propagation&quot;&gt;Neural Networks and Forward Propagation&lt;/h3&gt;
+
+&lt;p&gt;Our simple linear classifier we mentioned before is a function that looks like $f(X) = WX$; it’s a linear function. But some data cannot be perfectly classified with a linear function. Consider the example below with input data $x \in \mathbb{R}^{2}$ and the output is one of two classes (i.e. $y \in \{+, -\}$).&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/inseparable.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;We can’t draw a line anywhere in the input space that perfectly classifies this dataset. This is what’s called linearly inseparable. It’s clear that we need some sort of non-linear function to achieve perfect classification of this dataset. One such function can be depicted by the separating boundary below, which is clearly a nonlinear function.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/separable.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;So we have to change our classifier from something that looks like $f(X) = WX$ to something that looks like $f(X) = \text{Nonlinearity}(WX)$. This nonlinearity is called the activation function in neural networks. A simple two-layer neural network might look something like $f(X) = W_{2}\max(0, W_{1}X)$, where the max function acts as the nonlinearity. Pictographically, this function/network can be visualized like below.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-8 col-md-8 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/classic-view.png&quot; /&gt;  
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;The input is flattened into a tall vector, multiplied by $W_{1}$, and run through the activation function to produce the output of the first layer. That output is then multiplied by $W_{2}$ to produce the output of the second layer. One “layer” typically consists of a matrix multiplication followed by the activation function. This type of layer is also referred to as a “fully connected (FC) layer”. In the image above, the middle layer is sometimes called the “hidden layer”.&lt;/p&gt;
+
+&lt;p&gt;The flattened input vector is dotted with each row of the weight matrix to produce an output vector which serves as the input to the next layer, after being run through the activation function of course. More concretely, the hidden layer output $h_{1} = \text{ReLU}(W_{1}X)$, where ReLU is the activation function.&lt;/p&gt;
+
+&lt;p&gt;As a concrete example, let’s say we have a 28 x 28 image for the input and we want to classify these images across 10 different classes. We will use a hidden layer of size 100, which is chosen somewhat arbitrarily. First we flatten the image into a vector of size 784. Since we want the hidden layer to be output size 100, we are projecting a vector in $\mathbb{R}^{784}$ to $\mathbb{R}^{100}$, and hence $W_{1} \in \mathbb{R}^{100 \times 784}$. The same logic is applied for projecting the outut of the hidden layer to the output size which is 10, hence $W_{2} \in \mathbb{R}^{10 \times 100}$.&lt;/p&gt;
+
+&lt;h5 id=&quot;how-does-it-work&quot;&gt;How Does it Work?&lt;/h5&gt;
+
+&lt;p&gt;Consider the case where we want to classify images of hand-written digits into 10 different classes (0-9). The output layer is a 10-dimensional vector where each entry is the score corresponding to each digit. The maximum score’s index is the predicted digit. How does the network determine this score? Consider an input image of a 7. The last layer predicts the digit. The hidden layers learn to predict pieces of the digit in certain positions (i.e. it would learn that a 7 is made up of a horizontal edge toward the top of the image and a slanted edge going down the middle).&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/7-classification.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;In order for the network to detect a horizontal edge at the top of the image, the activations corresponding to those pixels in the input need to be larger, while the surrounding pixels should have low activations. So the activation function assigns a value to a certain weighted sum of the previous layer.&lt;/p&gt;
+
+&lt;p&gt;Common activation functions include $\text{ReLU}(x) = \max(0, x)$, $\sigma(x) = \frac{1}{1 + e^{-x}}$ (pronounced “sigmoid of x”), and $\tanh(x)$ to name a few.&lt;/p&gt;
+
+&lt;h3 id=&quot;training-neural-networks-and-backpropagation&quot;&gt;Training Neural Networks and Backpropagation&lt;/h3&gt;
+
+&lt;p&gt;In order to update our model parameters we use the gradient update rule&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;W \leftarrow W - \alpha \nabla_{W} L(X, Y)&lt;/script&gt;
+
+&lt;p&gt;which means we need to compute the gradient of the weight matrix for every layer. We can do this in a modular fashion called backpropagation or “backprop”.&lt;/p&gt;
+
+&lt;p&gt;In forward propagation, the computation takes in an input and a weight matrix and produces an output. In backprop, we assume we have access to the gradient of the loss w.r.t. the layer output $h_{i}$.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+    &lt;img src=&quot;/assets/Neural_Networks/forward-back.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;We can use this gradient to compute the gradient of the loss w.r.t. the weight matrix $W_{i}$ using the chain rule. In order to compute the gradients for other layers, we also need to compute the gradient of the loss w.r.t. the input. After we have these gradients, we can simply apply the update rule.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+ \frac{\partial L}{\partial W_{i}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
+ \frac{\partial L}{\partial h_{i-1}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
+ \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;for a typical FC layer $h_{i} = \max(0, W_{i}h_{i-1})$, we can step through the computations of the necessary gradients. Let’s define another variable $z = W_{i}h_{i-1}$ so that $h_{i} = \max(0, z)$&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\frac{\partial h_{i}}{\partial W_{i}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
+&amp;= \mathbb{1}[z \geq 0] \cdot h_{i-1}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where $\mathbb{1}[\cdot]$ is the indicator function. Similarly we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\frac{\partial h_{i}}{\partial h_{i-1}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
+&amp;= \mathbb{1}[z \geq 0] \cdot W_{i}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now that we know how to compute the necessary gradients a FC layer, we have everything we need to train our network. Pseudocode for a typical training loop would look like this.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Initialize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;randomly&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Initialize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;randomly&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_batches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forward_pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loss_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;dLdW1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backward_pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;W1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;W2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
 
 &lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
 
