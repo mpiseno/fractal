@@ -16,7 +16,7 @@
 title: Fractal
 email: mpiseno@gatech.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.
+  Fractal is an organization that provides guides for topics related to computer science and artifical intelligence. We are also support computer science education by combining programming with other subjects.
 
 #baseurl: "/fractal" # the subpath of your site, e.g. /blog
 #url: "http://www.michaelpiseno.com/fractal/" # the base hostname & protocol for your site, e.g. http://example.com

@@ -531,6 +531,12 @@ img {
   margin-left: auto;
   margin-right: auto; }
 
+.team-photo {
+  border-radius: 10px;
+  max-height: 200px;
+  max-width: 200px;
+  object-fit: fill; }
+
 footer .newsletter-container {
   max-width: 400px;
   max-height: 200px;

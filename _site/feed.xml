@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-19T06:45:02-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides tutorials for topics related to artifical intelligence. We are also involved with educational outreach related to AI such as giving talks at local schools.</subtitle><entry><title type="html">Neural Networks</title><link href="http://localhost:4000/ml/2020/04/12/neural-networks.html" rel="alternate" type="text/html" title="Neural Networks" /><published>2020-04-12T04:06:43-04:00</published><updated>2020-04-12T04:06:43-04:00</updated><id>http://localhost:4000/ml/2020/04/12/neural-networks</id><content type="html" xml:base="http://localhost:4000/ml/2020/04/12/neural-networks.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-24T18:45:22-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides guides for topics related to computer science and artifical intelligence. We are also support computer science education by combining programming with other subjects.</subtitle><entry><title type="html">Python Basics</title><link href="http://localhost:4000/cs/2020/05/22/python-basics.html" rel="alternate" type="text/html" title="Python Basics" /><published>2020-05-22T04:06:43-04:00</published><updated>2020-05-22T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/22/python-basics</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/22/python-basics.html">&lt;p&gt;Placeholder&lt;/p&gt;</content><author><name></name></author><summary type="html">Placeholder</summary></entry><entry><title type="html">Innovation and Trade</title><link href="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html" rel="alternate" type="text/html" title="Innovation and Trade" /><published>2020-05-18T04:06:43-04:00</published><updated>2020-05-18T04:06:43-04:00</updated><id>http://localhost:4000/proj/2020/05/18/innovation-and-trade</id><content type="html" xml:base="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p align=&quot;justify&quot;&gt;This project allows students to gain hands-on programming experience while they learn topics from world history. Specifically, this assignment allows students to simulate trade on the Silk Road and observe the effects innovation had on trade at the time. Students will then be able to plot their results and analyze the results. The students will gain practice programming and data analysis experience while learning about history concepts. This assignment is targeted at AP World History students.&lt;/p&gt;
+
+&lt;h4 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h4&gt;
+
+&lt;p align=&quot;justify&quot;&gt;This assignment requires the students to have an extremely basic understanding of python and logical thinking. If the student has no programming experience, they can likely still complete the assignment by referencing the &lt;a href=&quot;http://localhost:4000/guides&quot;&gt;Python Basics&lt;/a&gt; guide. In addition to this, you must have python and jupyter installed on your computer, which is covered in the &lt;a href=&quot;http://localhost:4000/guides&quot;&gt;Getting Started with Python&lt;/a&gt; guide.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h3&gt;
+
+&lt;p align=&quot;justify&quot;&gt;First, you have to download the files for the assignment, which are all neatly zipped up in a folder. Click &lt;a href=&quot;http://localhost:4000/myprojects/innovation-and-trade.zip&quot;&gt;here&lt;/a&gt; to download the zipped folder. After you download it, the folder will be in your downloads folder on your computer and you can unzip it from there and move the unzipped folder to whatever location you like. Now you'll need to navigate to that folder on your computer via your terminal (on macOS) or command prompt (on Windows).&lt;/p&gt;
+
+&lt;h4 id=&quot;for-mac-users&quot;&gt;For Mac Users&lt;/h4&gt;
+
+&lt;p align=&quot;justify&quot;&gt;Open the Finder application and navigate to the folder you just unzipped. Right click the folder in Finder and select &quot;New Terminal at Folder&quot;&lt;/p&gt;
+
+&lt;div class=&quot;container&quot; style=&quot;padding: 10px;&quot;&gt;
+    &lt;center&gt;
+        &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+            &lt;img src=&quot;/assets/Common/mac-terminal.png&quot; /&gt;  
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/div&gt;
+
+&lt;p align=&quot;justify&quot;&gt;When the terminal opens, type&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;This will start a jupyter notebook in the browser.&lt;/p&gt;
+
+&lt;h4 id=&quot;for-windows-users&quot;&gt;For Windows Users&lt;/h4&gt;
+
+&lt;p align=&quot;justify&quot;&gt;Navigate to the folder you downloaded right click the folder while holding shift. You should see an option to open &quot;Command Prompt window here&quot;; click on that. In the photo below command prompt is replace tih Powershell for my computer, but for our purposes its the same thing.&lt;/p&gt;
+
+&lt;div class=&quot;container&quot; style=&quot;padding: 10px;&quot;&gt;
+    &lt;center&gt;
+        &lt;div class=&quot;col-lg-10 col-md-10 col-sm-12 col-xs-12&quot;&gt;
+            &lt;img src=&quot;/assets/Common/windows-terminal.png&quot; /&gt;  
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/div&gt;
+
+&lt;p align=&quot;justify&quot;&gt;When the command prompt opens, type&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;This will start a jupyter notebook in the browser.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-the-jupyter-notebook&quot;&gt;Using the Jupyter Notebook&lt;/h3&gt;
+
+&lt;p align=&quot;justify&quot;&gt;After the notebook starts in your browser, click on the &quot;innovation-and-trade.ipynb&quot; file to open the interactive notebook. This notebook has a description of the assignment for the students and the code is grouped together in blocks. Each block can be run sequentially by clicking the &quot;Run&quot; button in the top menu.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-project&quot;&gt;The Project&lt;/h3&gt;
+
+&lt;p align=&quot;justify&quot;&gt;Now that the students are set up with interactive notebook, they can step through the code blocks and simulate the trade of different empires involved with the Silk Road. Encourage them to add new empires with different goods based on their research about the time period as well as explore different ways of modifying the innovation index to see how that affects trade.&lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;The deliverable for this project will be a two or three page paper where students explain the main players in the Silk Road trade and how innovation affected trade. Student should include the graphs from their code and intepret their meaning.&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Getting Started with Python</title><link href="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting Started with Python" /><published>2020-05-03T04:06:43-04:00</published><updated>2020-05-03T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/03/getting-started-with-python</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html">&lt;p&gt;Placeholder&lt;/p&gt;</content><author><name></name></author><summary type="html">Placeholder</summary></entry><entry><title type="html">Neural Networks</title><link href="http://localhost:4000/ml/2020/04/12/neural-networks.html" rel="alternate" type="text/html" title="Neural Networks" /><published>2020-04-12T04:06:43-04:00</published><updated>2020-04-12T04:06:43-04:00</updated><id>http://localhost:4000/ml/2020/04/12/neural-networks</id><content type="html" xml:base="http://localhost:4000/ml/2020/04/12/neural-networks.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;p&gt;Before we begin, I should preface this by saying this will be a lot of information, and I assume you are at least somewhat familiar with how classifiers and loss functions work, but I will provide a brief recap. This guide will be structured in the following order.&lt;/p&gt;
 
@@ -862,11 +918,11 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
+    &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;   
       &lt;figure class=&quot;figure&quot;&gt;
         &lt;img src=&quot;/assets/Vector_Spaces/subspace_counterexample.png&quot; /&gt;
         &lt;figcaption class=&quot;figure-caption text-center&quot;&gt;T is not a linear subspace&lt;/figcaption&gt;
-      &lt;/figure&gt;   
+      &lt;/figure&gt;      
     &lt;/div&gt;
     &lt;div class=&quot;col-lg-6 col-md-6 col-sm-12 col-xs-12&quot;&gt;
       &lt;figure class=&quot;figure&quot;&gt;
@@ -986,53 +1042,4 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Machine Learning Introduction</title><link href="http://localhost:4000/supp/2020/01/15/what-is-ml.html" rel="alternate" type="text/html" title="Machine Learning Introduction" /><published>2020-01-15T03:06:43-05:00</published><updated>2020-01-15T03:06:43-05:00</updated><id>http://localhost:4000/supp/2020/01/15/what-is-ml</id><content type="html" xml:base="http://localhost:4000/supp/2020/01/15/what-is-ml.html">&lt;h3 id=&quot;what-is-machine-learning&quot;&gt;What is Machine Learning?&lt;/h3&gt;
-
-&lt;p&gt;Machine Learning (ML) is, as Tom Mitchell stated, “The study of algorithms that improve their performance P at some task T with experience E”. Another way of looking at it is that we are learning an algorithm that solves an inference problem or a model that describes some data set. We will discuss these two concepts at a basic level below and then introduce some cool things machine learning and deep learning have accomplished to hopefully incite some interest.&lt;/p&gt;
-
-&lt;h4 id=&quot;inference&quot;&gt;Inference&lt;/h4&gt;
-
-&lt;p&gt;Inference means making a decision or prediction about some sort of data, perhaps in a probabilistic sense. For example, I might give you an image and say “is there a cat in this image?” or “what is the probability that there is a cat in this image?”&lt;/p&gt;
-
-&lt;div class=&quot;container&quot; style=&quot;padding: 10px;&quot;&gt;
-  &lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
-      &lt;img src=&quot;/assets/MLIntro/kit.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
-      &lt;img src=&quot;/assets/MLIntro/catinbox.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-lg-4 col-md-4 col-sm-4 col-xs-4&quot;&gt;
-      &lt;img src=&quot;/assets/MLIntro/catbowl.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- &lt;img src=&quot;/assets/MLIntro/kit.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/cat.jpg&quot; alt=&quot;cat&quot; width=&quot;200&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/catinbox.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot;/&gt;&lt;img src=&quot;/assets/MLIntro/catbowl.jpg&quot; alt=&quot;cat&quot; width=&quot;150&quot; height=&quot;150&quot;/&gt; --&gt;
-
-&lt;p&gt;As you might imagine, it gets more complex and ambiguous when the thing you’re trying to predict is secluded in some way or only represents the idea of the thing you’re trying to predict instead of being the thing itself (e.g. the cat-faced bowl above).&lt;/p&gt;
-
-&lt;p&gt;There are perhaps more interesting inference problems where you don’t have complete information, but you know some related information. For example, if I give you the temperature in San Francisco, San Jose, and Fremont, can you predict (infer) the temperature in Palo Alto? Or If I give you the position and velocity of a car at time $t_{1}$, can you tell me the probability the car will be 5 meters north at time $t_{2}$? The output of an inference algorithm can either be a concrete decision (e.g. the image does have a cat in it) or a probability distribution over the set of possible outcomes (e.g. there is a 60% chance that the temperate in Palo Alto is between 50 and 65 degrees Fahrenheit).&lt;/p&gt;
-
-&lt;h4 id=&quot;modeling&quot;&gt;Modeling&lt;/h4&gt;
-
-&lt;p&gt;Modeling allows us to describe data either qualitatively or numerically. There are typically geometric models, which are ones that try to find geometric structure in data and probabilistic models, which try to find a probability distribution given a bunch of samples of random variables.&lt;/p&gt;
-
-&lt;p&gt;An example of a geometric model might be: I have (square-footage, location, number of bedrooms) information for 1000 houses. How can I find some combination of these attributes that still comes close to fitting the data? This boils down to finding a lower-dimensional subspace that comes close to containing all the original data.&lt;/p&gt;
-
-&lt;figure&gt;
-  &lt;center&gt;
-    &lt;img src=&quot;/assets/MLIntro/subspace.png&quot; alt=&quot;subspace&quot; width=&quot;300&quot; height=&quot;200&quot; /&gt;
-    &lt;figcaption&gt;Data close to a lower dimensional subspace&lt;/figcaption&gt;
-  &lt;/center&gt;
-&lt;/figure&gt;
-
-&lt;h3 id=&quot;why-study-ml&quot;&gt;Why study ML?&lt;/h3&gt;
-
-&lt;p&gt;Besides all the buzzwords, machine learning, and indeed artificial intelligence in general, can do some pretty amazing stuff. More than 20 years ago we created AIs that could beat the world’s best chess player, and more recently DeepMind’s AlphaGo beat the world’s best Go player. These are well known examples. As we will learn soon, machine learning provides us with powerful tools to describe data. However, my personal favorite reason for studying machine learning is that it gives us a solid foundation to study more advanced topics such as those typically referred to as deep learning. This umbrella term includes everything from convolutional neural networks to generative adversarial networks to reinforcement learning agents that learn to play hide and seek. Studying ML provides us with mathematical and algorithmic frameworks for analyzing these exciting topics.&lt;/p&gt;
-
-&lt;p&gt;I’ll end with a relatively recent video by OpenAI, where agents learn how to coordinate with other agents to play hide and seek.&lt;/p&gt;
-
-&lt;center&gt;
-  &lt;iframe src=&quot;https://www.youtube.com/embed/kopoLzvh5jY&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;
-  &lt;figcaption&gt;Credit: OpenAI&lt;/figcaption&gt;
-&lt;/center&gt;</content><author><name></name></author><summary type="html">What is Machine Learning?</summary></entry></feed>
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry></feed>

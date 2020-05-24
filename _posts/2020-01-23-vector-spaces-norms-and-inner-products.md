@@ -42,11 +42,11 @@ $$\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">   
       <figure class="figure">
         <img src="{{site.baseurl}}/assets/Vector_Spaces/subspace_counterexample.png"/>
         <figcaption class="figure-caption text-center">T is not a linear subspace</figcaption>
-      </figure>   
+      </figure>      
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <figure class="figure">
