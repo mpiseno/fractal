@@ -124,7 +124,235 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Placeholder</p>
+    <h3 id="introduction">Introduction</h3>
+
+<p align="justify">Python is a versatile programming language used in many different applications from simple scripting to entire applications. It was created in the late 80s by Guido van Rossum, and has seen increased adoption particularly in the data science and machine learning communities in recent years. We are using python because it is syntactically easy to read compared to other languages, beginner friendly, as has many packages that we can use for anything we want to build.</p>
+
+<p align="justify">Python files have the ".py" file extension and can be run in the terminal (command prompt for windows users) by running, </p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python filename.py
+</code></pre></div></div>
+
+<p align="justify">where "filename" is replaced with the name of your python file, while in the directory (folder) that the file is in. You can interactively test python code by simply running</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
+</code></pre></div></div>
+<p align="justify">in the terminal. This will open a python shell where you can type and run code line by line.</p>
+
+<h3 id="primitive-types">Primitive Types</h3>
+
+<p align="justify">The most basic data in python are primitive data types, which include:</p>
+
+<ul>
+  <li>int (integers, example: 1)</li>
+  <li>float (floating point numbers, example: 0.25)</li>
+  <li>str (words and characters, example: ‘a’)</li>
+  <li>bool (true and false, example: True)</li>
+</ul>
+
+<p align="justify">We can assign values that have these types to variable in our program using the = operator (the assignment operator). Anything following "#" in a python program is a code comment, meaning it will not be considered code in the program. Comments help the programmer and others who are reading the code understand what the code does.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># the variable x is of type int
+</span><span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># the variable y is of type float
+</span>
+<span class="n">word</span> <span class="o">=</span> <span class="s">'this is a string'</span> <span class="c1"># the variable word is of type str
+</span><span class="n">word</span> <span class="o">=</span> <span class="s">"this is a string"</span> <span class="c1"># we can use either '' or "" to define a string
+</span><span class="n">program_running</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1"># the variable program_running is of type bool
+</span>
+<span class="c1"># We can perform math on floats and ints
+</span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">45</span><span class="p">)</span> <span class="o">/</span> <span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="mf">171.4256</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># We cannot combine ints and float with strings
+</span><span class="n">bad_code</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">word</span> <span class="c1"># this will error
+</span></code></pre></div></div>
+
+<p align="justify">The above code defines some variables or different types and manipulates them. Note how some types cannot be combined. However, we can append strings together, and we can covert an int to a string add it to another string</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_apples</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sentence_begin</span> <span class="o">=</span> <span class="s">'I have '</span>
+<span class="n">sentence_end</span> <span class="o">=</span> <span class="s">' apples'</span>
+
+<span class="c1"># The str() function converts primitives of other types into a string
+</span><span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence_begin</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_apples</span><span class="p">)</span> <span class="o">+</span> <span class="n">sentence_end</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+I have 5 apples
+</code></pre></div></div>
+
+<p align="justify">Just like the str() function converts other types to string, there is an int() function and float() function that converts to int and float respectively. They don't work with every input though; float('hello') will give you an error.</p>
+
+<h3 id="data-structures">Data Structures</h3>
+
+<p align="justify">Data structures are more advanced ways to store data that prove very useful in a variety of scenarios. We will cover two commonly used data structures, lists and dictionaries, but there are many more. Just like we have primitive types, list and dictionaries are their own types in python, but they are not primitives.</p>
+
+<h4 id="lists">Lists</h4>
+
+<p align="justify">A list in python is a way to store sequential elements of information. They are created using square brackets. You can retrieve a particular element from a list by doing something called indexing, which means you pass in the position of the element you want in the list (see code below).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">245</span><span class="p">]</span> <span class="c1"># a list of ints
+</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># use brackets to index into the list
+</span><span class="n">another_element</span> <span class="o">=</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># indices begin at 0 in python!!! &lt;-- IMPORTANT
+</span>
+<span class="c1"># Accessing the last element in a list
+</span><span class="n">last_element</span> <span class="o">=</span> <span class="n">mylist</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Lists can hold elements of differing types
+</span><span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">24.6</span><span class="p">,</span> <span class="s">"an element"</span><span class="p">,</span> <span class="bp">True</span><span class="p">]</span>
+
+<span class="c1"># You can also add elements to an existing list later on
+</span><span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p align="justify">Note that indices begin at 0 in python. There is a very good theoretical reason for this that I won't go into here, but just remember the first element of a list is always at index 0. This means the final index of a list is the length of the list minus 1. The length of a python list can be accessed using the len() function. To add elements to the end of an existing list, use the append() method.</p>
+
+<h4 id="dictionaries">Dictionaries</h4>
+
+<p align="justify">A dictionary in python is a data structure that acts as a mapping from keys to values. A dictionary is created using curly braces. Values can be accessed using the name of the key insides square brackets.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define the dictionary
+</span><span class="n">fruits</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Add some key-value pairs
+</span><span class="n">fruits</span><span class="p">[</span><span class="s">'apples'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">fruits</span><span class="p">[</span><span class="s">'oranges'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">fruits</span><span class="p">[</span><span class="s">'bananas'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2400</span>
+
+<span class="n">num_bananas</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[</span><span class="s">'bananas'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_bananas</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="s">'oranges'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+2400
+True
+</code></pre></div></div>
+
+<p align="justify">One important property of dictionaries is that keys must be unique, which values do not have to be unique. This means we cannot define two entries in the dictionary whose keys are both 'apple'. Some useful methods (functions that are specific to a particular type) that can be called on dictionaries are keys() and values().</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">keys</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># the keys method returns a list of the keys in the dictionary
+</span><span class="k">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="n">vals</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># the values method returns a list of the values in the dictionary
+</span><span class="k">print</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+['apples', 'oranges', 'bananas']
+[10, 6, 2400]
+</code></pre></div></div>
+
+<h3 id="logical-statements">Logical Statements</h3>
+
+<p align="justify">Just like any programming language, python has some basic logical statements that can be used to encode logic into your program. The main ones we will use are if statements, for loops, and while loops.</p>
+
+<h4 id="if">If</h4>
+
+<p align="justify">If statements can be used to separate code that executes based on a condition. If blocks are broken up into if, elif, and else, which checks a condition, checks a condition if the previous condition was false, and provides some code to default to if all the previous conditions were false, respectively.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"x is 4!"</span><span class="p">)</span>
+<span class="k">elif</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"x is 5!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"x is neither 4 nor 5"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+x is 5 !
+</code></pre></div></div>
+
+<p align="justify">In the if statement above, the condition is x == 4. Note the difference between the assignment operator "=", which assigns a value to a variable, and the equality operator "==" which checks if two values are equal. X is not 4, so the code will not execute the print statement in that if block. The program moves on to the next statement, the elif statement which checks if x is equal to 5. Since x is 5, the output of this program is "x is 5!". The program then moves past this entire block; there is no need to look at the else statement because we already know x is 5 at this point. You have to include an elif or an else statement.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="bp">True</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"This is a tautology!"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="bp">True</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"This is a fallacy!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+This is a tautology!
+</code></pre></div></div>
+
+<h4 id="for-and-while-loops">For and While Loops</h4>
+
+<p align="justify">For loops are a way to loop over the same block of code a predefined number of times. The canonical way to construct a for loop in python is to use the range() function which executes code a certain number of times.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">)):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+0
+1
+2
+10
+12
+14
+</code></pre></div></div>
+<p align="justify">While loops on the other hand execute a block of code until the condition is false.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+0
+1
+2
+3
+</code></pre></div></div>
+<p align="justify">In the above code, the code inside the while loop executed until i was no longer less than 4. If we never reassigned x to increment at event iteration of the while loop, this loop would have continued forever!</p>
+
+<h3 id="functions">Functions</h3>
+
+<p align="justify">We have already seen some built-in functions that come with python, namely len(), range(), print(). But we can also define our own functions that take input parameters and do some computation. This is useful for situations when we might need to reuse the same code several times so we don't have to keep rewriting it. To do this, we use the "def" keyword. To return a value from a function, use the "return" keyword.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+<p align="justify">The above function is very simple, but we can do all sorts of crazy computation using functions, and we can also compose functions together.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_max_if_below_x</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+  <span class="n">maximum</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">list_</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">maximum</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">maximum</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_max_if_below_x</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_max_if_below_x</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+9
+0
+</code></pre></div></div>
+
+<hr />
+
+<p align="justify">This guide introduced some basic types in python, a couple useful data structures, logical statements, and custom functions. These are the basic steps needed to create more complex programs using python. I encourage you to get creative with writing custom programs and if you get stuck, be proactive about searching for answers online. I'll leave you with some resources that helped me when I was learning python - good luck!</p>
+
+<ul>
+  <li><a href="https://automatetheboringstuff.com/">A great online python textbook</a></li>
+  <li><a href="https://stackoverflow.com/questions/tagged/python-3.x">StackOverflow</a></li>
+</ul>
 
   </div><a class="u-url" href="/cs/2020/05/22/python-basics.html" hidden></a>
 </article>

@@ -37,7 +37,7 @@ categories: ["proj"]
 
 #### For Windows Users
 
-<p align="justify">Navigate to the folder you downloaded right click the folder while holding shift. You should see an option to open "Command Prompt window here"; click on that. In the photo below command prompt is replace tih Powershell for my computer, but for our purposes its the same thing.</p>
+<p align="justify">Navigate to the folder you downloaded right click the folder while holding shift. You should see an option to open "Command Prompt window here"; click on that. In the photo below command prompt is replaced with Powershell for my computer, but for our purposes its the same thing.</p>
 
 <div class="container" style="padding: 10px;">
     <center>
@@ -61,7 +61,7 @@ categories: ["proj"]
 
 <p align="justify">Now that the students are set up with interactive notebook, they can step through the code blocks and simulate the trade of different empires involved with the Silk Road. Encourage them to add new empires with different goods based on their research about the time period as well as explore different ways of modifying the innovation index to see how that affects trade.</p>
 
-<p align="justify">The deliverable for this project will be a two or three page paper where students explain the main players in the Silk Road trade and how innovation affected trade. Student should include the graphs from their code and intepret their meaning.</p>
+<p align="justify">The deliverable for this project will be a two or three page paper where students explain the main players in Silk Road trade and how innovation affected trade. Students should include the graphs from their code and intepret their meaning.</p>
 
 
 
