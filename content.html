@@ -1,0 +1,81 @@
+---
+layout: default
+---
+
+<div style="margin-top: 10%">
+  <section class="container-fluid px-0">
+    <div class="row align-items-center content" style="margin: 5%">
+        <div class="col-md-3 col-sm-6 text-center order-1 order-md-2">
+          <a href="{% link tutorials/intro-to-python.md %}">
+            <div class="card content-card">
+              <div class="content-card-img-wrapper">
+                <img class="card-img-top" src="{{site.baseurl}}/imgs/lesson_icons/hello_world.png">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Hello World</h5>
+                <p>An introduction you to the Python programming language and the world of coding!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center order-1 order-md-2">
+          <a href="index.html">
+            <div class="card content-card">
+              <div class="content-card-img-wrapper">
+                <img class="card-img-top" src="{{site.baseurl}}/imgs/lesson_icons/data_structures.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Data Structures</h5>
+                <p>Arrays, Linked Lists, and Hashmaps - Learn about the data structures that coders use every day.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center order-1 order-md-2">
+          <a href="index.html">
+            <div class="card content-card">
+              <div class="content-card-img-wrapper">
+                <img class="card-img-top" src="{{site.baseurl}}/imgs/lesson_icons/algos.png" alt="Card image cap" style="height: 50px;">
+              </div>
+                <div class="card-body">
+                  <h5 class="card-title">Algorithms</h5>
+                  <p>Sorting, Searching, Finding the shortest path from you to your fridge. We've got you covered.</p>
+                </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center order-1 order-md-2">
+          <a href="index.html">
+            <div class="card content-card">
+                <img class="card-img-top" src="{{site.baseurl}}/imgs/19_percent.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">beep boop 100k</h5>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- {%- if site.posts.size > 0 -%}
+<h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+<ul class="post-list">
+  {%- for post in site.posts -%}
+  <li>
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <span class="post-meta">{{ post.date | date: date_format }}</span>
+    <h3>
+      <a class="post-link" href="{{ post.url | relative_url }}">
+        {{ post.title | escape }}
+      </a>
+    </h3>
+    {%- if site.show_excerpts -%}
+      {{ post.excerpt }}
+    {%- endif -%}
+  </li>
+  {%- endfor -%}
+</ul>
+
+{%- endif -%}  -->

@@ -1,0 +1,103 @@
+:root {
+    --cskfont: #333; /* #333333 */
+    --cskfont40: rgba(51, 51, 51, 0.4); /* #333333, but at 40% opacity */
+    --cskpink: #FF989B;
+    --cskpink60: rgba(253, 207, 193, 0.6); /* pink at 60% opacity */
+    --cskpurple: #9BA4FF;
+    --cskpurple60: rgba(155, 164, 255, 0.4); /* purple at 60% opacity */
+    --cskwhite80: rgba(255, 255, 255, 0.8);
+    --lavblush: #fbefef;
+    --cskblue: #002252;
+}
+
+body {
+    background: white;
+    font-weight: 400;
+    color: var(--cskfont);
+}
+
+.content {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#banner {
+    width: 100%;
+}
+
+/* CONTENT */
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.percent {
+    width: 20vh;
+    margin: 1vh 2vw 2vw 2vw;
+}
+
+
+/* Content style */
+
+.content-card {
+    display: flex;
+
+    width: 100%;
+    height: 300px;
+
+    padding: 5%;
+    margin: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #ccc;
+}
+
+.content-card-img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.content-card img {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    object-fit: contain;
+}
+
+.content-card h5 {
+    font-family: 'Helvetica Neue';
+    font-weight: 500;
+    font-size: 2.5vh;
+    text-align: center;
+}
+
+.content-card p {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.content-card:hover {
+  background-color: var(--lavblush);
+  box-shadow: 6px 6px 6px 6px #ccc;
+  color: var(--cskblue);
+}
+
+
+.module-container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+
+
+
+

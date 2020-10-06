@@ -7,8 +7,77 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
+  <!-- {{ content }} -->
 
+  <!-- INDEX HEADER -->
+  <div class="landing-banner">
+    <div class="banner-cta">
+      <h3 class="text-left">CS For Everyone</h3>
+      <p class="text-left">We are a non-profit organization that aims to increase access to computer science education in underprivileged communities.</p><br>
+      <button type="button" class="btn btn-primary banner-btn">Apply</button>
+    </div>
+    <img src="imgs/banner.png" id="banner" class="header" style="width: 50%;">
+  </div>
+
+  <!-- SECTION -->
+  <section class="container-fluid px-0">
+    <div class="row align-items-center content" style="margin-top: 65px">
+        <div class="col-md-6 text-center order-1 order-md-2">
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-8 mb-5 mb-md-0">
+                    <h2 class="text-left">Underprivileged Communities in Tech</h2>
+                    <div class="stat">
+                        <img src="imgs/19_percent.png" class="percent column"/>
+                        <p class="lead text-left column">of computer science graduates are hispanic or black; these groups make over $20,000 less in average household income than white and asian families, according to a 2017 census.gov report.</p> <!-- 19% -->
+                    </div>
+                    <hr>
+                    <div class="stat">
+                        <img src="imgs/67_percent.png" class="percent column"/>
+                        <p class="lead text-left column">percent of high schools where more than three-quarters of the students are on free and reduced lunch do not offer any computer science courses, according to a 2019 study by code.org.</p> <!-- 67% -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 text-center order-1 order-md-2 pink-bg" style="margin-top: -3.5vh;">
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-8 mb-5 mb-md-0">
+                    <h2 style="text-align: left;">Our Program</h2>
+                    <p class="lead text-left">1. Introduces students in underprivileged communities to fundamental computer science concepts.</p>
+                    <p class="lead text-left">2. Teaches computer science concepts through interactive methods, unlike the traditional classroom teaching style.</p>
+                    <p class="lead text-left">3. Provides mentorship to students from engineers and leader in top companies as well as computer science students in top programs.</p>
+                    <p class="lead text-left">4. Creates a strong community of scholars dedicated to becoming knowledgable computer scientists.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- SECTION -->
+  <section class="container-fluid px-0">
+      <div class="row align-items-center content">
+          <div class="col-md-6 order-1 order-md-1">
+              <img src="imgs/committees2018.jpg" alt="" class="img-fluid">
+              <br><br><br><br>
+          </div>
+          <div class="col-md-6 text-center order-2 order-md-2">
+              <div class="row justify-content-center">
+                  <div class="col-10 col-lg-8 mb-5 mb-md-0">
+                      <h3>Knowledge</h3>
+                      <p class="lead">You will have access to resources to continually develop your computer science education.</p>
+                      <h3>Mentorship</h3>
+                      <p class="lead">You will have the opportunity to be paired with engineers and leaders from top tech companies.</p>
+                      <h3>Community</h3>
+                      <p class="lead">You will meet people from similar backgrounds at all stages of the learning process, from beginners to experienced engineers.</p>
+                      <a href="about.html">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Learn More</button>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!--
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
@@ -28,6 +97,6 @@ layout: default
       {%- endfor -%}
     </ul>
     
-  {%- endif -%}
+  {%- endif -%} -->
 
 </div>
