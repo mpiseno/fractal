@@ -91,10 +91,64 @@ body {
 
 
 .module-container {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-right: 15%;
-    margin-left: 15%;
+    padding: 15%;
+    padding-top: 10%;
+}
+
+.module-container h1, h2, h3, h4, h5, h6, p {
+    padding-bottom: 20px;
+}
+
+.module-container a {
+    color: blue;
+}
+
+.module-container a:hover {
+    color: gray;
+}
+
+
+/* Lesson Styling */
+
+.lesson-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 60%;
+    padding-bottom: 20px;
+}
+
+.highlighter-rouge { /* Class for Markdown code blocks */
+    background-color: var(--lavblush);
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.next-prev-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.next-prev-btn-wrapper a {
+    color: white;
+}
+
+.next-prev-btn {
+    background-color: var(--cskblue);
+    border-color: var(--cskblue);
+    color: white;
+
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.next-prev-btn:hover {
+    background-color: #00337A;
+    border-color: #00337A;
+    box-shadow: 2px 2px 2px 2px #ccc;
 }
 
 
