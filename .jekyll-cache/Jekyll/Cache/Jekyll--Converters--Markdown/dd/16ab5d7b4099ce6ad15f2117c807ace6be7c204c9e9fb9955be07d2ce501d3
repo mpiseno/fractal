@@ -1,0 +1,181 @@
+I";4<h3 id="convolutional-layers">Convolutional Layers</h3>
+
+<p>Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.</p>
+
+\[f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)\]
+
+<p>As you might imagine, this requires us to maintain an extremely large number of parameters. For example, consider a 28 by 28 image being input into a two-layer FC network with 100 neurons in the first layer and 10 neurons in the output layer. First we flatten our image into a 28 x 28 = 784 dimensional vector. This vector is being projected into 100 dimensions, so $\mathbf{W_{1}}$ will be of shape $100 \times 784$, or equivalently, $\mathbf{W_{1}}\in \mathbb{R}^{100 \times 784}$. That 100 dimensional vector then has to pass through the output layer and be turned into a 10 dimensional vector, so $\mathbf{W_{2}}\in \mathbb{R}^{10 \times 100}$. So just with this simple network on a small image, we are using $100 \cdot 784 + 10 \cdot 100 = 79400$ parameters!</p>
+
+<p>What if instead we considered groups of locally-connected elements in the input? In other words, if we had a filter that gathered local parts of the input, performed some operation on them, and then output the result. In this way, each element of the output would only result from a small locally-connected group in the input. Certainly this would result in less parameters, since every element of the input is not connected to each element in the output, but rather a subset of the elements in the input are connected to each element of the output.</p>
+
+<center>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/cnn-visual-1.png" />  
+  </div>
+</center>
+
+<p>We can accomplish this using convolutions. In mathematics, a convolutions is an operation on two functions that produces another function. We can borrow this idea and create a discrete form of convolution to implement this filter idea. We will say a filter $\mathbf{W}$, which is just a matrix is convolved with the input image $\mathbf{X}$, producing the output $\mathbf{Y}$, where each element of $\mathbf{Y}$ is determined in the following way</p>
+
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
+
+<p>where $k_{1}$ and $k_{2}$ are the dimensions of the filter (also called the kernel). So each element of the output is a weighted sum of a local subset of input elements. This is a 2D discrete convolution (actually it’s a cross-correlation, but that’s a technical detail and I’ll just say convolution), but convolutions using filters of differing numbers of dimensions are equally valid.</p>
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/cnn-visual-2.png" />  
+  </div>
+</center>
+
+<p>Each element of the output is created by this convolution, and the filter “slides” across the input until the the output is filled up. The idea is to learn good weights for this filter in the same way we learned the parameters of FC networks. Also, we could have multiple filters, each of which slide across the whole input and produce an output channel. These output channels are concatenated together so that if we have $n$ filters, output will have $n$ channels, or activation maps.</p>
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/cnn-visual-3.png" />  
+  </div>
+</center>
+
+<p>Each filter slides across the input. The amount by which the filter slides each time is called the stride. The output dimensions are determined by the input size, the filter size, and the stride in the following way. Let the input and output heights and widths be denoted by $h_{\text{in}}, w_{\text{in}}, h_{\text{out}}, w_{\text{out}}$ respectively, and let the filter dimensions be $k_{1}, k_{2}$.</p>
+
+\[h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1\]
+
+<p>A similar formula holds for the widths. If this doesn’t produce a whole number, it is common to pad the outsides of the input with zeros enough so that the output dimensions will be whole numbers. Now if we consider out example from earlier, a $28 \times 28$ image, we can see the reduction in parameters afforded by a convolutional layer. Let’s say we have the same network as earlier, but this time the first layer is a convolutional layer and not a FC layer. Let’s also say we have 16 $4 \times 4$ filters with stride 2. Then the output size for our convolutional layer will be</p>
+
+\[\begin{align*}
+h_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13 \\
+w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
+\end{align*}\]
+
+<p>The number of parameters for this layer is just the combined filter size: $16 \cdot 4 \cdot 4 = 256$. Now if we take the convolutional layer output, flatten it to size $16 \cdot 13 \cdot 13 = 2704$, and feed it to the output layer of size 10, this takes $2704 \cdot 10 = 27040$ parameters. So the total number of parameters in our network has been reduced from 79400 to 27296.</p>
+
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr />
+
+<h3 id="convolutional-networks">Convolutional Networks</h3>
+
+<h4 id="pooling-layers">Pooling layers</h4>
+
+<p>A Convolutional Neural Network, or CNN, is a combination of convolutional layers with interconnected activation functions and/or pooling layers. Pooling layers usually go hand-in-hand with convolutional layers, and are used to improve the robustness of convolutional layers with respect to the exact location of certain features in the input. For example, if the input is a photo of a face, the nose might be in the center of the image, or it might be slightly to the left of the center, or it might be somewhere else in the image entirely. We can be more robust to this spatial noise by using a special type of filter that takes the maximum over a group of activations, these activations being the ones output by the convolutional layer followed by some activation function. By doing this, even if the strongest activation coming out of the convolutional layer is slightly offset, the max filter will still capture it. This is what a pooling layer does. Assuming a $2 \times 2$ pooling max filter with stride 1, the pooling layer will look something like this.</p>
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/pooling-layer-visual.png" />  
+  </div>
+</center>
+
+<p>Pooling makes the activation maps smaller as is usually done over each activation map (i.e. each channel of the output) separately. There are different types of pooling layers such as max pooling, average pooling, and several others.</p>
+
+<h4 id="the-full-network">The Full Network</h4>
+
+<p>After a series of convolutional layers with intermixed pooling layers and activations, CNNs usually have a FC layer or a series of FC layers referred to as the “classifier” of the network. The purpose of the convolutional layer and pooling layers are to extract useful features for eventual input into the classifier, which will give us the actual predictive output of the network. The full network can be visualized like below.</p>
+
+<center>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/full-conv-net.png" />  
+  </div>
+</center>
+
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr />
+
+<h4 id="backprop-through-conv-layers">Backprop Through Conv Layers</h4>
+
+<p>Just like FC layers, we have to figure out how to propagate gradients thought convolutional layers. Assume we have input $\mathbf{X}$, output $\mathbf{Y}$, of size $h_{1} \times w_{1}$ and $h_{2} \times w_{2}$ respectively, and kernel $\mathbf{W}$ of size $k_{1} \times k_{2}$. We assume we have access to the upstream gradient $\frac{\partial L}{\partial \mathbf{Y}}$, where $L$ is the loss function. We need to calculate $\frac{\partial L}{\partial \mathbf{X}}$  and $\frac{\partial L}{\partial \mathbf{W}}$. We also assume that the stride is 1 in all dimensions for the kernel to simplify indexing.</p>
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/backprop-cnn.png" />  
+  </div>
+</center>
+
+<p>Recall that for an output at index $r, c$ of $\mathbf{Y}$, we have</p>
+
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
+
+<p>Now we will see how to calculate the unknown gradients.</p>
+
+<h5 id="fracpartial-lpartial-w">$\frac{\partial L}{\partial W}$:</h5>
+
+<p>We will consider the gradient one pixel at a time. I.e. let’s consider $\frac{\partial L}{\partial \mathbf{W}[a, b]}$. This kernel weight affects everything in the output, and we’ll sum all its contributions to compute the gradient. Below we can see this visually.</p>
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/backprop-cnn-1.png" />  
+  </div>
+</center>
+
+<p>Note that because each output pixel is just a weighted sum of some elements of the input with the kernel weights, we have the following.</p>
+
+\[\begin{align*}
+\mathbf{Y}[r, c] &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+&amp;= \mathbf{X}[r + a, c + b]
+\end{align*}\]
+
+<p>We can accumulate the contribution of this kernel weight by considering every pixel in the output as follows.</p>
+
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{W}[a, b]} &amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
+&amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
+\end{align*}\]
+
+<p>Note that this is exactly a convolution between $\mathbf{X}$ and $\frac{\partial L}{\partial \mathbf{Y}}$ but clipped to be the dimensions of the kernel.</p>
+
+<h5 id="fracpartial-lpartial-x">$\frac{\partial L}{\partial X}$:</h5>
+
+<p>Note $\frac{\partial L}{\partial \mathbf{X}}$ is the same size as $\mathbf{X}$ and we will also compute  pixel-by-pixel. Consider $\frac{\partial L}{\partial \mathbf{X}[r’, c’]}$. This pixel only affects elements of the output that are produced when the kernel is over that pixel of the input. $\mathbf{X}[r’, c’]$ only affects a region of $\mathbf{Y}$.</p>
+
+<center>
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <img src="/assets/CNNs/backprop-cnn-2.png" />  
+  </div>
+</center>
+
+<p>Thinking about this in the general sense reveals that $\mathbf{X}[r’, c’]$ affects a box of output pixels whose upper left corner is $\mathbf{Y}[r’ - (k_{1} - 1), c’ - (k_{2} - 1)]$ and whose lower right pixel is $\mathbf{Y}[r’, c’]$. Therefore we can wright</p>
+
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{X}[r', c']} &amp;= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
+\end{align*}\]
+
+<p>Using the equation for the discrete convolution we already know, we can see that</p>
+
+\[\begin{align*}
+\mathbf{Y}[r' - i, c' - j] &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+
+\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+&amp;= \mathbf{W}[i, j]
+\end{align*}\]
+
+<p>This is because $\mathbf{X}[r’, c’]$ only appears once in this sum when $i=n$ and $j=m$. So finally we can write</p>
+
+\[\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]\]
+
+<p>Now we know how to compute the gradients needed for backprop through convolutional layers. We have shown that given $\frac{\partial L}{\partial \mathbf{Y}}$, we can compute $\frac{\partial L}{\partial \mathbf{W}}$ and $\frac{\partial L}{\partial \mathbf{X}}$.</p>
+
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr />
+
+:ET

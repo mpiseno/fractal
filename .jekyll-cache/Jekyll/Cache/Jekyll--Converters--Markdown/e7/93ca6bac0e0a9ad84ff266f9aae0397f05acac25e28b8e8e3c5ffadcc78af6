@@ -1,0 +1,132 @@
+I"�<p>$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</p>
+
+<h3 id="linear-approximation">Linear Approximation</h3>
+
+<p>Linear approximation is a fundamental problem in machine learning, and one that has a surprising amount of mathematical structure built around it for such a seemingly simple problem. Consider the following problem: We have a Hilbert space $\mathbf{S}$ and a subspace $\mathbf{T} \subseteq \mathbf{S}$. We also have an element $\mathbf{x} \in \mathbf{S}$. What is the closest element $\mathbf{\hat{x}} \in \mathbf{T}$ to $\mathbf{x}$?</p>
+
+<center>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <img src="/assets/Linear_Approx/linear-approx-problem.png" />  
+  </div>
+</center>
+
+<p>This Hilbert space $\mathbf{S}$ has an inner product $\langle\cdot, \cdot\rangle$ and induced norm $\norm{\cdot}$. So we can frame the problem as finding the point $\mathbf{\hat{x}} \in \mathbf{T}$ such that $\norm{\mathbf{\hat{x} - x}}$ is minimized.</p>
+
+\[\begin{equation} \tag{1}
+\text{minimize}_{\mathbf{y\in T}} \norm{\mathbf{y - x}}
+\end{equation}\]
+
+<p>We can find a unique minimizer by exploiting orthogonality. In fact, $\mathbf{\hat{x} \in T}$ is the closest point to $\mathbf{x \in S}$ if $\mathbf{\hat{x} - x}$ is orthogonal to all other points $\mathbf{y \in T}$. This means that $\langle \mathbf{\hat{x} - x}, y\rangle = 0$ for all $\mathbf{y \in T}$</p>
+
+<p>Lets show that if $\langle\mathbf{\hat{x} - x}, \mathbf{y}\rangle = 0$ for all $\mathbf{y \neq \hat{x} \in T}$ then $\mathbf{\hat{x}}$ is minimizer of $(1)$.</p>
+
+\[\begin{align*}
+\norm{\mathbf{x - y}}^{2} &amp;= \norm{(\mathbf{x - \hat{x}}) - (y - \mathbf{\hat{x}})}^{2} \\
+&amp;= \norm{\mathbf{x - \hat{x}}}^{2} + \norm{\mathbf{y} - \mathbf{\hat{x}}}^{2}
+\end{align*}\]
+
+<p>The last equality follows from the Pythagorean theorem. This is valid because we required that $\mathbf{x - \hat{x}}$ was orthogonal to all points in $\mathbf{T}$, and $\mathbf{y} - \mathbf{\hat{x}}$ is certainly in $\mathbf{T}$!</p>
+
+<center>
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <img src="/assets/Linear_Approx/closest-point.png" />  
+  </div>
+</center>
+
+<p>Therefore, if $\norm{\mathbf{y} - \mathbf{\hat{x}}}^{2} \neq 0$ (i.e. $\mathbf{y} \neq \mathbf{\hat{x}}$), then</p>
+
+\[\norm{\mathbf{x} - \mathbf{y}}^{2} &gt; \norm{\mathbf{x - \hat{x}}}^{2}\]
+
+<p>where equality is achievd only when $\mathbf{y} = \mathbf{\hat{x}}$. This implies that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$. This is a pretty intuitive result: If $\mathbf{x - y}$ is not orthogonal to $\mathbf{T}$, then there is some other point $\mathbf{\hat{x}}$ that comes closer to $\mathbf{x}$ while still remaining inside $\mathbf{T}$. This can be seen visually in the image above.</p>
+
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<hr />
+
+<h4 id="computing-the-closest-point">Computing the closest point</h4>
+
+<p>So we know that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$ if $\langle\mathbf{x - \hat{x}}, y\rangle = 0$ for all $\mathbf{y} \neq \mathbf{\hat{x}}$ in $\mathbf{T}$, but how do we actually compute $\mathbf{\hat{x}}$? If $\mathbf{T}$ is an $N$-dimensional subspace, that means we can represent any point in the space by a linear combination of $N$ basis vectors - call them $\mathbf{v_{1}}, \mathbf{v_{2}}, …, \mathbf{v_{N}}$.</p>
+
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}} + ... + \alpha_{N}\mathbf{v_{N}} = \sum_{n=1}^{N}\alpha_{n}\mathbf{v}_{N}\]
+
+<p>for some constants $\{ \alpha \}_{1}^{N}$. Orthogonality also tells us</p>
+
+\[\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle = 0\]
+
+<p>If we take the inner product of $\mathbf{x - \hat{x}}$ with one of the basis vectors we generate a linear equation.</p>
+
+\[\begin{align*}
+\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle &amp;= \big\langle\mathbf{x} - \sum_{n=1}^{N}\alpha_{n}\mathbf{v_{n}}, \mathbf{v_{k}}\big\rangle \\
+&amp;= \langle\mathbf{x}, \mathbf{v_{k}}\rangle - \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle - ... - \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle \\
+\Rightarrow \langle\mathbf{x}, \mathbf{v_{k}}\rangle &amp;= \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle + ... + \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle
+\end{align*}\]
+
+<p>In fact, we can generate $N$ different linear equations by taking the inner product with each of the basis vector separately. That means we can solve this linear system of equations for $\mathbf{\alpha}$, the vector of coefficients!</p>
+
+\[\begin{align*}
+\begin{bmatrix}\langle\mathbf{x}, \mathbf{v_{1}}\rangle \\ \vdots \\ \langle\mathbf{x}, \mathbf{v_{N}}\rangle\end{bmatrix} &amp;=
+\begin{bmatrix}
+\langle\mathbf{v_{1}}, \mathbf{v_{1}}\rangle &amp;  ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{1}}\rangle \\
+\vdots &amp; \ddots &amp; \vdots \\
+\langle\mathbf{v_{1}}, \mathbf{v_{N}}\rangle &amp; ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{N}}\rangle
+\end{bmatrix}\begin{bmatrix}\alpha_{1} \\ \vdots \\ \alpha_{N}\end{bmatrix} \\
+\\
+\mathbf{b} &amp;= \mathbf{G\alpha} \\
+\Rightarrow \mathbf{\alpha} &amp;= \mathbf{G^{-1}b}
+\end{align*}\]
+
+<p>Where $\mathbf{G}$ is the matrix if inner products and is called the Gram Matrix or Grammian of the basis $\{\mathbf{v}\}_{n=1}^{N}$. After we solve for our coeeficientls, we can easily reconstruct the closest point in $\mathbf{T}$ to $\mathbf{x}$ by</p>
+
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + ... + \alpha_{N}\mathbf{v_{N}}\]
+
+<p>Take a second to appreciate what we did. We took a minimization problem, converted it to a finite dimensional linear algebra problem by exploiting our basis to ask the question “what basis coefficients will create a $\mathbf{\hat{x}}$ that minimizes the objective?”. This idea is central to many more topics we will cover.</p>
+
+<p>$\mathbf{G}$ is invertible because the basis vectors are linearly independent. Also, since the inner product is a symmetric function, the Gram Matrix is also symmetric. Because the Gram matrix is square and invertible, $\mathbf{b} = \mathbf{G\alpha}$ always has a solution. Further, if we have an orthogonal basis, then the Gram Matrix is exactly the Identity transformation, and the coefficients can be calculated by simply taking inner products of $\mathbf{x}$ with each basis vector.</p>
+
+<h5 id="example">Example</h5>
+
+<p>We will close with an example to drive this idea home. Let our Hilbert space $\mathbf{S} = \mathbb{R}^{3}$ with the standard inner product and</p>
+
+\[\mathbf{T} = \text{Span}\Bigg(\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}, \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix}\Bigg), \mathbf{x} = \begin{bmatrix}2 \\ 1 \\ 0\end{bmatrix}\]
+
+<p>The vectors we defined $\mathbf{T}$ with form a basis for the subspace. What is the closest point in $\mathbf{T}$ to $\mathbf{x}$? We can write $\mathbf{\hat{x}}$ as</p>
+
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}}\]
+
+<p>and our Gram Matrix and $\mathbf{b}$ are</p>
+
+\[\mathbf{G} = \begin{bmatrix}
+2 &amp; 0 \\
+0 &amp; 2
+\end{bmatrix}, \mathbf{b} = \begin{bmatrix}2 \\ -2\end{bmatrix}\]
+
+<p>The inverse Gram Matrix is</p>
+
+\[\begin{bmatrix}
+\frac{1}{2} &amp; 0 \\
+0 &amp; \frac{1}{2}
+\end{bmatrix}\]
+
+<p>Finally, $\mathbf{\alpha} = \begin{bmatrix}1 &amp; -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 &amp; 0 &amp; 0\end{bmatrix}^{T}$</p>
+
+<hr />
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- horizontal -->
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8495937332177101" data-ad-slot="8539861386" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<hr />
+
+:ET

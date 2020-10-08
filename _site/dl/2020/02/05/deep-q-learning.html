@@ -90,11 +90,11 @@
 
 <p>In order to learn such a function, we need to define a loss function so that our network knows what it’s optimizing for. Recall that the optimal Q function satisfies</p>
 
-<script type="math/tex; mode=display">Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]</script>
+\[Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]\]
 
 <p>Assume we have a bunch of data in the form ${(s, a, r, s’)}_{i=1}^{N}$. Then for one of the data points, we can measure how close our Q network approximates the optimal Q function by the following equation.</p>
 
-<script type="math/tex; mode=display">\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}</script>
+\[\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}\]
 
 <p>Where $Q_{t}$ and $Q_{t-1}$ represent the network output before and after a single weight update. Notice how the first term in the square is our network’s current output and the second term is the target Q-value that we want, but based on the old network weights. The training pipeline looks something like below. First we college a batch of data (i.e. the agent takes actions in the environment) of size $B$, then we feed that data into the network, compute the loss, and update our network weights. Below, $D$ is the dimensionality of the state representation (e.g. the number of pixels in an image).</p>
 
@@ -120,12 +120,11 @@
 
 <p>This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let’s consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s’)$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-a_{t} =
+\[a_{t} =
 \begin{cases}
-\arg\max_{a}Q_{t}(s, a) & \text{with probability } 1 - \epsilon \\
-\text{random action} & \text{with probability } \epsilon
-\end{cases} %]]></script>
+\arg\max_{a}Q_{t}(s, a) &amp; \text{with probability } 1 - \epsilon \\
+\text{random action} &amp; \text{with probability } \epsilon
+\end{cases}\]
 
 <p>This will allow our agent to do some exploring to find good state-action combinations. Typically, it is good to do a lot of exploration when the network first starts training by using a high value for epsilon, reducing epsilon gradually as training progresses.</p>
 

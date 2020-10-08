@@ -103,7 +103,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   <li>
     <p>$\mathbb{R}^{N}$</p>
 
-    <script type="math/tex; mode=display">\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}</script>
+\[\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}\]
 
     <p>Note that the addition of any two vectors in $\mathbb{R}^{N}$ is also a vector in $\mathbb{R}^{N}$.</p>
   </li>
@@ -120,7 +120,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 <p>Now that we have the notion of a vector space, we can introduce the idea of a linear subspace, which is a mathematical tool that will soon become useful. A linear subspace is a subset $\mathbf{T}$ of a vector space $\mathbf{S}$ that contains the zero vector (i.e. $\mathbf{0} \in \mathbf{T}$) and is closed under vector addition and scalar multiplication.</p>
 
-<script type="math/tex; mode=display">\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T \quad \forall a, b \in \mathbb{R}</script>
+\[\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T \quad \forall a, b \in \mathbb{R}\]
 
 <div class="container">
   <div class="row">
@@ -169,12 +169,12 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   <li>
     <p>The standard euclidean norm (aka the $\ell_{2}$ norm): $\mathbf{S} = \mathbb{R}^{N}$</p>
 
-    <script type="math/tex; mode=display">\norm{\mathbf{x}}_{2} = \sqrt{\sum_{n=1}^{N}|x_{n}|^{2}}</script>
+\[\norm{\mathbf{x}}_{2} = \sqrt{\sum_{n=1}^{N}|x_{n}|^{2}}\]
   </li>
   <li>
     <p>$\mathbf{S} = $ the set of continuous functions on $\mathbb{R}$ ($\mathbf{x}$ is a function)</p>
 
-    <script type="math/tex; mode=display">\norm{\mathbf{x}}_{2} = \sqrt{\int_{-\infty}^{\infty}|x(t)|^{2}dt}</script>
+\[\norm{\mathbf{x}}_{2} = \sqrt{\int_{-\infty}^{\infty}|x(t)|^{2}dt}\]
   </li>
 </ol>
 
@@ -182,7 +182,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 <p>By now we have introduced vector spaces and normed vector spaces, the latter being a subset of the former. Now we will introduce the inner product. The inner product $\langle\cdot, \cdot\rangle$ is a function that takes two vectors in a vector space and produces a real number (or complex number, but we will ignore this for now).</p>
 
-<script type="math/tex; mode=display">\langle\cdot,\cdot\rangle: \mathbf{S}\times\mathbf{S}\rightarrow \mathbb{R}</script>
+\[\langle\cdot,\cdot\rangle: \mathbf{S}\times\mathbf{S}\rightarrow \mathbb{R}\]
 
 <p>A valid inner product obeys three rules for $\mathbf{x, y, z}\in\mathbf{S}$:</p>
 
@@ -193,7 +193,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   <li>
     <p>For $a, b \in \mathbb{R}$</p>
 
-    <p><script type="math/tex">\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z}\rangle = a\langle\mathbf{x}, \mathbf{z}\rangle + b\langle\mathbf{y}, \mathbf{z}\rangle</script> (linearity)</p>
+    <p>\(\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z}\rangle = a\langle\mathbf{x}, \mathbf{z}\rangle + b\langle\mathbf{y}, \mathbf{z}\rangle\) (linearity)</p>
   </li>
   <li>
     <p>$\langle\mathbf{x}, \mathbf{x}\rangle \geq 0$ and $\langle\mathbf{x}, \mathbf{x}\rangle = 0 \iff \mathbf{x} = \mathbf{0}$</p>
@@ -206,18 +206,18 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   <li>
     <p>The standard inner product (aka the dot product): $\mathbf{S} = \mathbb{R}^{N}$</p>
 
-    <script type="math/tex; mode=display">\langle\mathbf{x},\mathbf{y}\rangle = \sum_{n=1}^{N}x_{n}y_{n} = \mathbf{y}^{T}\mathbf{x}</script>
+\[\langle\mathbf{x},\mathbf{y}\rangle = \sum_{n=1}^{N}x_{n}y_{n} = \mathbf{y}^{T}\mathbf{x}\]
   </li>
   <li>
     <p>The standard inner product for continuous functions on $\mathbb{R}^{N}$. If $\mathbf{x, y}$ are two such functions</p>
 
-    <script type="math/tex; mode=display">\langle\mathbf{x}, \mathbf{y}\rangle = \int_{-\infty}^{\infty}x(t)y(t)dt</script>
+\[\langle\mathbf{x}, \mathbf{y}\rangle = \int_{-\infty}^{\infty}x(t)y(t)dt\]
   </li>
 </ol>
 
 <p>The last concept I want to introduce is the idea of an induced norm. It is a fact that every valid inner product induces a valid norm (but not the other way around). This induces norm has very useful properties that not all other norms have. For some inner product $\langle\cdot,\cdot\rangle_{\mathbf{S}}$ on a vector space $\mathbf{S}$, the induced norm is defined as</p>
 
-<script type="math/tex; mode=display">\norm{\mathbf{x}}_{\mathbf{S}} = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle_{\mathbf{S}}}</script>
+\[\norm{\mathbf{x}}_{\mathbf{S}} = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle_{\mathbf{S}}}\]
 
 <p>The standard inner product induces the standard euclidean norm. Two important properties of induced norms (not all norms!) are</p>
 
@@ -225,7 +225,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   <li>
     <p>The Cauchy-Schwartz Inequality:</p>
 
-    <script type="math/tex; mode=display">|\langle\mathbf{x},\mathbf{y}\rangle| \leq \norm{\mathbf{x}}\norm{\mathbf{y}}</script>
+\[|\langle\mathbf{x},\mathbf{y}\rangle| \leq \norm{\mathbf{x}}\norm{\mathbf{y}}\]
   </li>
   <li>
     <p>Pythagorean Theorem:</p>

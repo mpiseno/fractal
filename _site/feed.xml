@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-07T20:11:45-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides guides for topics related to computer science and artifical intelligence. We are also support computer science education by combining programming with other subjects.</subtitle><entry><title type="html">Python Basics</title><link href="http://localhost:4000/cs/2020/05/22/python-basics.html" rel="alternate" type="text/html" title="Python Basics" /><published>2020-05-22T04:06:43-04:00</published><updated>2020-05-22T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/22/python-basics</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/22/python-basics.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-08T01:10:32-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Fractal</title><subtitle>Fractal is an organization that provides guides for topics related to computer science and artifical intelligence. We are also support computer science education by combining programming with other subjects.</subtitle><entry><title type="html">Python Basics</title><link href="http://localhost:4000/cs/2020/05/22/python-basics.html" rel="alternate" type="text/html" title="Python Basics" /><published>2020-05-22T04:06:43-04:00</published><updated>2020-05-22T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/22/python-basics</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/22/python-basics.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p align=&quot;justify&quot;&gt;Python is a versatile programming language used in many different applications from simple scripting to entire applications. It was created in the late 80s by Guido van Rossum, and has seen increased adoption particularly in the data science and machine learning communities in recent years. We are using python because it is syntactically easy to read compared to other languages, beginner friendly, as has many packages that we can use for anything we want to build.&lt;/p&gt;
 
 &lt;p align=&quot;justify&quot;&gt;Python files have the &quot;.py&quot; file extension and can be run in the terminal (command prompt for windows users) by running, &lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python filename.py
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python filename.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p align=&quot;justify&quot;&gt;where &quot;filename&quot; is replaced with the name of your python file, while in the directory (folder) that the file is in. You can interactively test python code by simply running&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p align=&quot;justify&quot;&gt;in the terminal. This will open a python shell where you can type and run code line by line.&lt;/p&gt;
 
@@ -52,7 +52,7 @@
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 I have 5 apples
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -78,7 +78,7 @@ I have 5 apples
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;another_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;24.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;an element&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# You can also add elements to an existing list later on
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p align=&quot;justify&quot;&gt;Note that indices begin at 0 in python. There is a very good theoretical reason for this that I won't go into here, but just remember the first element of a list is always at index 0. This means the final index of a list is the length of the list minus 1. The length of a python list can be accessed using the len() function. To add elements to the end of an existing list, use the append() method.&lt;/p&gt;
@@ -100,21 +100,21 @@ I have 5 apples
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'oranges'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 2400
 True
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p align=&quot;justify&quot;&gt;One important property of dictionaries is that keys must be unique, which values do not have to be unique. This means we cannot define two entries in the dictionary whose keys are both 'apple'. Some useful methods (functions that are specific to a particular type) that can be called on dictionaries are keys() and values().&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fruits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the keys method returns a list of the keys in the dictionary
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the keys method returns a list of the keys in the dictionary
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fruits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the values method returns a list of the values in the dictionary
+&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the values method returns a list of the values in the dictionary
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 ['apples', 'oranges', 'bananas']
 [10, 6, 2400]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -137,7 +137,7 @@ True
   &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x is neither 4 nor 5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 x is 5 !
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -150,7 +150,7 @@ x is 5 !
   &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;This is a fallacy!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 This is a tautology!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -167,7 +167,7 @@ This is a tautology!
   &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 0
 1
 2
@@ -183,7 +183,7 @@ This is a tautology!
   &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 0
 1
 2
@@ -214,7 +214,7 @@ This is a tautology!
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_max_if_below_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mylist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output:
 9
 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -226,7 +226,7 @@ This is a tautology!
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://automatetheboringstuff.com/&quot;&gt;A great online python textbook&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/tagged/python-3.x&quot;&gt;StackOverflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Innovation and Trade</title><link href="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html" rel="alternate" type="text/html" title="Innovation and Trade" /><published>2020-05-18T04:06:43-04:00</published><updated>2020-05-18T04:06:43-04:00</updated><id>http://localhost:4000/proj/2020/05/18/innovation-and-trade</id><content type="html" xml:base="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="cs" /><summary type="html">Introduction</summary></entry><entry><title type="html">Innovation and Trade</title><link href="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html" rel="alternate" type="text/html" title="Innovation and Trade" /><published>2020-05-18T04:06:43-04:00</published><updated>2020-05-18T04:06:43-04:00</updated><id>http://localhost:4000/proj/2020/05/18/innovation-and-trade</id><content type="html" xml:base="http://localhost:4000/proj/2020/05/18/innovation-and-trade.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p align=&quot;justify&quot;&gt;This project allows students to gain hands-on programming experience while they learn topics from world history. Specifically, this assignment allows students to simulate trade on the Silk Road and observe the effects innovation had on trade at the time. Students will then be able to plot their results and analyze the results. The students will gain practice programming and data analysis experience while learning about history concepts. This assignment is targeted at AP World History students.&lt;/p&gt;
 
@@ -252,7 +252,7 @@ This is a tautology!
 
 &lt;p align=&quot;justify&quot;&gt;When the terminal opens, type&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
 
 &lt;p align=&quot;justify&quot;&gt;This will start a jupyter notebook in the browser.&lt;/p&gt;
 
@@ -270,7 +270,7 @@ This is a tautology!
 
 &lt;p align=&quot;justify&quot;&gt;When the command prompt opens, type&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
 
 &lt;p align=&quot;justify&quot;&gt;This will start a jupyter notebook in the browser.&lt;/p&gt;
 
@@ -282,7 +282,7 @@ This is a tautology!
 
 &lt;p align=&quot;justify&quot;&gt;Now that the students are set up with interactive notebook, they can step through the code blocks and simulate the trade of different empires involved with the Silk Road. Encourage them to add new empires with different goods based on their research about the time period as well as explore different ways of modifying the innovation index to see how that affects trade.&lt;/p&gt;
 
-&lt;p align=&quot;justify&quot;&gt;The deliverable for this project will be a two or three page paper where students explain the main players in Silk Road trade and how innovation affected trade. Students should include the graphs from their code and intepret their meaning.&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Getting Started with Python</title><link href="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting Started with Python" /><published>2020-05-03T04:06:43-04:00</published><updated>2020-05-03T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/03/getting-started-with-python</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html">&lt;p&gt;Placeholder&lt;/p&gt;</content><author><name></name></author><summary type="html">Placeholder</summary></entry><entry><title type="html">Neural Networks</title><link href="http://localhost:4000/ml/2020/04/12/neural-networks.html" rel="alternate" type="text/html" title="Neural Networks" /><published>2020-04-12T04:06:43-04:00</published><updated>2020-04-12T04:06:43-04:00</updated><id>http://localhost:4000/ml/2020/04/12/neural-networks</id><content type="html" xml:base="http://localhost:4000/ml/2020/04/12/neural-networks.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;The deliverable for this project will be a two or three page paper where students explain the main players in Silk Road trade and how innovation affected trade. Students should include the graphs from their code and intepret their meaning.&lt;/p&gt;</content><author><name></name></author><category term="proj" /><summary type="html">Introduction</summary></entry><entry><title type="html">Getting Started with Python</title><link href="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting Started with Python" /><published>2020-05-03T04:06:43-04:00</published><updated>2020-05-03T04:06:43-04:00</updated><id>http://localhost:4000/cs/2020/05/03/getting-started-with-python</id><content type="html" xml:base="http://localhost:4000/cs/2020/05/03/getting-started-with-python.html">&lt;p&gt;Placeholder&lt;/p&gt;</content><author><name></name></author><category term="cs" /><summary type="html">Placeholder</summary></entry><entry><title type="html">Neural Networks</title><link href="http://localhost:4000/ml/2020/04/12/neural-networks.html" rel="alternate" type="text/html" title="Neural Networks" /><published>2020-04-12T04:06:43-04:00</published><updated>2020-04-12T04:06:43-04:00</updated><id>http://localhost:4000/ml/2020/04/12/neural-networks</id><content type="html" xml:base="http://localhost:4000/ml/2020/04/12/neural-networks.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;p&gt;Before we begin, I should preface this by saying this will be a lot of information, and I assume you are at least somewhat familiar with how classifiers and loss functions work, but I will provide a brief recap. This guide will be structured in the following order.&lt;/p&gt;
 
@@ -314,7 +314,7 @@ This is a tautology!
 
 &lt;p&gt;Classifiers usually output either a score for each of its possible classes or a probability mass function over the possible classes. For example, a linear classifier trained to classify across 10 different classes would output a 10-dimensional vector where each entry is the score for that class (i.e. how strongly the classifier feels that the input belongs to each class). We need some way to measure the performance of our classifier, which is where the loss function comes in. The loss function answers the question “how good is my classifier with respect to my data?”. You might imagine we have some function $\ell_{i}(x_{i}, y_{i})$ that takes in the input and its corresponding label and tells us how good our classifier does at predicting $y_{i}$. Then we can sum up the loss for each data point to get our total loss.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})&lt;/script&gt;
+\[L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})\]
 
 &lt;p&gt;There are many different choices for $\ell(x, y)$ depending on the context of our problem and the type of classifier we have. The loss function is a design choice. The loss function I will introduce explicitly is the one we will use as I continue to introduce neural networks because it works well with the problem of image classification; it’s called the softmax loss or cross-entropy loss.&lt;/p&gt;
 
@@ -324,7 +324,7 @@ This is a tautology!
 
 &lt;p&gt;The softmax loss tries to maximize the log-likelihood of the correct class, or equivalently minimize the negative log-likelihood of the correct class&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}&lt;/script&gt;
+\[\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}\]
 
 &lt;p&gt;where $\mathbf{s}$ is again the scores given by the classifier which of course depends on $x_{i}$.&lt;/p&gt;
 
@@ -336,7 +336,7 @@ This is a tautology!
 
 &lt;p&gt;Where R is the regularization function and $\lambda$ is the regularization strength and is a hyperparameter. A common choice for R is $L_{2}$ regularization&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}&lt;/script&gt;
+\[R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}\]
 
 &lt;p&gt;where $\mathbf{W} \in \mathbb{R}^{K \times D}$.&lt;/p&gt;
 
@@ -390,7 +390,7 @@ This is a tautology!
 
 &lt;p&gt;In order to update our model parameters we use the gradient update rule&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;W \leftarrow W - \alpha \nabla_{W} L(X, Y)&lt;/script&gt;
+\[W \leftarrow W - \alpha \nabla_{W} L(X, Y)\]
 
 &lt;p&gt;which means we need to compute the gradient of the weight matrix for every layer. We can do this in a modular fashion called backpropagation or “backprop”.&lt;/p&gt;
 
@@ -404,27 +404,24 @@ This is a tautology!
 
 &lt;p&gt;We can use this gradient to compute the gradient of the loss w.r.t. the weight matrix $W_{i}$ using the chain rule. In order to compute the gradients for other layers, we also need to compute the gradient of the loss w.r.t. the input. After we have these gradients, we can simply apply the update rule.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
- \frac{\partial L}{\partial W_{i}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
- \frac{\partial L}{\partial h_{i-1}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
- \end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+ \frac{\partial L}{\partial W_{i}} &amp;amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
+ \frac{\partial L}{\partial h_{i-1}} &amp;amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
+ \end{align*}\]
 
 &lt;p&gt;for a typical FC layer $h_{i} = \max(0, W_{i}h_{i-1})$, we can step through the computations of the necessary gradients. Let’s define another variable $z = W_{i}h_{i-1}$ so that $h_{i} = \max(0, z)$&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\frac{\partial h_{i}}{\partial W_{i}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
-&amp;= \mathbb{1}[z \geq 0] \cdot h_{i-1}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\frac{\partial h_{i}}{\partial W_{i}} &amp;amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
+&amp;amp;= \mathbb{1}[z \geq 0] \cdot h_{i-1}
+\end{align*}\]
 
 &lt;p&gt;where $\mathbb{1}[\cdot]$ is the indicator function. Similarly we have&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\frac{\partial h_{i}}{\partial h_{i-1}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
-&amp;= \mathbb{1}[z \geq 0] \cdot W_{i}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\frac{\partial h_{i}}{\partial h_{i-1}} &amp;amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
+&amp;amp;= \mathbb{1}[z \geq 0] \cdot W_{i}
+\end{align*}\]
 
 &lt;p&gt;Now that we know how to compute the necessary gradients a FC layer, we have everything we need to train our network. Pseudocode for a typical training loop would look like this.&lt;/p&gt;
 
@@ -439,11 +436,11 @@ This is a tautology!
     &lt;span class=&quot;n&quot;&gt;dLdW1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backward_pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;W1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW1&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;W2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dLdW2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="ml" /><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Convolutional Neural Networks</title><link href="http://localhost:4000/dl/2020/02/29/cnns.html" rel="alternate" type="text/html" title="Convolutional Neural Networks" /><published>2020-02-29T03:06:43-05:00</published><updated>2020-02-29T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/29/cnns</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/29/cnns.html">&lt;h3 id=&quot;convolutional-layers&quot;&gt;Convolutional Layers&lt;/h3&gt;
 
 &lt;p&gt;Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)&lt;/script&gt;
+\[f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)\]
 
 &lt;p&gt;As you might imagine, this requires us to maintain an extremely large number of parameters. For example, consider a 28 by 28 image being input into a two-layer FC network with 100 neurons in the first layer and 10 neurons in the output layer. First we flatten our image into a 28 x 28 = 784 dimensional vector. This vector is being projected into 100 dimensions, so $\mathbf{W_{1}}$ will be of shape $100 \times 784$, or equivalently, $\mathbf{W_{1}}\in \mathbb{R}^{100 \times 784}$. That 100 dimensional vector then has to pass through the output layer and be turned into a 10 dimensional vector, so $\mathbf{W_{2}}\in \mathbb{R}^{10 \times 100}$. So just with this simple network on a small image, we are using $100 \cdot 784 + 10 \cdot 100 = 79400$ parameters!&lt;/p&gt;
 
@@ -457,7 +454,7 @@ This is a tautology!
 
 &lt;p&gt;We can accomplish this using convolutions. In mathematics, a convolutions is an operation on two functions that produces another function. We can borrow this idea and create a discrete form of convolution to implement this filter idea. We will say a filter $\mathbf{W}$, which is just a matrix is convolved with the input image $\mathbf{X}$, producing the output $\mathbf{Y}$, where each element of $\mathbf{Y}$ is determined in the following way&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]&lt;/script&gt;
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
 
 &lt;p&gt;where $k_{1}$ and $k_{2}$ are the dimensions of the filter (also called the kernel). So each element of the output is a weighted sum of a local subset of input elements. This is a 2D discrete convolution (actually it’s a cross-correlation, but that’s a technical detail and I’ll just say convolution), but convolutions using filters of differing numbers of dimensions are equally valid.&lt;/p&gt;
 
@@ -477,15 +474,14 @@ This is a tautology!
 
 &lt;p&gt;Each filter slides across the input. The amount by which the filter slides each time is called the stride. The output dimensions are determined by the input size, the filter size, and the stride in the following way. Let the input and output heights and widths be denoted by $h_{\text{in}}, w_{\text{in}}, h_{\text{out}}, w_{\text{out}}$ respectively, and let the filter dimensions be $k_{1}, k_{2}$.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1&lt;/script&gt;
+\[h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1\]
 
 &lt;p&gt;A similar formula holds for the widths. If this doesn’t produce a whole number, it is common to pad the outsides of the input with zeros enough so that the output dimensions will be whole numbers. Now if we consider out example from earlier, a $28 \times 28$ image, we can see the reduction in parameters afforded by a convolutional layer. Let’s say we have the same network as earlier, but this time the first layer is a convolutional layer and not a FC layer. Let’s also say we have 16 $4 \times 4$ filters with stride 2. Then the output size for our convolutional layer will be&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-h_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13 \\
-w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+h_{\text{out}} &amp;amp;= \frac{28 - 4}{2} + 1 = 13 \\
+w_{\text{out}} &amp;amp;= \frac{28 - 4}{2} + 1 = 13
+\end{align*}\]
 
 &lt;p&gt;The number of parameters for this layer is just the combined filter size: $16 \cdot 4 \cdot 4 = 256$. Now if we take the convolutional layer output, flatten it to size $16 \cdot 13 \cdot 13 = 2704$, and feed it to the output layer of size 10, this takes $2704 \cdot 10 = 27040$ parameters. So the total number of parameters in our network has been reduced from 79400 to 27296.&lt;/p&gt;
 
@@ -547,7 +543,7 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;Recall that for an output at index $r, c$ of $\mathbf{Y}$, we have&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]&lt;/script&gt;
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
 
 &lt;p&gt;Now we will see how to calculate the unknown gradients.&lt;/p&gt;
 
@@ -563,20 +559,18 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;Note that because each output pixel is just a weighted sum of some elements of the input with the kernel weights, we have the following.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\mathbf{Y}[r, c] &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
-\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
-&amp;= \mathbf{X}[r + a, c + b]
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\mathbf{Y}[r, c] &amp;amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &amp;amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+&amp;amp;= \mathbf{X}[r + a, c + b]
+\end{align*}\]
 
 &lt;p&gt;We can accumulate the contribution of this kernel weight by considering every pixel in the output as follows.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\frac{\partial L}{\partial \mathbf{W}[a, b]} &amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
-&amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{W}[a, b]} &amp;amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
+&amp;amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
+\end{align*}\]
 
 &lt;p&gt;Note that this is exactly a convolution between $\mathbf{X}$ and $\frac{\partial L}{\partial \mathbf{Y}}$ but clipped to be the dimensions of the kernel.&lt;/p&gt;
 
@@ -592,24 +586,22 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;Thinking about this in the general sense reveals that $\mathbf{X}[r’, c’]$ affects a box of output pixels whose upper left corner is $\mathbf{Y}[r’ - (k_{1} - 1), c’ - (k_{2} - 1)]$ and whose lower right pixel is $\mathbf{Y}[r’, c’]$. Therefore we can wright&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\frac{\partial L}{\partial \mathbf{X}[r', c']} &amp;= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{X}[r', c']} &amp;amp;= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
+\end{align*}\]
 
 &lt;p&gt;Using the equation for the discrete convolution we already know, we can see that&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\mathbf{Y}[r' - i, c' - j] &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+\[\begin{align*}
+\mathbf{Y}[r' - i, c' - j] &amp;amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
 
-\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
-&amp;= \mathbf{W}[i, j]
-\end{align*} %]]&gt;&lt;/script&gt;
+\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &amp;amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+&amp;amp;= \mathbf{W}[i, j]
+\end{align*}\]
 
 &lt;p&gt;This is because $\mathbf{X}[r’, c’]$ only appears once in this sum when $i=n$ and $j=m$. So finally we can write&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]&lt;/script&gt;
+\[\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]\]
 
 &lt;p&gt;Now we know how to compute the gradients needed for backprop through convolutional layers. We have shown that given $\frac{\partial L}{\partial \mathbf{Y}}$, we can compute $\frac{\partial L}{\partial \mathbf{W}}$ and $\frac{\partial L}{\partial \mathbf{X}}$.&lt;/p&gt;
 
@@ -622,7 +614,7 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 &lt;script&gt;
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">Convolutional Layers</summary></entry><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T03:06:43-05:00</published><updated>2020-02-21T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;hr /&gt;</content><author><name></name></author><category term="dl" /><summary type="html">Convolutional Layers</summary></entry><entry><title type="html">Linear Approximation</title><link href="http://localhost:4000/mfml/2020/02/21/linear-approximation.html" rel="alternate" type="text/html" title="Linear Approximation" /><published>2020-02-21T03:06:43-05:00</published><updated>2020-02-21T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/02/21/linear-approximation</id><content type="html" xml:base="http://localhost:4000/mfml/2020/02/21/linear-approximation.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;linear-approximation&quot;&gt;Linear Approximation&lt;/h3&gt;
 
@@ -636,19 +628,18 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;This Hilbert space $\mathbf{S}$ has an inner product $\langle\cdot, \cdot\rangle$ and induced norm $\norm{\cdot}$. So we can frame the problem as finding the point $\mathbf{\hat{x}} \in \mathbf{T}$ such that $\norm{\mathbf{\hat{x} - x}}$ is minimized.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation} \tag{1}
+\[\begin{equation} \tag{1}
 \text{minimize}_{\mathbf{y\in T}} \norm{\mathbf{y - x}}
-\end{equation}&lt;/script&gt;
+\end{equation}\]
 
 &lt;p&gt;We can find a unique minimizer by exploiting orthogonality. In fact, $\mathbf{\hat{x} \in T}$ is the closest point to $\mathbf{x \in S}$ if $\mathbf{\hat{x} - x}$ is orthogonal to all other points $\mathbf{y \in T}$. This means that $\langle \mathbf{\hat{x} - x}, y\rangle = 0$ for all $\mathbf{y \in T}$&lt;/p&gt;
 
 &lt;p&gt;Lets show that if $\langle\mathbf{\hat{x} - x}, \mathbf{y}\rangle = 0$ for all $\mathbf{y \neq \hat{x} \in T}$ then $\mathbf{\hat{x}}$ is minimizer of $(1)$.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\norm{\mathbf{x - y}}^{2} &amp;= \norm{(\mathbf{x - \hat{x}}) - (y - \mathbf{\hat{x}})}^{2} \\
-&amp;= \norm{\mathbf{x - \hat{x}}}^{2} + \norm{\mathbf{y} - \mathbf{\hat{x}}}^{2}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\norm{\mathbf{x - y}}^{2} &amp;amp;= \norm{(\mathbf{x - \hat{x}}) - (y - \mathbf{\hat{x}})}^{2} \\
+&amp;amp;= \norm{\mathbf{x - \hat{x}}}^{2} + \norm{\mathbf{y} - \mathbf{\hat{x}}}^{2}
+\end{align*}\]
 
 &lt;p&gt;The last equality follows from the Pythagorean theorem. This is valid because we required that $\mathbf{x - \hat{x}}$ was orthogonal to all points in $\mathbf{T}$, and $\mathbf{y} - \mathbf{\hat{x}}$ is certainly in $\mathbf{T}$!&lt;/p&gt;
 
@@ -660,7 +651,7 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;Therefore, if $\norm{\mathbf{y} - \mathbf{\hat{x}}}^{2} \neq 0$ (i.e. $\mathbf{y} \neq \mathbf{\hat{x}}$), then&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x} - \mathbf{y}}^{2} &gt; \norm{\mathbf{x - \hat{x}}}^{2}&lt;/script&gt;
+\[\norm{\mathbf{x} - \mathbf{y}}^{2} &amp;gt; \norm{\mathbf{x - \hat{x}}}^{2}\]
 
 &lt;p&gt;where equality is achievd only when $\mathbf{y} = \mathbf{\hat{x}}$. This implies that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$. This is a pretty intuitive result: If $\mathbf{x - y}$ is not orthogonal to $\mathbf{T}$, then there is some other point $\mathbf{\hat{x}}$ that comes closer to $\mathbf{x}$ while still remaining inside $\mathbf{T}$. This can be seen visually in the image above.&lt;/p&gt;
 
@@ -680,39 +671,37 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;So we know that $\mathbf{\hat{x}}$ is a unique minimizer of $(1)$ if $\langle\mathbf{x - \hat{x}}, y\rangle = 0$ for all $\mathbf{y} \neq \mathbf{\hat{x}}$ in $\mathbf{T}$, but how do we actually compute $\mathbf{\hat{x}}$? If $\mathbf{T}$ is an $N$-dimensional subspace, that means we can represent any point in the space by a linear combination of $N$ basis vectors - call them $\mathbf{v_{1}}, \mathbf{v_{2}}, …, \mathbf{v_{N}}$.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}} + ... + \alpha_{N}\mathbf{v_{N}} = \sum_{n=1}^{N}\alpha_{n}\mathbf{v}_{N}&lt;/script&gt;
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}} + ... + \alpha_{N}\mathbf{v_{N}} = \sum_{n=1}^{N}\alpha_{n}\mathbf{v}_{N}\]
 
 &lt;p&gt;for some constants $\{ \alpha \}_{1}^{N}$. Orthogonality also tells us&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle = 0&lt;/script&gt;
+\[\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle = 0\]
 
 &lt;p&gt;If we take the inner product of $\mathbf{x - \hat{x}}$ with one of the basis vectors we generate a linear equation.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle &amp;= \big\langle\mathbf{x} - \sum_{n=1}^{N}\alpha_{n}\mathbf{v_{n}}, \mathbf{v_{k}}\big\rangle \\
-&amp;= \langle\mathbf{x}, \mathbf{v_{k}}\rangle - \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle - ... - \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle \\
-\Rightarrow \langle\mathbf{x}, \mathbf{v_{k}}\rangle &amp;= \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle + ... + \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\langle\mathbf{x - \hat{x}}, \mathbf{v_{k}}\rangle &amp;amp;= \big\langle\mathbf{x} - \sum_{n=1}^{N}\alpha_{n}\mathbf{v_{n}}, \mathbf{v_{k}}\big\rangle \\
+&amp;amp;= \langle\mathbf{x}, \mathbf{v_{k}}\rangle - \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle - ... - \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle \\
+\Rightarrow \langle\mathbf{x}, \mathbf{v_{k}}\rangle &amp;amp;= \alpha_{1}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle + ... + \alpha_{N}\langle\mathbf{v_{1}, \mathbf{v_{k}}}\rangle
+\end{align*}\]
 
 &lt;p&gt;In fact, we can generate $N$ different linear equations by taking the inner product with each of the basis vector separately. That means we can solve this linear system of equations for $\mathbf{\alpha}$, the vector of coefficients!&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\begin{bmatrix}\langle\mathbf{x}, \mathbf{v_{1}}\rangle \\ \vdots \\ \langle\mathbf{x}, \mathbf{v_{N}}\rangle\end{bmatrix} &amp;=
+\[\begin{align*}
+\begin{bmatrix}\langle\mathbf{x}, \mathbf{v_{1}}\rangle \\ \vdots \\ \langle\mathbf{x}, \mathbf{v_{N}}\rangle\end{bmatrix} &amp;amp;=
 \begin{bmatrix}
-\langle\mathbf{v_{1}}, \mathbf{v_{1}}\rangle &amp;  ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{1}}\rangle \\
-\vdots &amp; \ddots &amp; \vdots \\
-\langle\mathbf{v_{1}}, \mathbf{v_{N}}\rangle &amp; ... &amp; \langle\mathbf{v_{N}}, \mathbf{v_{N}}\rangle
+\langle\mathbf{v_{1}}, \mathbf{v_{1}}\rangle &amp;amp;  ... &amp;amp; \langle\mathbf{v_{N}}, \mathbf{v_{1}}\rangle \\
+\vdots &amp;amp; \ddots &amp;amp; \vdots \\
+\langle\mathbf{v_{1}}, \mathbf{v_{N}}\rangle &amp;amp; ... &amp;amp; \langle\mathbf{v_{N}}, \mathbf{v_{N}}\rangle
 \end{bmatrix}\begin{bmatrix}\alpha_{1} \\ \vdots \\ \alpha_{N}\end{bmatrix} \\
 \\
-\mathbf{b} &amp;= \mathbf{G\alpha} \\
-\Rightarrow \mathbf{\alpha} &amp;= \mathbf{G^{-1}b}
-\end{align*} %]]&gt;&lt;/script&gt;
+\mathbf{b} &amp;amp;= \mathbf{G\alpha} \\
+\Rightarrow \mathbf{\alpha} &amp;amp;= \mathbf{G^{-1}b}
+\end{align*}\]
 
 &lt;p&gt;Where $\mathbf{G}$ is the matrix if inner products and is called the Gram Matrix or Grammian of the basis $\{\mathbf{v}\}_{n=1}^{N}$. After we solve for our coeeficientls, we can easily reconstruct the closest point in $\mathbf{T}$ to $\mathbf{x}$ by&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + ... + \alpha_{N}\mathbf{v_{N}}&lt;/script&gt;
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + ... + \alpha_{N}\mathbf{v_{N}}\]
 
 &lt;p&gt;Take a second to appreciate what we did. We took a minimization problem, converted it to a finite dimensional linear algebra problem by exploiting our basis to ask the question “what basis coefficients will create a $\mathbf{\hat{x}}$ that minimizes the objective?”. This idea is central to many more topics we will cover.&lt;/p&gt;
 
@@ -722,27 +711,25 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
 
 &lt;p&gt;We will close with an example to drive this idea home. Let our Hilbert space $\mathbf{S} = \mathbb{R}^{3}$ with the standard inner product and&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{T} = \text{Span}\Bigg(\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}, \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix}\Bigg), \mathbf{x} = \begin{bmatrix}2 \\ 1 \\ 0\end{bmatrix}&lt;/script&gt;
+\[\mathbf{T} = \text{Span}\Bigg(\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}, \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix}\Bigg), \mathbf{x} = \begin{bmatrix}2 \\ 1 \\ 0\end{bmatrix}\]
 
 &lt;p&gt;The vectors we defined $\mathbf{T}$ with form a basis for the subspace. What is the closest point in $\mathbf{T}$ to $\mathbf{x}$? We can write $\mathbf{\hat{x}}$ as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}}&lt;/script&gt;
+\[\mathbf{\hat{x}} = \alpha_{1}\mathbf{v_{1}} + \alpha_{2}\mathbf{v_{2}}\]
 
 &lt;p&gt;and our Gram Matrix and $\mathbf{b}$ are&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\mathbf{G} = \begin{bmatrix}
-2 &amp; 0 \\
-0 &amp; 2
-\end{bmatrix}, \mathbf{b} = \begin{bmatrix}2 \\ -2\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\mathbf{G} = \begin{bmatrix}
+2 &amp;amp; 0 \\
+0 &amp;amp; 2
+\end{bmatrix}, \mathbf{b} = \begin{bmatrix}2 \\ -2\end{bmatrix}\]
 
 &lt;p&gt;The inverse Gram Matrix is&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-\frac{1}{2} &amp; 0 \\
-0 &amp; \frac{1}{2}
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+\frac{1}{2} &amp;amp; 0 \\
+0 &amp;amp; \frac{1}{2}
+\end{bmatrix}\]
 
 &lt;p&gt;Finally, $\mathbf{\alpha} = \begin{bmatrix}1 &amp;amp; -1\end{bmatrix}^{T}$. We reconstruct our solution using the coefficients: $\mathbf{\hat{x}} = \mathbf{v_{1}} - \mathbf{v_{2}} = \begin{bmatrix}2 &amp;amp; 0 &amp;amp; 0\end{bmatrix}^{T}$&lt;/p&gt;
 
@@ -756,65 +743,61 @@ w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T03:06:43-05:00</published><updated>2020-02-10T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name></name></author><category term="mfml" /><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry><entry><title type="html">Policy Gradient and Actor Critic</title><link href="http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic.html" rel="alternate" type="text/html" title="Policy Gradient and Actor Critic" /><published>2020-02-10T03:06:43-05:00</published><updated>2020-02-10T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/10/policy-gradient-actor-critic.html">&lt;h3 id=&quot;policy-gradient&quot;&gt;Policy Gradient&lt;/h3&gt;
 
 &lt;p&gt;What if we could learn the policy parameters directly? We can approach this problem by thinking of policies abstractly - Let’s consider a class of policies defined by $\theta$ and refer to such a policy as $\pi_{\theta}(a|s)$ which is a probability distribution over the action space conditioned on the state $s$. These parameters $\theta$ could be the parameters of a neural network or a simple polynomial or anything really.&lt;/p&gt;
 
 &lt;p&gt;Let’s note define a metric $J$ which can be used to evaluate the quality of a policy $\pi_{\theta}$. What we really want to do is maximize the expected future reward, so naturally we can write&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\pi_{\theta}) = \mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]&lt;/script&gt;
+\[J(\pi_{\theta}) = \mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]\]
 
 &lt;p&gt;where $R(s_{t}, a_{t})$ is the reward given by taking action $a$ in state $s$ and time $t$. The optimal set of parameters for the policy can then be written as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]&lt;/script&gt;
+\[\theta^{\ast} = \arg\max_{\theta}\mathbb{E}\bigg[\sum_{t=1}^{T}R(s_{t}, a_{t})\bigg]\]
 
 &lt;p&gt;Now consider a trajectory $\tau = (s_{1}, a_{1}, s_{2}, a_{2}, …, s_{T})$ which is a sequence of state-action pairs until the terminal state. We are trying to learn $\theta$ that maximizes the reward of some trajectory. So in the spirit of gradient descent, we are going to take actions within our environment to sample a trajectory and then use the rewards gained from that trajectory to adjust our parameters. We can write our loss function as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)]&lt;/script&gt;
+\[J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)]\]
 
 &lt;p&gt;where $R(\tau)$ is the cumulative reward gained by our trajectory. Our objective is to take the gradient of this function with respect to $\theta$ so that we can use the gradient descent update rule to adjust our parameters, but the reward function is not known and may not even be differentiable, but with a few clever tricks we can estimate the gradient. Recall that for any continuous function $f(x)$, $\mathbb{E}[f(x)] = \int_{-\infty}^{\infty}p(x)f(x)dx$ where $p(x)$ is the probability of event $x$ occurring. So we have&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
-&amp;= \int p(\tau)R(\tau)d\tau \\
-&amp;= \int \pi_{\theta}(\tau)R(\tau)d\tau
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+J(\theta) &amp;amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
+&amp;amp;= \int p(\tau)R(\tau)d\tau \\
+&amp;amp;= \int \pi_{\theta}(\tau)R(\tau)d\tau
+\end{align*}\]
 
 &lt;p&gt;and&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\nabla_{\theta}J(\theta) &amp;= \nabla_{\theta} \int \pi_{\theta}(\tau)R(\tau)d\tau \\
-&amp;= \int \nabla_{\theta}\pi_{\theta}(\tau)R(\tau)d\tau \\
-&amp;= \int \pi_{\theta}(\tau)\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)d\tau \\
-&amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\nabla_{\theta}J(\theta) &amp;amp;= \nabla_{\theta} \int \pi_{\theta}(\tau)R(\tau)d\tau \\
+&amp;amp;= \int \nabla_{\theta}\pi_{\theta}(\tau)R(\tau)d\tau \\
+&amp;amp;= \int \pi_{\theta}(\tau)\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)d\tau \\
+&amp;amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log(\pi_{\theta}(\tau))R(\tau)]
+\end{align*}\]
 
 &lt;p&gt;Where the third line follows from the fact that $\nabla_{x}f(x) = f(x)\nabla_{x}\log(f(x))$. The fact that we have turned the gradient of our cost function $J$ into an expectation is good because that means we can estimate it by sampling data. The last piece of the puzzle is to figure out how to calculate $\nabla_{\theta}\log(\pi_{\theta}(\tau))$. Note that we can rewrite $\pi_{\theta}(\tau)$ as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\pi_{\theta}(\tau) = \pi_{\theta}(a_{1}, s_{1}, a_{2}, s_{2}, ..., s_{T}) &amp;= p(s_{1}) \prod_{t=1}^{T} p(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t}) \\
-&amp;= p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\pi_{\theta}(\tau) = \pi_{\theta}(a_{1}, s_{1}, a_{2}, s_{2}, ..., s_{T}) &amp;amp;= p(s_{1}) \prod_{t=1}^{T} p(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t}) \\
+&amp;amp;= p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})
+\end{align*}\]
 
 &lt;p&gt;Convince yourself that the above relation is true. $\pi_{\theta}(\tau)$ is the probability of trajectory $\tau$ happening. It is the probability of starting in $s_{1}$, then taking action $a_{1}$ given $s_{1}$, then transitioning to state $s_{2}$ given $a_{1}$ in $s_{1}$, and so on. This joint probability can be factored out. The last step is to realize $p(a_{t}|s_{t})$ is the definition of $\pi_{\theta}(a_{t}|s_{t})$. Now&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-\nabla_{\theta} \log(\pi_{\theta}(\tau)) &amp;= \nabla_{\theta}\log\bigg[p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})\bigg] \\
-&amp;= \nabla_{\theta}\bigg[\log(p(s_{1})) + \sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + \sum_{t=1}^{T}\log(p(s_{t+1}|a_{t}, s_{t}))\bigg] \\
-&amp;= 0 + \nabla_{\theta}\sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + 0
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+\nabla_{\theta} \log(\pi_{\theta}(\tau)) &amp;amp;= \nabla_{\theta}\log\bigg[p(s_{1}) \prod_{t=1}^{T} \pi_{\theta}(a_{t}|s_{t})p(s_{t+1}|a_{t}, s_{t})\bigg] \\
+&amp;amp;= \nabla_{\theta}\bigg[\log(p(s_{1})) + \sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + \sum_{t=1}^{T}\log(p(s_{t+1}|a_{t}, s_{t}))\bigg] \\
+&amp;amp;= 0 + \nabla_{\theta}\sum_{t=1}^{T}\log(\pi_{\theta}(a_{t}|s_{t})) + 0
+\end{align*}\]
 
 &lt;p&gt;This simplication is enough for us to completed our estimate of the policy gradient $\nabla_{\theta}J(\theta)$.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta}J(\theta) \approx \frac{1}{N}\sum_{n=1}^{N}\Bigg[\bigg(\sum_{t=1}^{T} \nabla_{\theta}\log(\pi_{\theta}(a_{n,t}|s_{n,t}))\bigg)\bigg(\sum_{t=1}^{T}r(s_{n,t},a_{n,t})\bigg)\Bigg]&lt;/script&gt;
+\[\nabla_{\theta}J(\theta) \approx \frac{1}{N}\sum_{n=1}^{N}\Bigg[\bigg(\sum_{t=1}^{T} \nabla_{\theta}\log(\pi_{\theta}(a_{n,t}|s_{n,t}))\bigg)\bigg(\sum_{t=1}^{T}r(s_{n,t},a_{n,t})\bigg)\Bigg]\]
 
 &lt;p&gt;Where $N$ is just the number of episodes (analogous to epochs) we do. Having a set of $N$ trajectories and then averaging the policy gradient estimate over each of them makes this estimate more robust. Now that we can estimate the policy gradient, we simply would update our parameters in the familiar way&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta \leftarrow \theta - \alpha\nabla_{\theta}J(\theta)&lt;/script&gt;
+\[\theta \leftarrow \theta - \alpha\nabla_{\theta}J(\theta)\]
 
 &lt;p&gt;One interpretation of this result is that we are trying to maximize the log likelihood of trajectories that give good rewards and minimize the log likelihood of those that don’t. This is the idea behind the REINFORCE algorithm which is&lt;/p&gt;
 
@@ -841,7 +824,7 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;One issue with vanilla policy gradients is that its very hard to assign credit to state-action pairs that resulted in good reward because we only consider the total reward $\sum_{t=1}^{T}R(a_{t}, s_{t})$. The trajectories are noisy. But if we had the $Q$ function, we would know what state-action pairs were good. In other words, we would estimate the gradient of $J$ as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta}J(\theta) = \mathbb{E}[\nabla_{\theta}\log(\pi_{\theta}(\tau))Q_{\pi_{\theta}}(\tau)]&lt;/script&gt;
+\[\nabla_{\theta}J(\theta) = \mathbb{E}[\nabla_{\theta}\log(\pi_{\theta}(\tau))Q_{\pi_{\theta}}(\tau)]\]
 
 &lt;p&gt;The idea of actor-critic is that we have an actor that samples trajectories using the policy, and a critic that critiques the policy using the $Q$ function. Since we don’t have the optimal $Q$ functions, we can estimate it like we did in deep Q learning. So we could have a policy network that takes in a state and returns a probability distribution over the action space (i.e. $\pi_{\theta}(a|s))$ and a $Q$ network that takes in a state-action pair and returns its Q value estimate. Let’s say this network is parameterized by a generic variable $\beta$. Note that these don’t have to be neural networks, but for the sake of this guide I’ll just say “network”. So we have networks $\pi_{\theta}$ and $Q_{\beta}$. The general actor-critic algorithm then goes like&lt;/p&gt;
 
@@ -852,7 +835,7 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
       &lt;li&gt;Sample action $a$ from $\pi_{\theta}(\cdot|s)$&lt;/li&gt;
       &lt;li&gt;Receive reward $r$ and sample next state $s’ \sim p(s’|s, a)$&lt;/li&gt;
       &lt;li&gt;Use the critic to evaluate the actor and update the policy similar to like we did in policy gradients:
-   &lt;script type=&quot;math/tex&quot;&gt;\theta \leftarrow \theta - \alpha\nabla_{\theta}\log(\pi_{\theta}(a|s))Q_{\beta}(s, a)&lt;/script&gt;&lt;/li&gt;
+   \(\theta \leftarrow \theta - \alpha\nabla_{\theta}\log(\pi_{\theta}(a|s))Q_{\beta}(s, a)\)&lt;/li&gt;
       &lt;li&gt;Update the critic according to some loss metric: $\text{MSE Loss} = (Q_{t+1}(s, a) - (r + \max_{a’}Q_{t}(s’, a’)))^{2}$&lt;/li&gt;
       &lt;li&gt;Update $\beta$ using backprop or whatever update rule&lt;/li&gt;
     &lt;/ul&gt;
@@ -861,7 +844,7 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;Of course you can sample whole trajectories instead of one state-action pair at a time. Different types of actor-critic result from changing the “critic”. In REINFORCE, the critic was simply the reward we got from the trajectory. In actor-critic, the critic is the Q function. Another popular choice is called advantage actor-critic, in which the critic is the advantage functions&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_{\pi_{\theta}}(s, a) = Q_{\pi_{\theta}}(s, a) - V_{\pi_{\theta}}(s)&lt;/script&gt;
+\[A_{\pi_{\theta}}(s, a) = Q_{\pi_{\theta}}(s, a) - V_{\pi_{\theta}}(s)\]
 
 &lt;p&gt;Where V is the value function (recall value iteration). The advantage function A tells us how much better is taking action $a$ in state $s$ than the expected cumulative reward of being in state $s$.&lt;/p&gt;
 
@@ -877,7 +860,7 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T03:06:43-05:00</published><updated>2020-02-05T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name></name></author><category term="dl" /><summary type="html">Policy Gradient</summary></entry><entry><title type="html">Deep Q-Learning</title><link href="http://localhost:4000/dl/2020/02/05/deep-q-learning.html" rel="alternate" type="text/html" title="Deep Q-Learning" /><published>2020-02-05T03:06:43-05:00</published><updated>2020-02-05T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/05/deep-q-learning</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/05/deep-q-learning.html">&lt;h3 id=&quot;learning-based-methods&quot;&gt;Learning-Based Methods&lt;/h3&gt;
 
 &lt;p&gt;Policy and Value Iteration gave us a solid way to find the optimal policy when we have perfect information about the environment (i.e. we know the distributions of state transitions and rewards), but when this information is not know, we have to get clever with how we determine good policies. One way is to learn by trial and error - taking actions in the environment and observing what states we transition to under different actions and what rewards we obtain for doing so. Doing this gives us data in the form $(s, a, r, s’)$. If we take action $a$ in state $s$ we receive reward $r$ and transition to state $s’$. From this data we can try to approximate the unknown distributions.&lt;/p&gt;
 
@@ -889,11 +872,11 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;In order to learn such a function, we need to define a loss function so that our network knows what it’s optimizing for. Recall that the optimal Q function satisfies&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]&lt;/script&gt;
+\[Q^{\ast}(s,a) = \mathbb{E}_{s' \sim p(s'|s, a)}\bigg[r(s, a) + \gamma \max_{a'}Q^{\ast}(s', a')\bigg]\]
 
 &lt;p&gt;Assume we have a bunch of data in the form ${(s, a, r, s’)}_{i=1}^{N}$. Then for one of the data points, we can measure how close our Q network approximates the optimal Q function by the following equation.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}&lt;/script&gt;
+\[\text{MSE Loss} = (Q_{t}(s, a) - [r + \max_{a} Q_{t-1}(s', a)])^{2}\]
 
 &lt;p&gt;Where $Q_{t}$ and $Q_{t-1}$ represent the network output before and after a single weight update. Notice how the first term in the square is our network’s current output and the second term is the target Q-value that we want, but based on the old network weights. The training pipeline looks something like below. First we college a batch of data (i.e. the agent takes actions in the environment) of size $B$, then we feed that data into the network, compute the loss, and update our network weights. Below, $D$ is the dimensionality of the state representation (e.g. the number of pixels in an image).&lt;/p&gt;
 
@@ -919,12 +902,11 @@ J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}[R(\tau)] \\
 
 &lt;p&gt;This framework gives us a good way to approximate the optimal Q function, but there still remains the question of how do we actually collect the data? What policy should we use for that? To better explain this problem let’s consider an example. Say we have some sub-optimal policy $\pi_{0}$ that we will use to collect experience $(s, a, r, s’)$ data in the environment. If we simply choose the best action for each state according to this sub-optimal policy, we may not discover that some actions that are not chosen by $\pi_{0}$ lead to good rewards. Essentially, we will be stuck in local minima. One way around this is to occasionally take random actions so that we have a chance of seeing new experiences and hopefully finding better actions to take. This is an exploration strategy known as epsilon-greedy. It says that for some time $t$ the action we choose should be made according to the following rule.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-a_{t} =
+\[a_{t} =
 \begin{cases}
-\arg\max_{a}Q_{t}(s, a) &amp; \text{with probability } 1 - \epsilon \\
-\text{random action} &amp; \text{with probability } \epsilon
-\end{cases} %]]&gt;&lt;/script&gt;
+\arg\max_{a}Q_{t}(s, a) &amp;amp; \text{with probability } 1 - \epsilon \\
+\text{random action} &amp;amp; \text{with probability } \epsilon
+\end{cases}\]
 
 &lt;p&gt;This will allow our agent to do some exploring to find good state-action combinations. Typically, it is good to do a lot of exploration when the network first starts training by using a high value for epsilon, reducing epsilon gradually as training progresses.&lt;/p&gt;
 
@@ -955,7 +937,7 @@ a_{t} =
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T03:06:43-05:00</published><updated>2020-02-02T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name></name></author><category term="dl" /><summary type="html">Learning-Based Methods</summary></entry><entry><title type="html">Reinforcement Learning Background</title><link href="http://localhost:4000/dl/2020/02/02/reinforcement-learning.html" rel="alternate" type="text/html" title="Reinforcement Learning Background" /><published>2020-02-02T03:06:43-05:00</published><updated>2020-02-02T03:06:43-05:00</updated><id>http://localhost:4000/dl/2020/02/02/reinforcement-learning</id><content type="html" xml:base="http://localhost:4000/dl/2020/02/02/reinforcement-learning.html">&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
 
 &lt;p&gt;Reinforcement learning (RL) is difference from supervised and unsupervised learning. In supervised learning, we have truth data (labels) for our problem that we use to check the output of our model against, correcting for mistakes accordingly. In unsupervised learning, we are learning some structure to the data. In RL we don’t have data necessarily, but instead we have an environment and a set of rules. There exists an agent that lives in this environment and its objective is to take actions that will eventually lead to reward. Whereas supervised learning tries to match data to its corresponding label, in RL we try to maximize reward. In other words, we are learning how to make the agent make a good sequence of actions.&lt;/p&gt;
 
@@ -1016,7 +998,7 @@ a_{t} =
 
 &lt;p&gt;So now that we have a concrete example of a problem, we can discuss what it means to find an optimal policy for it. Some questions that come when determining what a “good” policy is are “does it maximize the reward right now?” and “does is maximize the future reward?”. Typically, we maximize the discounted future reward; the idea being that we want policies that take future state into consideration, but we also don’t want the policy to focus so much on optimizing for future rewards that it doesn’t take actions that would put the agent in a good state now. Therefore we define the optimal policy $\pi^{\ast}$ in the following way.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi^{\ast} = \arg \max_{\pi} \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|\pi\bigg]&lt;/script&gt;
+\[\pi^{\ast} = \arg \max_{\pi} \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|\pi\bigg]\]
 
 &lt;p&gt;Here, time is indexed by $t$. This means we want to maximize the expectation of the discounted reward given some policy. Notice since $\gamma$ is between 0 and 1, we will optimize for states closer in time more than ones further.&lt;/p&gt;
 
@@ -1024,23 +1006,23 @@ a_{t} =
 
 &lt;p&gt;We have a notion of what a “good” policy is, but how do we actually find it? This is where the Value function and Q function come in. The value function is a prediction of future reward and basically answers the question “how good is the current state $s$ that I’m in?”. We denote $V^{\pi}(s)$ as the expected cumulative reward of being in state $s$ and then following policy $\pi$ thereafter.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;V^{\pi}(s) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, \pi\bigg]&lt;/script&gt;
+\[V^{\pi}(s) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, \pi\bigg]\]
 
 &lt;p&gt;We also have the notion of an optimal value function $V^{\ast}(s)$, which is the expected cumulative reward of being in state $s$ and then following the optimal policy $\pi^{\ast}$ thereafter. The Q function represents a similar idea - $Q^{\pi}(s, a)$ is the expected cumulative reward for taking action $a$ in state $s$ and then following policy $\pi$ thereafter. Similarly $Q^{\ast}(s, a)$ is the expected cumulative reward of taking action $a$ in state $s$ and following the optimal policy thereafter.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^{\pi}(s, a) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, a_{0}=a, \pi\bigg]&lt;/script&gt;
+\[Q^{\pi}(s, a) = \mathbb{E}\bigg[\sum_{t \geq 0} \gamma^{t}r_{t}|s_{0}=s, a_{0}=a, \pi\bigg]\]
 
 &lt;p&gt;Remember, the value function only deals with states, and the Q function deals with state-action pairs! Now we can go about defining the optimal value and policy from the Q function values. It is clear that the optimal value and policy for a state can be defined in terms of the Q function as follows.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;V^{\ast}(s) = \max_{a}Q^{\ast}(s, a)&lt;/script&gt;
+\[V^{\ast}(s) = \max_{a}Q^{\ast}(s, a)\]
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi^{\ast}(s) = \arg \max_{a}Q^{\ast}(s, a)&lt;/script&gt;
+\[\pi^{\ast}(s) = \arg \max_{a}Q^{\ast}(s, a)\]
 
 &lt;p&gt;These optimal values can be calculated recursively using what are called the Bellman equations, defined below. Notice how the calculation of these values requires we have access to the true distributions $\mathbb{T}(s’, a, s)$ (denoted with $p(\cdot)$ below) and $R(s’, a, s)$ (denoted with $r(\cdot)$ below).&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;V^{\ast}(s) = \max_{a}\sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]&lt;/script&gt;
+\[V^{\ast}(s) = \max_{a}\sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]\]
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^{\ast}(s, a) = \sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]&lt;/script&gt;
+\[Q^{\ast}(s, a) = \sum_{s'}p(s'|s, a)[r(s, a) + \gamma V^{\ast}(s')]\]
 
 &lt;p&gt;The summation over all possible next-states $s’$ of $p(s’|s, a)$ comes from the definition of expectation in probability $\mathbb{E}[f(\cdot)] = \sum_{x}p(x) \cdot f(x)$. We are summing over all subsequent states the probability of being in that state, given the current state and action, then multiplying by the reward we get for being in that next state. It should be clear that the expected reward of being in state $s$, taking action $a$ and ending up in state $s’$ is exactly $r(s, a) + \gamma V^{\ast}(s’)$.&lt;/p&gt;
 
@@ -1066,13 +1048,12 @@ a_{t} =
 
 &lt;p&gt;Let’s do an example calculation of one iteration of Value Iteration on the state (3, 3) (where the agent is pictured).&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-V^{2}((3, 3)) &amp;= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1}(s')] \\
-&amp;= \sum_{s'\in \{(4, 3), (3, 2)\}} p(s'|(3, 3), \text{right})[r((3, 3), \text{right}) + \gamma V^{1}(s')] \\
-&amp;= (0.8 * (0 + \gamma * 1)) + (0.1 (0 + \gamma * 0)) + (0.1 (0 + \gamma * 0)) \\
-&amp;= 0.8\gamma
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+V^{2}((3, 3)) &amp;amp;= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1}(s')] \\
+&amp;amp;= \sum_{s'\in \{(4, 3), (3, 2)\}} p(s'|(3, 3), \text{right})[r((3, 3), \text{right}) + \gamma V^{1}(s')] \\
+&amp;amp;= (0.8 * (0 + \gamma * 1)) + (0.1 (0 + \gamma * 0)) + (0.1 (0 + \gamma * 0)) \\
+&amp;amp;= 0.8\gamma
+\end{align*}\]
 
 &lt;p&gt;Note that the above calculation did not include other actions for brevity since we already knew the max operation would give us right as the optimal action. Now state (3, 3) has value $0.8\gamma$ and we can keep recursing to calculate the values of all the other states. After doing so, this would be 1 iteration of Value Iteration. We would repeat this process until the values converge.&lt;/p&gt;
 
@@ -1100,7 +1081,7 @@ V^{2}((3, 3)) &amp;= \max_{a}\sum_{s'}p(s'|(3, 3), a)[r(s, (3, 3)) + \gamma V^{1
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T03:06:43-05:00</published><updated>2020-01-23T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
+&lt;hr /&gt;</content><author><name></name></author><category term="dl" /><summary type="html">Reinforcement Learning</summary></entry><entry><title type="html">Vector Spaces, Norms, and Inner Products</title><link href="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html" rel="alternate" type="text/html" title="Vector Spaces, Norms, and Inner Products" /><published>2020-01-23T03:06:43-05:00</published><updated>2020-01-23T03:06:43-05:00</updated><id>http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products</id><content type="html" xml:base="http://localhost:4000/mfml/2020/01/23/vector-spaces-norms-and-inner-products.html">&lt;p&gt;$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$&lt;/p&gt;
 
 &lt;h3 id=&quot;vector-spaces&quot;&gt;Vector Spaces&lt;/h3&gt;
 
@@ -1125,7 +1106,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   &lt;li&gt;
     &lt;p&gt;$\mathbb{R}^{N}$&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}&lt;/script&gt;
+\[\mathbf{x} = \begin{bmatrix}x_{1} \\ \vdots \\ x_{N}\end{bmatrix}\]
 
     &lt;p&gt;Note that the addition of any two vectors in $\mathbb{R}^{N}$ is also a vector in $\mathbb{R}^{N}$.&lt;/p&gt;
   &lt;/li&gt;
@@ -1142,7 +1123,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;p&gt;Now that we have the notion of a vector space, we can introduce the idea of a linear subspace, which is a mathematical tool that will soon become useful. A linear subspace is a subset $\mathbf{T}$ of a vector space $\mathbf{S}$ that contains the zero vector (i.e. $\mathbf{0} \in \mathbf{T}$) and is closed under vector addition and scalar multiplication.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T \quad \forall a, b \in \mathbb{R}&lt;/script&gt;
+\[\mathbf{x}, \mathbf{y} \in \mathbf{T} \implies a\mathbf{x} + b\mathbf{y} \in T \quad \forall a, b \in \mathbb{R}\]
 
 &lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
@@ -1191,12 +1172,12 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   &lt;li&gt;
     &lt;p&gt;The standard euclidean norm (aka the $\ell_{2}$ norm): $\mathbf{S} = \mathbb{R}^{N}$&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{2} = \sqrt{\sum_{n=1}^{N}|x_{n}|^{2}}&lt;/script&gt;
+\[\norm{\mathbf{x}}_{2} = \sqrt{\sum_{n=1}^{N}|x_{n}|^{2}}\]
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;$\mathbf{S} = $ the set of continuous functions on $\mathbb{R}$ ($\mathbf{x}$ is a function)&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{2} = \sqrt{\int_{-\infty}^{\infty}|x(t)|^{2}dt}&lt;/script&gt;
+\[\norm{\mathbf{x}}_{2} = \sqrt{\int_{-\infty}^{\infty}|x(t)|^{2}dt}\]
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1204,7 +1185,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
 
 &lt;p&gt;By now we have introduced vector spaces and normed vector spaces, the latter being a subset of the former. Now we will introduce the inner product. The inner product $\langle\cdot, \cdot\rangle$ is a function that takes two vectors in a vector space and produces a real number (or complex number, but we will ignore this for now).&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\cdot,\cdot\rangle: \mathbf{S}\times\mathbf{S}\rightarrow \mathbb{R}&lt;/script&gt;
+\[\langle\cdot,\cdot\rangle: \mathbf{S}\times\mathbf{S}\rightarrow \mathbb{R}\]
 
 &lt;p&gt;A valid inner product obeys three rules for $\mathbf{x, y, z}\in\mathbf{S}$:&lt;/p&gt;
 
@@ -1215,7 +1196,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   &lt;li&gt;
     &lt;p&gt;For $a, b \in \mathbb{R}$&lt;/p&gt;
 
-    &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z}\rangle = a\langle\mathbf{x}, \mathbf{z}\rangle + b\langle\mathbf{y}, \mathbf{z}\rangle&lt;/script&gt; (linearity)&lt;/p&gt;
+    &lt;p&gt;\(\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z}\rangle = a\langle\mathbf{x}, \mathbf{z}\rangle + b\langle\mathbf{y}, \mathbf{z}\rangle\) (linearity)&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;$\langle\mathbf{x}, \mathbf{x}\rangle \geq 0$ and $\langle\mathbf{x}, \mathbf{x}\rangle = 0 \iff \mathbf{x} = \mathbf{0}$&lt;/p&gt;
@@ -1228,18 +1209,18 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   &lt;li&gt;
     &lt;p&gt;The standard inner product (aka the dot product): $\mathbf{S} = \mathbb{R}^{N}$&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x},\mathbf{y}\rangle = \sum_{n=1}^{N}x_{n}y_{n} = \mathbf{y}^{T}\mathbf{x}&lt;/script&gt;
+\[\langle\mathbf{x},\mathbf{y}\rangle = \sum_{n=1}^{N}x_{n}y_{n} = \mathbf{y}^{T}\mathbf{x}\]
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;The standard inner product for continuous functions on $\mathbb{R}^{N}$. If $\mathbf{x, y}$ are two such functions&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\langle\mathbf{x}, \mathbf{y}\rangle = \int_{-\infty}^{\infty}x(t)y(t)dt&lt;/script&gt;
+\[\langle\mathbf{x}, \mathbf{y}\rangle = \int_{-\infty}^{\infty}x(t)y(t)dt\]
   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;The last concept I want to introduce is the idea of an induced norm. It is a fact that every valid inner product induces a valid norm (but not the other way around). This induces norm has very useful properties that not all other norms have. For some inner product $\langle\cdot,\cdot\rangle_{\mathbf{S}}$ on a vector space $\mathbf{S}$, the induced norm is defined as&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\norm{\mathbf{x}}_{\mathbf{S}} = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle_{\mathbf{S}}}&lt;/script&gt;
+\[\norm{\mathbf{x}}_{\mathbf{S}} = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle_{\mathbf{S}}}\]
 
 &lt;p&gt;The standard inner product induces the standard euclidean norm. Two important properties of induced norms (not all norms!) are&lt;/p&gt;
 
@@ -1247,7 +1228,7 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
   &lt;li&gt;
     &lt;p&gt;The Cauchy-Schwartz Inequality:&lt;/p&gt;
 
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;|\langle\mathbf{x},\mathbf{y}\rangle| \leq \norm{\mathbf{x}}\norm{\mathbf{y}}&lt;/script&gt;
+\[|\langle\mathbf{x},\mathbf{y}\rangle| \leq \norm{\mathbf{x}}\norm{\mathbf{y}}\]
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Pythagorean Theorem:&lt;/p&gt;
@@ -1270,4 +1251,4 @@ $\mathbf{x}, \mathbf{y} \in \mathbf{S} \implies a\mathbf{x} + b\mathbf{y} \in S 
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry></feed>
+&lt;hr /&gt;</content><author><name></name></author><category term="mfml" /><summary type="html">$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$</summary></entry></feed>

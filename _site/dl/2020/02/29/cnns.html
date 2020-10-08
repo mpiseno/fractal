@@ -82,7 +82,7 @@
 
 <p>Recall fully-connected (FC) neural networks, in which each feature in the input is connected to every neuron in the first layer. For images, this means that every pixel has a weight corresponding to each neuron the next layer.</p>
 
-<script type="math/tex; mode=display">f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)</script>
+\[f_{\text{FC}}(X; \mathbf{W_{1}, W_{2}}) = \mathbf{W_{2}}\max(0, \mathbf{W_{1}}X)\]
 
 <p>As you might imagine, this requires us to maintain an extremely large number of parameters. For example, consider a 28 by 28 image being input into a two-layer FC network with 100 neurons in the first layer and 10 neurons in the output layer. First we flatten our image into a 28 x 28 = 784 dimensional vector. This vector is being projected into 100 dimensions, so $\mathbf{W_{1}}$ will be of shape $100 \times 784$, or equivalently, $\mathbf{W_{1}}\in \mathbb{R}^{100 \times 784}$. That 100 dimensional vector then has to pass through the output layer and be turned into a 10 dimensional vector, so $\mathbf{W_{2}}\in \mathbb{R}^{10 \times 100}$. So just with this simple network on a small image, we are using $100 \cdot 784 + 10 \cdot 100 = 79400$ parameters!</p>
 
@@ -96,7 +96,7 @@
 
 <p>We can accomplish this using convolutions. In mathematics, a convolutions is an operation on two functions that produces another function. We can borrow this idea and create a discrete form of convolution to implement this filter idea. We will say a filter $\mathbf{W}$, which is just a matrix is convolved with the input image $\mathbf{X}$, producing the output $\mathbf{Y}$, where each element of $\mathbf{Y}$ is determined in the following way</p>
 
-<script type="math/tex; mode=display">\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]</script>
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
 
 <p>where $k_{1}$ and $k_{2}$ are the dimensions of the filter (also called the kernel). So each element of the output is a weighted sum of a local subset of input elements. This is a 2D discrete convolution (actually it’s a cross-correlation, but that’s a technical detail and I’ll just say convolution), but convolutions using filters of differing numbers of dimensions are equally valid.</p>
 
@@ -116,15 +116,14 @@
 
 <p>Each filter slides across the input. The amount by which the filter slides each time is called the stride. The output dimensions are determined by the input size, the filter size, and the stride in the following way. Let the input and output heights and widths be denoted by $h_{\text{in}}, w_{\text{in}}, h_{\text{out}}, w_{\text{out}}$ respectively, and let the filter dimensions be $k_{1}, k_{2}$.</p>
 
-<script type="math/tex; mode=display">h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1</script>
+\[h_{\text{out}} = \frac{h_{\text{in}} - k_{1}}{\text{stride}} + 1\]
 
 <p>A similar formula holds for the widths. If this doesn’t produce a whole number, it is common to pad the outsides of the input with zeros enough so that the output dimensions will be whole numbers. Now if we consider out example from earlier, a $28 \times 28$ image, we can see the reduction in parameters afforded by a convolutional layer. Let’s say we have the same network as earlier, but this time the first layer is a convolutional layer and not a FC layer. Let’s also say we have 16 $4 \times 4$ filters with stride 2. Then the output size for our convolutional layer will be</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-h_{\text{out}} &= \frac{28 - 4}{2} + 1 = 13 \\
-w_{\text{out}} &= \frac{28 - 4}{2} + 1 = 13
-\end{align*} %]]></script>
+\[\begin{align*}
+h_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13 \\
+w_{\text{out}} &amp;= \frac{28 - 4}{2} + 1 = 13
+\end{align*}\]
 
 <p>The number of parameters for this layer is just the combined filter size: $16 \cdot 4 \cdot 4 = 256$. Now if we take the convolutional layer output, flatten it to size $16 \cdot 13 \cdot 13 = 2704$, and feed it to the output layer of size 10, this takes $2704 \cdot 10 = 27040$ parameters. So the total number of parameters in our network has been reduced from 79400 to 27296.</p>
 
@@ -186,7 +185,7 @@ w_{\text{out}} &= \frac{28 - 4}{2} + 1 = 13
 
 <p>Recall that for an output at index $r, c$ of $\mathbf{Y}$, we have</p>
 
-<script type="math/tex; mode=display">\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]</script>
+\[\mathbf{Y}[r, c] = \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j]\]
 
 <p>Now we will see how to calculate the unknown gradients.</p>
 
@@ -202,20 +201,18 @@ w_{\text{out}} &= \frac{28 - 4}{2} + 1 = 13
 
 <p>Note that because each output pixel is just a weighted sum of some elements of the input with the kernel weights, we have the following.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\mathbf{Y}[r, c] &= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
-\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
-&= \mathbf{X}[r + a, c + b]
-\end{align*} %]]></script>
+\[\begin{align*}
+\mathbf{Y}[r, c] &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+\Rightarrow \frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} &amp;= \sum_{i=0}^{k_{1}}\sum_{j=0}^{k_{2}} \frac{\partial}{\partial \mathbf{W}[a, b]}\mathbf{X}[r + i, c + j]\mathbf{W}[i, j] \\
+&amp;= \mathbf{X}[r + a, c + b]
+\end{align*}\]
 
 <p>We can accumulate the contribution of this kernel weight by considering every pixel in the output as follows.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\frac{\partial L}{\partial \mathbf{W}[a, b]} &= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
-&= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
-\end{align*} %]]></script>
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{W}[a, b]} &amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]}\frac{\partial \mathbf{Y}[r, c]}{\partial \mathbf{W}[a, b]} \\
+&amp;= \sum_{r=0}^{h_{2}}\sum_{c=0}^{w_{2}}\frac{\partial L}{\partial \mathbf{Y}[r, c]} \mathbf{X}[r + a, c + b]
+\end{align*}\]
 
 <p>Note that this is exactly a convolution between $\mathbf{X}$ and $\frac{\partial L}{\partial \mathbf{Y}}$ but clipped to be the dimensions of the kernel.</p>
 
@@ -231,24 +228,22 @@ w_{\text{out}} &= \frac{28 - 4}{2} + 1 = 13
 
 <p>Thinking about this in the general sense reveals that $\mathbf{X}[r’, c’]$ affects a box of output pixels whose upper left corner is $\mathbf{Y}[r’ - (k_{1} - 1), c’ - (k_{2} - 1)]$ and whose lower right pixel is $\mathbf{Y}[r’, c’]$. Therefore we can wright</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\frac{\partial L}{\partial \mathbf{X}[r', c']} &= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
-\end{align*} %]]></script>
+\[\begin{align*}
+\frac{\partial L}{\partial \mathbf{X}[r', c']} &amp;= \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]} \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']}
+\end{align*}\]
 
 <p>Using the equation for the discrete convolution we already know, we can see that</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\mathbf{Y}[r' - i, c' - j] &= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+\[\begin{align*}
+\mathbf{Y}[r' - i, c' - j] &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
 
-\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
-&= \mathbf{W}[i, j]
-\end{align*} %]]></script>
+\Rightarrow \frac{\partial \mathbf{Y}[r' - i, c' - j]}{\partial \mathbf{X}[r', c']} &amp;= \sum_{n=0}^{k_{1}}\sum_{m=0}^{k_{2}} \frac{\partial}{\partial \mathbf{X}[r', c']}\mathbf{X}[r' - i + n, c' - j + m]\mathbf{W}[n, m] \\
+&amp;= \mathbf{W}[i, j]
+\end{align*}\]
 
 <p>This is because $\mathbf{X}[r’, c’]$ only appears once in this sum when $i=n$ and $j=m$. So finally we can write</p>
 
-<script type="math/tex; mode=display">\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]</script>
+\[\frac{\partial L}{\partial \mathbf{X}[r', c']} = \sum_{i=0}^{k_{1} - 1}\sum_{j=0}^{k_{2} - 1} \frac{\partial L}{\partial \mathbf{Y}[r' - i, c' - j]}\mathbf{W}[i, j]\]
 
 <p>Now we know how to compute the gradients needed for backprop through convolutional layers. We have shown that given $\frac{\partial L}{\partial \mathbf{Y}}$, we can compute $\frac{\partial L}{\partial \mathbf{W}}$ and $\frac{\partial L}{\partial \mathbf{X}}$.</p>
 

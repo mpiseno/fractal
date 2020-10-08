@@ -115,7 +115,7 @@
 
 <p>Finally, to run the program we just wrote, type</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python hello_world.py
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python hello_world.py
 </code></pre></div></div>
 
 <p>in the terminal. The first item tells the terminal that we are running a python program, while the second item tells the terminal which python file to actually run. This is how we will run all our programs. You should see the words “Hello World!” print out in the terminal after running the program.</p>
@@ -269,17 +269,17 @@
 
 <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
 
     <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'meow!'</span> <span class="o">+</span> <span class="s">' '</span> <span class="o">+</span> <span class="n">string</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">calculate_age_in_months</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">12</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">12</span>
 
     <span class="k">def</span> <span class="nf">say_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'my name is '</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'my name is '</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s">'Cloudy'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
@@ -291,10 +291,10 @@
 <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s">'Violet'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># prints "meow! you are in my spot."
-</span><span class="n">my_cat</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'you are in my spot.'</span><span class="p">)</span>
+</span><span class="n">my_cat</span><span class="p">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'you are in my spot.'</span><span class="p">)</span>
 
-<span class="n">my_cat</span><span class="o">.</span><span class="n">say_name</span><span class="p">()</span>
-<span class="n">months_old</span> <span class="o">=</span> <span class="n">my_cat</span><span class="o">.</span><span class="n">calculate_age_in_months</span><span class="p">()</span>
+<span class="n">my_cat</span><span class="p">.</span><span class="n">say_name</span><span class="p">()</span>
+<span class="n">months_old</span> <span class="o">=</span> <span class="n">my_cat</span><span class="p">.</span><span class="n">calculate_age_in_months</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>In the next lesson, we will explore data structures, which are implemented as different classes in python. For example, a list in python is a data structures that holds a collections of values. Because under the hood it is just a class, it has certain methods that we can call on it.</p>

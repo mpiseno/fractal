@@ -136,6 +136,10 @@ body {
     color: white;
 }
 
+.next-prev-btn-wrapper a:hover {
+    color: white;
+}
+
 .next-prev-btn {
     background-color: var(--cskblue);
     border-color: var(--cskblue);

@@ -84,12 +84,12 @@
 
 <p align="justify">Python files have the ".py" file extension and can be run in the terminal (command prompt for windows users) by running, </p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python filename.py
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python filename.py
 </code></pre></div></div>
 
 <p align="justify">where "filename" is replaced with the name of your python file, while in the directory (folder) that the file is in. You can interactively test python code by simply running</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
 </code></pre></div></div>
 <p align="justify">in the terminal. This will open a python shell where you can type and run code line by line.</p>
 
@@ -132,7 +132,7 @@
 <span class="k">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 I have 5 apples
 </code></pre></div></div>
 
@@ -158,7 +158,7 @@ I have 5 apples
 </span><span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">24.6</span><span class="p">,</span> <span class="s">"an element"</span><span class="p">,</span> <span class="bp">True</span><span class="p">]</span>
 
 <span class="c1"># You can also add elements to an existing list later on
-</span><span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+</span><span class="n">mylist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p align="justify">Note that indices begin at 0 in python. There is a very good theoretical reason for this that I won't go into here, but just remember the first element of a list is always at index 0. This means the final index of a list is the length of the list minus 1. The length of a python list can be accessed using the len() function. To add elements to the end of an existing list, use the append() method.</p>
@@ -180,21 +180,21 @@ I have 5 apples
 <span class="k">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="s">'oranges'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 2400
 True
 </code></pre></div></div>
 
 <p align="justify">One important property of dictionaries is that keys must be unique, which values do not have to be unique. This means we cannot define two entries in the dictionary whose keys are both 'apple'. Some useful methods (functions that are specific to a particular type) that can be called on dictionaries are keys() and values().</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">keys</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># the keys method returns a list of the keys in the dictionary
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">keys</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># the keys method returns a list of the keys in the dictionary
 </span><span class="k">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
 
-<span class="n">vals</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># the values method returns a list of the values in the dictionary
+<span class="n">vals</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># the values method returns a list of the values in the dictionary
 </span><span class="k">print</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 ['apples', 'oranges', 'bananas']
 [10, 6, 2400]
 </code></pre></div></div>
@@ -217,7 +217,7 @@ True
   <span class="k">print</span><span class="p">(</span><span class="s">"x is neither 4 nor 5"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 x is 5 !
 </code></pre></div></div>
 
@@ -230,7 +230,7 @@ x is 5 !
   <span class="k">print</span><span class="p">(</span><span class="s">"This is a fallacy!"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 This is a tautology!
 </code></pre></div></div>
 
@@ -247,7 +247,7 @@ This is a tautology!
   <span class="k">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 0
 1
 2
@@ -263,7 +263,7 @@ This is a tautology!
   <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 0
 1
 2
@@ -294,7 +294,7 @@ This is a tautology!
 <span class="k">print</span><span class="p">(</span><span class="n">get_max_if_below_x</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output:
 9
 0
 </code></pre></div></div>

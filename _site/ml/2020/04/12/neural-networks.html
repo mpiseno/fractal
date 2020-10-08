@@ -110,7 +110,7 @@
 
 <p>Classifiers usually output either a score for each of its possible classes or a probability mass function over the possible classes. For example, a linear classifier trained to classify across 10 different classes would output a 10-dimensional vector where each entry is the score for that class (i.e. how strongly the classifier feels that the input belongs to each class). We need some way to measure the performance of our classifier, which is where the loss function comes in. The loss function answers the question “how good is my classifier with respect to my data?”. You might imagine we have some function $\ell_{i}(x_{i}, y_{i})$ that takes in the input and its corresponding label and tells us how good our classifier does at predicting $y_{i}$. Then we can sum up the loss for each data point to get our total loss.</p>
 
-<script type="math/tex; mode=display">L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})</script>
+\[L(X, Y) = \frac{1}{M}\sum_{i=1}^{M}\ell_{i}(x_{i}, y_{i})\]
 
 <p>There are many different choices for $\ell(x, y)$ depending on the context of our problem and the type of classifier we have. The loss function is a design choice. The loss function I will introduce explicitly is the one we will use as I continue to introduce neural networks because it works well with the problem of image classification; it’s called the softmax loss or cross-entropy loss.</p>
 
@@ -120,7 +120,7 @@
 
 <p>The softmax loss tries to maximize the log-likelihood of the correct class, or equivalently minimize the negative log-likelihood of the correct class</p>
 
-<script type="math/tex; mode=display">\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}</script>
+\[\ell_{i} = -\log P(y = y_{i} | x = x_{i}) = -\log \frac{e^{s_{y_{i}}}}{\sum_{j}e^{s_{j}}}\]
 
 <p>where $\mathbf{s}$ is again the scores given by the classifier which of course depends on $x_{i}$.</p>
 
@@ -132,7 +132,7 @@
 
 <p>Where R is the regularization function and $\lambda$ is the regularization strength and is a hyperparameter. A common choice for R is $L_{2}$ regularization</p>
 
-<script type="math/tex; mode=display">R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}</script>
+\[R(\mathbf{W}) = \sum_{i=0}^{K-1}\sum_{j=0}^{D-1}(W[i, j])^{2}\]
 
 <p>where $\mathbf{W} \in \mathbb{R}^{K \times D}$.</p>
 
@@ -186,7 +186,7 @@
 
 <p>In order to update our model parameters we use the gradient update rule</p>
 
-<script type="math/tex; mode=display">W \leftarrow W - \alpha \nabla_{W} L(X, Y)</script>
+\[W \leftarrow W - \alpha \nabla_{W} L(X, Y)\]
 
 <p>which means we need to compute the gradient of the weight matrix for every layer. We can do this in a modular fashion called backpropagation or “backprop”.</p>
 
@@ -200,27 +200,24 @@
 
 <p>We can use this gradient to compute the gradient of the loss w.r.t. the weight matrix $W_{i}$ using the chain rule. In order to compute the gradients for other layers, we also need to compute the gradient of the loss w.r.t. the input. After we have these gradients, we can simply apply the update rule.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
- \frac{\partial L}{\partial W_{i}} &= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
- \frac{\partial L}{\partial h_{i-1}} &= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
- \end{align*} %]]></script>
+\[\begin{align*}
+ \frac{\partial L}{\partial W_{i}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial W_{i}} \\
+ \frac{\partial L}{\partial h_{i-1}} &amp;= \frac{\partial L}{\partial h_{i}}\frac{\partial h_{i}}{\partial h_{i-1}}
+ \end{align*}\]
 
 <p>for a typical FC layer $h_{i} = \max(0, W_{i}h_{i-1})$, we can step through the computations of the necessary gradients. Let’s define another variable $z = W_{i}h_{i-1}$ so that $h_{i} = \max(0, z)$</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\frac{\partial h_{i}}{\partial W_{i}} &= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
-&= \mathbb{1}[z \geq 0] \cdot h_{i-1}
-\end{align*} %]]></script>
+\[\begin{align*}
+\frac{\partial h_{i}}{\partial W_{i}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial W_{i}} \\
+&amp;= \mathbb{1}[z \geq 0] \cdot h_{i-1}
+\end{align*}\]
 
 <p>where $\mathbb{1}[\cdot]$ is the indicator function. Similarly we have</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-\frac{\partial h_{i}}{\partial h_{i-1}} &= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
-&= \mathbb{1}[z \geq 0] \cdot W_{i}
-\end{align*} %]]></script>
+\[\begin{align*}
+\frac{\partial h_{i}}{\partial h_{i-1}} &amp;= \frac{\partial h_{i}}{\partial z}\frac{\partial z}{\partial h_{i-1}} \\
+&amp;= \mathbb{1}[z \geq 0] \cdot W_{i}
+\end{align*}\]
 
 <p>Now that we know how to compute the necessary gradients a FC layer, we have everything we need to train our network. Pseudocode for a typical training loop would look like this.</p>
 

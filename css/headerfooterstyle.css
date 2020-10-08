@@ -56,8 +56,14 @@ body {
     margin: 0;
 }
 
+.content-title {
+    margin-left: 5%;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
 .about-banner {
-    background-image: url("../imgs/banner.png");
+    background-image: url("../imgs/productivity.jpg");
     background-position: center;
     background-size: cover;
     height: 30vw;

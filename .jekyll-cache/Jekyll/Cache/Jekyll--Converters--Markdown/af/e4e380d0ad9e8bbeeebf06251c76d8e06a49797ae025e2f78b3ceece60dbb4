@@ -1,0 +1,240 @@
+I"^<h1 id="hello-world">Hello World</h1>
+
+<hr />
+
+<h2 id="what-is-computer-science-and-why-should-we-care">What is Computer Science and Why Should We Care?</h2>
+
+<p>Computer Science is, broadly, the study of computing. It is an extremely large field that encompasses many subfields like algorithms, operating systems, web development, artificial intelligence, networking, and so much more. In many respects, computer science and comptuer scientists are responsble for much of the modern technology used every day and tons of exciting new technologies currently in development.</p>
+
+<p>These lessons will largely focus on programming (or coding), a task that is necessary for much of the aforementioned technology. Much of the technology you see on a day to day basic is just code. Of course your phone apps and the screen display are code, but many of the other things in your daily life are too. The elevator buttons you press, your coffee machine settings, the light that turns on and off depending on the position of your refridgerator door - its all just code.</p>
+
+<p>We should care about programming, and computer science more broadly, because it inundates our life and will only become more relevant in years to come. Learning programming opens so many doors, not only in the job market, but also as an stimulating academic interest. There is a plethora of impactful problems and work to be done in this vast field, and it all starts with coding “Hello World”.</p>
+
+<h2 id="python">Python</h2>
+
+<p>Python is the programming language we will use in our lessons. It is becomming one of the most popular programming languages because of its ease of use and it versatility. Python can be used for everything from creating websites to training the most state of the art AI models.</p>
+
+<h3 id="downloading-python-and-an-editor">Downloading Python and an Editor</h3>
+
+<p>To start programming in python, we must first download it, just like any other application you might download on your computer. You can download the latest version of python from <a href="https://www.python.org/downloads/">the official website</a>. Make sure you select the correct download for your operaitng system (Windows, Mac, or otherwise). Once it is downloaded, go through the installation instructions by continuing to click continue until Python is installed successfully.</p>
+
+<p>Now open a the terminal if you are using a Mac by pressing (⌘ + Space) and searching for “terminal”. If you are on windows, open the home menu and search for “command prompt”. The terminal (command prompt) is how you interact with your computer and give it commands to run the programs that you write and many other useful commands. Type “python” in the terminal and press enter. If you see something like the output below, then you’ve downloaded Python correctly.</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/hello_world/terminal.png" /></p>
+
+<p>The python environment above is just an interactive environment inside the terminal where you can run and test python code, but it is not where we will be writing most of our code. You can type “quit()” and press enter to exit this interactive environment.</p>
+
+<p>We will be writing most of our code inside a text editor. Think of it like a Word document, but for code. <a href="https://www.sublimetext.com/3">Sublime</a> is a simple and easy to use editor. Once it is downloaded, you can open up Sublime and start writing code!</p>
+
+<h3 id="hello-world-1">Hello World</h3>
+
+<p>In this section, we will write and run our first Python program. Open up Sublime and create a new file called hello_world.py. Python files are designated with the “.py” file extension. Make sure to save this file in a folder (also called a directory) on your computer that you know. For example, “~/Desktop/projects/hello_world.py”. The “~” charcter means the home directory on your computer.</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/hello_world/sublime.png" /></p>
+
+<p>Now that we created a file in which to write our code, let’s write our first program - it will just be 1 line of code! Write the following in the editor and save it.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Hello World!'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now open a terminal (or command prompt) and nagivate to the directory where the python file is located. We can do this with the “cd” command, which stands for “change directory”. To make sure the file is actually in this directory, we can type “ls” to show the contents of the current directory.</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/hello_world/terminal_cd.png" /></p>
+
+<p>Finally, to run the program we just wrote, type</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python hello_world.py
+</code></pre></div></div>
+
+<p>in the terminal. The first item tells the terminal that we are running a python program, while the second item tells the terminal which python file to actually run. This is how we will run all our programs. You should see the words “Hello World!” print out in the terminal after running the program.</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/hello_world/terminal_hello_world.png" /></p>
+
+<p>Congratulations! You have just written and run your first Python program!</p>
+
+<h2 id="python-concepts">Python Concepts</h2>
+
+<p>In this section, we will explore some important concepts in python that will be the building blocks of your future python programs. In all the following examples, we run the python program in the same way as above in the Hello World section. Feel free to create a new python file to write all these examples in or just read along.</p>
+
+<h3 id="primitive-types">Primitive Types</h3>
+
+<p>Coding deals with numbers, decimals, logic, and words. Every programming language has primitives, the basic building blocks of data. In Python, we can save each of these types of primitives into a variable to be referenced later in our program. The # character can be used to write comments in your code. Anything following the # symbol on the same line will not be treated as code, but as a comment about the code.</p>
+
+<p>In Python, numbers are called ints, variables that hold the value true or false are called bools, word are called strings, and decimals are called floats. When declaring strings, you can either wrap the string in single quotes ‘’ or double quotes “”.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The variable x points to an int of value 5
+</span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># The variable y points to a float of value 4.523
+</span><span class="n">y</span> <span class="o">=</span> <span class="mf">4.523</span>
+
+<span class="c1"># The variable my_string points to a string
+</span><span class="n">my_string</span> <span class="o">=</span> <span class="s">'hello'</span>
+
+<span class="c1"># The variable is_program_running points to a bool of value True
+</span><span class="n">is_program_running</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<p>You can perform certain operations on these primitives. For example the + operator adds ints or floats together. It can also be used to concatentate strings. However you cannot use the + operator to combine an int with a string because the program will error.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Add an int and a float
+</span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># Concatenate two strings
+</span><span class="n">hello_world</span> <span class="o">=</span> <span class="n">my_string</span> <span class="o">+</span> <span class="s">' world'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hello_world</span><span class="p">)</span>
+
+<span class="c1"># This errors (try it)!
+</span><span class="n">z2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="s">' world'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Several other operations are defined too. For ints and floats, you can substract -, multiply *, divide /, integer divide (division with no remainder) //, and exponentiate **. For strings you can use the multiplication operator to concatentate a string multiple times.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Multiple an int and a float
+</span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># Concatenate a string multiple times
+</span><span class="n">greetings</span> <span class="o">=</span> <span class="n">my_string</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greetings</span><span class="p">)</span> <span class="c1"># prints hellohellohello ... hello
+</span></code></pre></div></div>
+
+<h3 id="logical-statements">Logical Statements</h3>
+
+<p>In many of our programs, we want to only execute a portion of code based on some condition. There are three main types of conditional logical statements that we will use.</p>
+
+<p>An if statement executes a portion of code only if the condition of the if statement is met.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'x is greater than 4'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>An if statement can also be combined with an elif statement, which executes its block of code if the if statement condition was not met but the elif condition was met. Finally, you can also specify an else statement which executes if none of the above conditions have been met.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'y is greater than 12'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'y is greater than 9'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'y is less than or equal to 9'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The next type of conditonal statement is a for loop, which executes its block of code a predetermined number of times. The most simple form of this uses a built-in function of Python called range (we will discuss functions below). The range function returns an iterator over a collection of indices. The code below gives a clear example.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'This is iteration '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>This above code will print out what iteration it is on 10 times. Each iteration, the variable i is set to whatever number iteration we are on, so i is an int. Because i is an int and not a string, we cannot directly concatenate it, which is why we use Python’s built-in str function to convert the int i to string form.</p>
+
+<p>The last type of conditonal statement is a while loop, which executes its block of code until its condition is false. While loops can run forever if the condition never becomes false.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This while loop runs forever
+</span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'This will run forever'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="functions">Functions</h3>
+
+<p>We have already seen some built-in functions that come with python, namely range and print, but we can also define our own functions that take input parameters and do some computation. This is useful for situations when we might need to reuse the same code several times so we don’t have to keep rewriting it. To do this, we use the “def” keyword. To return a value from a function, use the “return” keyword. A function is not required to return a value.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">'hello '</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">'!'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">say_hello</span><span class="p">(</span><span class="s">'Michael'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The ReLU function is defined as 0 if x is negative or 0 and x if x is positive.
+# ReLU is used a lot in machine learning.
+</span><span class="k">def</span> <span class="nf">ReLU</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># output points to the value 0
+</span><span class="n">output</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># output points to the value 4
+</span></code></pre></div></div>
+
+<p>Here’s a fun example. Functions can actually be passed in as parameters to other functions just like variables. So we can define a function called integrate that approximates the definite integral of another function.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Computes the square of x
+</span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">lower_lim</span><span class="p">,</span> <span class="n">upper_lim</span><span class="p">):</span>
+    <span class="n">num_rectangles</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_lim</span> <span class="o">-</span> <span class="n">lower_lim</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.05</span>
+    <span class="n">delta_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_lim</span> <span class="o">-</span> <span class="n">lower_lim</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_rectangles</span>
+    <span class="n">area_under_curve</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">lower_lim</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num_rectangles</span><span class="p">)):</span>
+        <span class="n">midpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">delta_x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">midpoint</span><span class="p">)</span>
+        <span class="n">area_under_curve</span> <span class="o">=</span> <span class="n">area_under_curve</span> <span class="o">+</span> <span class="n">delta_x</span> <span class="o">*</span> <span class="n">height</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">delta_x</span>
+
+    <span class="k">return</span> <span class="n">area_under_curve</span>
+    
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="classes">Classes</h3>
+
+<p>Now for the last topic of this lesson - classes! A class in Python is an object that has certain properties. A class can contain variables and functions that are specific to that class. Usually we create a class to represent some sort of concept or object in our code. We create a class using the “class” keyword. For example:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'meow!'</span> <span class="o">+</span> <span class="s">' '</span> <span class="o">+</span> <span class="n">string</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">calculate_age_in_months</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">12</span>
+
+    <span class="k">def</span> <span class="nf">say_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'my name is '</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s">'Cloudy'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A function within a class is called a method, and we usually refer to it by saying something like “The Cat class’s speak method”. Notice each method’s first parameter must be the keyword “self”, which indicates that the method belongs to this class. The __init__ method is an optional method that specifies the behavior when we make an instance of (or instantiate) the class. So in our example, when we instantiate the Cat class, we set class variables called self.name and self.age.</p>
+
+<p>We can now use these methods with the instance of the class we created in the following way.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s">'Violet'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># prints "meow! you are in my spot."
+</span><span class="n">my_cat</span><span class="p">.</span><span class="n">speak</span><span class="p">(</span><span class="s">'you are in my spot.'</span><span class="p">)</span>
+
+<span class="n">my_cat</span><span class="p">.</span><span class="n">say_name</span><span class="p">()</span>
+<span class="n">months_old</span> <span class="o">=</span> <span class="n">my_cat</span><span class="p">.</span><span class="n">calculate_age_in_months</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>In the next lesson, we will explore data structures, which are implemented as different classes in python. For example, a list in python is a data structures that holds a collections of values. Because under the hood it is just a class, it has certain methods that we can call on it.</p>
+
+<p>That’s all for now. See you in the next lesson!</p>
+
+<hr />
+
+<div class="next-prev-btn-wrapper">
+    <!-- <button class="next-prev-btn">Previous Lesson</button> -->
+    <div></div>
+    <button class="next-prev-btn"><a href="/tutorials/data_structures.html">Next Lesson</a></button>
+</div>
+
+:ET
