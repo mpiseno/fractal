@@ -74,13 +74,175 @@
 
 <hr />
 
-<p>Placeholder</p>
+<h2 id="what-is-a-data-structure">What is a data structure?</h2>
+
+<p>Very simply, a data structure is an object that hold various types of data to be used in our program. A very simple example is if we had a program that prints out the name of each person in a class. To do this, we could save a string variable for each person in the class, but that would be quite tedious, and not scalable if there are hundreds of students in the class. A data structure that would be useful for this task would be a list, which is just a collection of items, in this case strings, that we can index in to, add names to, remove names from, etc..</p>
+
+<p>Data structures come in all shapes and sizes. Some data structures are very complicated and are made up of smaller data structurs to access data faster or in smart ways, depending on the application. The types of data structures we will be discussing in this lesson are fundamental to our study of programming. We will study lists (also called arrays in other programming languages), sets (also called hashsets), and dictionaries (also called hashmaps).</p>
+
+<p>Recall from our last lesson, classes are objects that contain variables and methods that are specific for that class’s use. The data structures we are studying are just classes under the hood, so they will have some useful methods that we can access.</p>
+
+<h2 id="lists">Lists</h2>
+
+<p>A list in Python, is an ordered collection of objects. The objects we store in a list could be anything, strings, ints, bools, different instances of the Cat class, or even other lists. You can create a list using square brackets and assigning it to a variable. You can index into a list to retrieve a value using the square brackets [i] on the list where i is the index you want to retrieve from. Valid indices are 0 to the length of the list - 1.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a list using the square brackets
+</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Charlie'</span><span class="p">]</span>
+
+<span class="c1"># Index into a list by using square brackets on the list
+</span><span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Make sure to only use valid indices!
+</span><span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># errors!
+</span></code></pre></div></div>
+
+<p>Lists indices start at 0 (NOT 1!) so the last index is the length of the list - 1. That’s why trying to access index 3 above will error. We can also assign elements to certain indices, which overrides the value that is currently at that index.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Alex'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A couple of useful operators and functions: The built-in len function will give us the length of the list. The “in” keyword can be used to test whether or not an item is in a list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Apple'</span><span class="p">,</span> <span class="s">'Orange'</span><span class="p">,</span> <span class="s">'Watermelon'</span><span class="p">,</span> <span class="s">'Cherry'</span><span class="p">]</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+<span class="c1"># Check if something is in the list
+</span><span class="k">if</span> <span class="s">'Apple'</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'We have apples'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>One thing you might want to do is iterate through a list and calculate some information about the list. For example, if we wanted to compute the maximum of a list of numbers, we could simply iterate through the list and do a couple checks.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">max_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+    <span class="n">current_num</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">current_num</span> <span class="o">&gt;</span> <span class="n">max_so_far</span><span class="p">:</span>
+        <span class="n">max_so_far</span> <span class="o">=</span> <span class="n">current_num</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">max_so_far</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lists actually support something called a for-each loop, which directly gives you access to the elements in the list without having to index into the list. Furthermore, a cleaner way to calculate the maximum of two numbers, as we do in the code inside the for loop, is to just use Python’s built-in max function.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">max_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span> <span class="c1"># This is a for-each loop. No indexing required!
+</span>    <span class="n">max_so_far</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_so_far</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">max_so_far</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The max function actually works directly on lists as well, but under the hood it is doing exactly what we coded above.</p>
+
+<h4 id="useful-methods">Useful methods</h4>
+
+<p>Since lists are just instantiations of the list class, there are some helpful methods we can use. We want to be able to both add and remove items from our list, and thankfully Python provides methods for these. The append method adds an items to the end of the list. The pop method removes the last item in the list and returns it to the user. Finally, the remove method removes the first instance of the item we want to remove from the list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">students</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Michael'</span><span class="p">,</span> <span class="s">'Sally'</span><span class="p">,</span> <span class="s">'John'</span><span class="p">,</span> <span class="s">'Camila'</span><span class="p">,</span> <span class="s">'Emily'</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">]</span>
+
+<span class="c1"># Append a string to the end of the list
+</span><span class="n">students</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">students</span><span class="p">)</span>
+
+<span class="c1"># Remove the last element from the list
+</span><span class="n">last_student</span> <span class="o">=</span> <span class="n">students</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">last_student</span><span class="p">)</span>
+
+<span class="c1"># Remove a student from the list
+</span><span class="n">students</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'John'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">students</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Here’s an example of how we might use these. Say we wanted to find all the odd numbers from a list and return them. To do this, we could iterate over the list and check if each number is odd. If it is, we add it to another list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">odds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="c1"># The % operator is modulus. Every odd number is 1 mod 2
+</span>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">odds</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">odds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="dictionaries-and-sets">Dictionaries and Sets</h2>
+
+<p>Lists are great if we want an ordered collection of items. Lists essentially map integers, which are the indices, to items. But sometimes we want to map arbitrary items to other items. For example if we wanted to store a person’s name and their associated age, lists only complicate things.</p>
+
+<p>Dictionaries, also called hashmaps in other languages, are a way to define this type of mapping. They are instantiated using curly braces {}. Entries in the dictionary take the form key : value, where key is the thing we want to map from, and value is the thing we want to map to. To access the value at a particular key, you use the square brackets [] on the dictionary.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define a dictionary
+</span><span class="n">name_to_age</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Michael'</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s">'Amy'</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">name_to_age</span><span class="p">[</span><span class="s">'Michael'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You can also modify the dictionary to replace or add new key/value pairs.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name_to_age</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Michael'</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s">'Amy'</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+
+<span class="n">name_to_age</span><span class="p">[</span><span class="s">'Cindy'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">23</span>
+</code></pre></div></div>
+
+<p>Sets, also called hashsets, are another key data structure in Python. Sets are an unordered collection of elements, but unlike dictionaries they are not a mapping from one key to a value, but rather they are just a collection of keys. Sets are instantiated with the set() built-in class.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'Cindy'</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">,</span> <span class="s">'Michelle'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You can add and remove from sets using the add and remove methods respectively.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'Cindy'</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">,</span> <span class="s">'Michelle'</span><span class="p">)</span>
+
+<span class="n">names</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">)</span>
+<span class="n">names</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'Lee'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For both dictionaries and sets, the “in” keyword works just as it does for lists.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'Cindy'</span><span class="p">,</span> <span class="s">'Jose'</span><span class="p">,</span> <span class="s">'Michelle'</span><span class="p">)</span>
+<span class="k">if</span> <span class="s">'Jose'</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Jose is in the set.'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Jose is not in the set.'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You might be wondering what is the use of a set versus a list, since they are both a collection of items. The requirement of an ordering of the elements in a list actually makes certain operations on lists slower than sets. For example, if you remove an item from the middle of a list, every other item to the right of the item you removed must be shifted left by one space. In a set, we can remove an item without messing with the other items.</p>
+
+<p>Here’s an example that uses both lists and dictionaries: Write a function that takes in a list of ints and outputs a dictionary that contains counts for each of the unique elements in the list. Before looking at the solution below, try it on your own!</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">counts</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>As we will see in later lessons, the data structures we covered will be crucial in writing more interesting programs. These data structures are the foundations of more complex data structures like linked lists, binary trees, and heaps. They are also crucial in writing algorithms that are efficient, which we will cover in the next lesson.</p>
+
+<p>Remember to write the code in your text editors and run it for yourself, as well as try out different tasks. See you in the next lesson!</p>
 
 <hr />
 
 <div class="next-prev-btn-wrapper">
     <button class="next-prev-btn"><a href="/tutorials/hello_world.html">Previous Lesson</a></button>
-    <button class="next-prev-btn"><a href="">Next Lesson</a></button>
+    <button class="next-prev-btn"><a href="/tutorials/algorithms.html">Next Lesson</a></button>
 </div>
 
 
