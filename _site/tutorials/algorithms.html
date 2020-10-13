@@ -74,14 +74,163 @@
 
 <hr />
 
-<p>Placeholder</p>
+<h2 id="what-is-an-algorithm">What is an Algorithm?</h2>
+
+<p>An algorithm is, very simply put, an explanation of how to accomplish a certain task. The algorithm itself is an abstract concept, and it separate from a program, although programming is how we implement the algorithm. You use algorithms every day and may not even realize it. For example, an algorithm for doing the dishes would look something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while there are still dishes in the sink:
+    Use a sponge to apply soap to the dish and scrub
+    Place the dish in the dishwasher
+
+Turn on the dishwasher and select the correct settings
+Press start on the dishwasher
+</code></pre></div></div>
+
+<p>Notice how we did not explicitly write code, but rather we listed out specific instructions that represent an idea - an algorithm! Writing out our logic in this way is typically called pseudocode. It is a fact that every positive integer can be factored as the product of prime numbers, known as a prime factorization. Here’s an algorithm to find the prime factorization of an integer n.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let p = 2
+let factors = 1
+while n does not equal 1:
+    while p divides n:
+        factors = factors * p
+        n = n / p
+
+    set p to be the next prime number greater than the current p
+
+return factors
+</code></pre></div></div>
+
+<p>Using the above algorithm, we get that the prime factorization of 60 is $2^{2}3^{1}5^{1}$. Algorithms allow us to write down solutions to some really useful tasks. In this lesson, we will explore algorithms for sorting items in a list, searching for items in a list, and of course, finding the closest path between you and your fridge!</p>
+
+<h2 id="sorting">Sorting</h2>
+
+<p>Sorting is a problem that comes up everywhere from organizaing your socks to trading stocks, so learning how to program a sorting algorithm will be invaluable in writing future programs. We will learn an algorithm known as Bubble Sort, which is a simple way to sort a list of items, which in our case will be a list of ints.</p>
+
+<h3 id="bubble-sort">Bubble Sort</h3>
+
+<p>Imagine we have an unsorted list of ints. In bubble sort, we put one element of the list in the correct place at a time. The idea is to start at the front of the list and “slide” the element as far to the right as possible, swapping it with the element to its right if the element to its right is less than it. Once we can’t slide the first element to the right any more, we pick up where we left off and continue sliding that element to the right, and so on, until we reach the end of the list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># swap the 5 and 4
+</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># swap the 5 and 3
+</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># swap the 5 and 1
+</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="c1"># swap the 5 and 2
+</span>
+<span class="c1"># Now the last position contains the correct number (5)
+</span></code></pre></div></div>
+
+<p>The we go back to the end of the list and repeat to put the correct number in the second-to-last position! Then the third-to-last, and so on. If we repeat this process N times, where N in the length of the list, then the whole list will be sorted.</p>
+
+<div class="lesson-img">
+    <img src="/imgs/lesson_imgs/algorithms/bubble_sort.gif" />
+    <p class="text-center">Source: <a href="https://commons.wikimedia.org/wiki/Category:Bubble_sort#/media/File:Bubble_sort_with_flag.gif">Wikimedia</a></p>
+</div>
+
+<p>The algorithm for this is quite simple:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let nums be the list we are sorting
+let n = length of nums
+Repeat n times:
+    i = 0
+    Repeat n times:
+        if nums[i + 1] &lt; nums[1]:
+            swap nums[i + 1] and nums[i]
+
+        i = i + 1
+</code></pre></div></div>
+
+<p>We of course need to do some extra checking to make sure we don’t index out of bounds, but that is an implementation detail. The code for this algorithm looks quite similar:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># Make sure we don't index out of bounds
+</span>        <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">nums</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># swap
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The _ in the code above it a little Python trick that just signifies that we don’t need a variable for the iterator so we can just throw it away. For the remainder of the topics we discuss, we will not write down the pseudocode, but we will give the code and a detailed explanation.</p>
+
+<h2 id="searching">Searching</h2>
+
+<p>The task now is to search for a given integer in a sorted list of ints. If the interger we are looking for exists in the list, we output true, otherwise we output false. If the list was not sorted, we would simply iterate through the list until we found the int we were looking for, which is called sequantial search or linear search. However, knowing that the list is sorted lets us use a clever algorithm called Binary Search to find the item faster.</p>
+
+<h3 id="binary-search">Binary Search</h3>
+
+<p>The idea behind binary search is to cut the area we are searching in half at each step. We keep variables for the index of the left end of our search area and the right end. Then we compute the index of the middle point of our search area, by simply taking the average, and looking at the number at that index. If that number is less than our target number, then our taget number has to be in the right half of the list (since the list is sorted in increasing order), meaning we have just cut our search area in half! We keep cutting our search area in half until either we have found what we are looking for or the search area becomes empty, in which case we have not found the element.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">target</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="c1"># L               M                   R
+</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="c1"># The item at the midpoint index M is greater than our target,
+# so the target is in the left half of our search area.
+</span>
+
+<span class="c1"># L      M     R                      
+</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+<span class="c1"># The item at the midpoint index M is less than our target,
+# so the target is in the right half of our search area.
+</span>
+
+<span class="c1">#           L  M  R                   
+</span>  <span class="p">[</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+<span class="c1"># The item at the midpoint index M is greater than our target,
+# so the target is in the left half of our search area.
+</span>
+
+<span class="c1">#           L
+#           R
+#           M                     
+</span>  <span class="p">[</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+<span class="c1"># The item at the midpoint index M is equal to the target - we found it!
+</span></code></pre></div></div>
+
+<p>In the gif below, the target is 37:</p>
+
+<div class="lesson-img">
+    <img src="/imgs/lesson_imgs/algorithms/binary_search.gif" />
+    <p class="text-center">Source: <a href="https://medium.com/@jeffrey.allen.lewis/javascript-algorithms-explained-binary-search-25064b896470">Jeff Lewis, Medium</a></p>
+</div>
+
+<p>Here is the code implementation for the algorithm:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">elif</span> <span class="n">target</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div></div>
 
 <hr />
 
 <div class="next-prev-btn-wrapper">
     <button class="next-prev-btn"><a href="/tutorials/data_structures.html">Previous Lesson</a></button>
-    <div></div>
-    <!-- <button class="next-prev-btn"><a href="/tutorials/hello_world.html">Next Lesson</a></button> -->
+    <button class="next-prev-btn"><a href="/tutorials/libraries.html">Next Lesson</a></button>
 </div>
 
 
