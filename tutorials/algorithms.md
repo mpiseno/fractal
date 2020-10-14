@@ -8,7 +8,7 @@ layout: module
 
 ## What is an Algorithm?
 
-An algorithm is, very simply put, an explanation of how to accomplish a certain task. The algorithm itself is an abstract concept, and it separate from a program, although programming is how we implement the algorithm. You use algorithms every day and may not even realize it. For example, an algorithm for doing the dishes would look something like:
+An algorithm is, very simply put, an explanation of how to accomplish a certain task. The algorithm itself is an abstract concept, and is separate from a program, although programming is how we implement the algorithm. You use algorithms every day and may not even realize it. For example, an algorithm for doing the dishes would look something like:
 
 ```
 while there are still dishes in the sink:
@@ -38,7 +38,7 @@ Using the above algorithm, we get that the prime factorization of 60 is $2^{2}3^
 
 ## Sorting
 
-Sorting is a problem that comes up everywhere from organizaing your socks to trading stocks, so learning how to program a sorting algorithm will be invaluable in writing future programs. We will learn an algorithm known as Bubble Sort, which is a simple way to sort a list of items, which in our case will be a list of ints.
+Sorting is a problem that comes up everywhere from organizing your socks to trading stocks, so learning how to program a sorting algorithm will be invaluable in writing future programs. We will learn an algorithm known as Bubble Sort, which is a simple way to sort a list of items, which in our case will be a list of ints.
 
 ### Bubble Sort
 
@@ -165,6 +165,83 @@ def binary_search(nums, target):
 
 print(binary_search(nums, 5))
 ```
+
+## Fastest Path to Fridge
+
+Here's a fun example. Say you're in your room and want to find the fastest path to your fridge. The floor layout looks like the layout below, where arrows represent doorways and the different color arrows represent two possible paths to the fridge.
+
+<img class="lesson-img" src="{{site.baseurl}}/imgs/lesson_imgs/algorithms/floorplan.png">
+
+We need to represent the concepts of "rooms" and "paths" in a form that we can do computation on and we also need to define what it means to be the "fastest" path.
+
+We can do the first task by using a data structure called a graph, which has vertices (or nodes) connected by edges. In our case, the rooms will be the vertices and if two rooms have a doorway (i.e. a path) connecting them, then they will have an edge between them.
+
+For the second task, we can simply define a cost for going from one room to another. The cost will be 1 each time you switch from one room (i.e. one vertex) to another. Thus, the fastest path to the fridge will be the path that incurs the smallest cost along the way. For our purposes, we will say that as soon as the path reaches the kitchen vertex, we have found the fridge. Now putting it all together, the graph looks like this:
+
+<img class="lesson-img" src="{{site.baseurl}}/imgs/lesson_imgs/algorithms/graph.png">
+
+where S is your room (the start), Br is the bathroom, Bd is the bedroom, L is the living room, D in the dining room, and K is the kitchen (the goal location). In code, we can just use a dictionary to map the rooms to a list of other rooms that it leads to.
+
+```py
+graph = {
+    'S': ['Br', 'L'],
+    'Br': ['Bd'],
+    'Bd': ['L'],
+    'L': ['D, K'],
+    'D': ['K'],
+    'K': []
+}
+```
+
+Now that we have all the modeling out of the way, we need to think of an algorithm that can take our graph input and compute the shortest path to K. For this we will use an extremely useful algorithm called breadth first search or BFS.
+
+### Breadth First Search
+
+The idea behind BFS is that we start at a starting vertex (S in our case) and then search one "layer" out. In this case, the layer is the group of vertices that are 1 step away from the start, namely 'Br' and 'L'. Then we search another layer out by considering the vertices that are 1 step away from each of 'Br' and 'L'. We keep doing this - searching one more layer out - until we reach the goal location, at which point we are guaranteed that it is the shortest path.
+
+In order to implement this in code, we need another data structure, called a queue. This is just a list except we can also pop from the left side of the list (the beginning) instead of just the right side (the end). At first, just 'S' will be in the queue. We pop from the queue and then see all the neighbor vertices of the vertex that we popped and ad them to the back of the queue, which holds the vertices to be processed in the next layer.
+
+One last caveat: In order to keep track of the actual path, we don't just store the vertices in the queue, but rather we store lists of the path so far ending at the current vertex we are examining. For example, if we are at the vertex 'Bh' and we just came from 'Br', which came from 'S', then our tuple would look like ['S', 'Bh', 'Br']. Finally, here is the code.
+
+```py
+# We will learn about import in the next lesson, but this is a useful class
+# that implements a queue
+from collections import deque
+
+graph = {
+    'S': ['Br', 'L'],
+    'Br': ['Bd'],
+    'Bd': ['L'],
+    'L': ['D, K'],
+    'D': ['K'],
+    'K': []
+}
+
+def find_shortest_path(start, target):
+    q = deque([[start]]) # create a queue with just the start in it at first
+    while q: # loop until the queue is empty
+        path = q.popleft()
+        cur_vertex = path[-1] # -1 is shorthand for the last thing in the list
+        if cur_vertex == target:
+            return path
+        
+        # If we aren't at the target yet, add all the neighbors to the end of
+        # the queue to be searched in the next layer
+        for neighbor in graph[cur_vertex]:
+            new_path = path.copy()
+            new_path.append(neighbor)
+            q.append(new_path)
+
+    # Return nothing of the path isn't found
+    return None
+
+shortest_path = find_shortest_path('S', 'K')
+print(shortest_path)
+```
+
+Running the above code yields, the shortest path, which you probably already visualized from the graph: ['S', 'L', 'K'] with a cost of 2.
+
+Sorting and searching are two fundamental tasks in programming, and learning different algorithms for doing them will pay dividends in the future. In the next lesson, we will explore some useful code libraries that will also come in handy in every day programming, and that will be useful in the future lesson where you will create your first project!
 
 
 ---
