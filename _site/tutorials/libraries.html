@@ -74,7 +74,208 @@
 
 <hr />
 
-<p>Placeholder</p>
+<h2 id="what-is-a-library">What is a Library?</h2>
+
+<p>Just like at a normal library, where you might check out books and gain knowledge, code libraries are where you checkout useful functions and classes and gain functionality for your program. In the previous lesson, we saw an example of a class that was imported into our program from a library, namely the deque class imported from the collections library. In this lesson, we will introduce some libraries that we can use to build up more complex programs. For all of the libraries discussed in this lesson, we have linked the official documentation below, which details all the functionality available:</p>
+
+<ul>
+  <li><a href="https://docs.python.org/3/library/math.html">Math</a></li>
+  <li><a href="https://docs.python.org/3/library/random.html">Random</a></li>
+  <li><a href="https://docs.python.org/3/library/collections.html">Collections</a></li>
+  <li><a href="https://docs.python.org/3/library/csv.html">CSV</a></li>
+</ul>
+
+<h3 id="using-libraries">Using Libraries</h3>
+
+<p>There are many built-in libraries (ones that come with Python) that can be imported into your program, but two particularly versatile ones are math and random. You may be wondering, “if they come with Python why do we have to explicitly import them?”, and the answer is somewhat beyond the scope of this lesson, but in short, we have to store those functions somewhere to be able to use them, which increases the size of our program. If we can get away with having a smaller program by not using functions that we do not need, then that’s always better.</p>
+
+<p>To import a library, you use the import keyword</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">5.5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>You can choose to just import a single funtion, class, or variable from a library using the from keyword</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">5.5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="math-and-random">Math and Random</h2>
+
+<p>Here we will discuss a few of the useful functions in the math and random libraries. The math library, as you might guess, provides useful mathematical capabilites so you don’t have to implement these functions yourself. Here are a few examples of some useful functions and how to use them. For the compete list of functions, refer to the documentation in the first section.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Square root
+</span><span class="n">x</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">sqrt_x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Generic power
+</span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">fifth</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">eighth</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># Exp and Log
+</span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">expx</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">logx</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">log8x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="c1"># optionally specify a base
+</span>
+<span class="c1"># Ceiling and Floor
+</span><span class="n">x</span> <span class="o">=</span> <span class="mf">5.5</span>
+<span class="n">ceiling</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Counting (combination and permutation)
+</span><span class="n">num_ways</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">comb</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">num_ordered_ways</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">perm</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The random library provides various functionality to sample from random distributions, or choose random objects.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1"># Choose a unformly distributed random number between a and b (inclusive)
+</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Sample a uniform random element from a list
+</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Randomly shuffle the elements of a list
+</span><span class="k">print</span><span class="p">(</span><span class="s">f'Before: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">f'After: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="collections">Collections</h2>
+
+<p>We used the collections library in the last lesson to import the deque class, which is an implementation of a queue data structure. The collections library is full of really useful data structures!</p>
+
+<h3 id="deque">Deque</h3>
+
+<p>A deque (pronounced like “deck”) is an implementation of a queue, meaning we can pop elements from the front of the queue and push elements to the back of the queue. The key property of a queue is that elements pass through it in a First-In-First-Out (FIFO) manner, meaning the first element push to the back of the queue is the first element popped from the front (Although the deque class provides extra functionality that breaks this rule like allowing you to push elements into the front).</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">deque</span><span class="p">()</span>
+
+<span class="c1"># Push elements into the back
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+
+<span class="c1"># Pop elements fron the front
+</span><span class="k">while</span> <span class="n">q</span><span class="p">:</span> <span class="c1"># loop until the queue is empty
+</span>    <span class="n">popped_value</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">f'</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="se">\t</span><span class="s">popped value: </span><span class="si">{</span><span class="n">popped_value</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="default-dict">Default Dict</h3>
+
+<p>In the data structure section, we introduced the dictionary class, which is an implementation of a hash map. It allowed us to map keys to certain values. In the algorithms lesson, we used a dictionary to map vertices to the list of vertices they were connected to. Recall:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">graph</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'S'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Br'</span><span class="p">,</span> <span class="s">'L'</span><span class="p">],</span>
+    <span class="s">'Br'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Bd'</span><span class="p">],</span>
+    <span class="s">'Bd'</span><span class="p">:</span> <span class="p">[</span><span class="s">'L'</span><span class="p">],</span>
+    <span class="s">'L'</span><span class="p">:</span> <span class="p">[</span><span class="s">'D, K'</span><span class="p">],</span>
+    <span class="s">'D'</span><span class="p">:</span> <span class="p">[</span><span class="s">'K'</span><span class="p">],</span>
+    <span class="s">'K'</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>One limitation of dictionaries is that we have to check if a key exists in the dictionary before operating on it. For example, if you had a dictionary that mapped letters to a list of numbers like this</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'a'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s">'b'</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="s">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>then you would not be able to do something like</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span><span class="p">[</span><span class="s">'d'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>because accessing d[‘d’] would error. That’s where default dicts come in. When you instantiate a default dict, you specify what the type of the value will be. In the above example, we would specify a list type. Then, when you try to query the default dict at a key, if they key does not exist in the dictionary, it will just return the default value, in this case an empty list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="s">'d'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># Another example with ints
+</span><span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="csv">CSV</h2>
+
+<p>In this section we will learn about the csv library, which allows you to read from and write to csv files. But first, we need to go over something called a file object.</p>
+
+<h3 id="file-objects">File Objects</h3>
+
+<p>File objects are returned by the “open” built-in Python function and they are a special type of variable that references a file to be read or written to. The most common way to use file objects are inside a with statement. Assume we have a csv file called “info.csv” with peoples’ name and age.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'info.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">readline</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>In the above code, f is the file object and it has certain methods like readline that allow us to read from the file. The second argument to the open function specifies that we are opening the file in read mode.</p>
+
+<h3 id="reading-a-csv">Reading a CSV</h3>
+
+<p>Now we can proceed with learning about the reading and writing functionality of the csv library. To read a file, the library offers a reader class which has methods for reading lines from the csv. To instantiate it, you must provide the file object for the csv file. The reader object returned is an iterator over the rows of the csv.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'info.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In the above example, each row is actually a list of the fields in that row, so we can index directly into the list.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'info.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+
+    <span class="c1"># Since reader is an iterator, the next function works to get the next row
+</span>    <span class="n">first_row</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+    <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="n">first_row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">first_row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="writing-to-a-csv">Writing to a CSV</h3>
+
+<p>This is just analogous to the reader: You use the writer class and the corresponding method to write rows to the csv file. The rows that you write are lists in your program. The only difference is now we open the file with ‘w’ which stands for write mode.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'new_info.csv'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+
+    <span class="c1"># Create 4 rows of 10 random numbers
+</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+        <span class="c1"># Use the writerow method to write to the csv file
+</span>        <span class="n">writer</span><span class="p">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We now have all the tools we need to start the first project - creating a word guessing game! In the next lesson we will introduce the first project (which we encourage you to try on your own before looking at the solution). You will need to use various data structures, libraries, and write correct code for the game to work. See you there!</p>
 
 <hr />
 

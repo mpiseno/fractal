@@ -74,7 +74,142 @@
 
 <hr />
 
-<p>Placeholder</p>
+<p>This is the first time we will combine many of the previously learned skills to produce a fully functional program that does something non-trivial. We will be making a word guessing game! You are engouraged to try to implement the game on your own before looking at the solution that we provide - this is the best way for you to learn! You can download a sample csv of words from <a href="/tutorials/assets/words.csv">here</a>, but feel free to add your own words.</p>
+
+<h3 id="the-rules">The Rules</h3>
+
+<p>The program should read in words from a csv file and then randomly choose one of the words for the player to guess. The player should get a maximum of 6 incorrect guesses to complete the word, where each guess consists of a single character. The program will display blanks representing the length of the word. At any point in the game the player should be able to guess the full word (not just a single character). Guessing the full word incorrectly should also decrement the number of guesses remaining.</p>
+
+<p>If the character guesses a character correctly, the number of guesses does not decrement. Upon guessing correctly, the blanks corresponding to that letter should be filled in for the player to view.</p>
+
+<p>If the player guesses incorrectly, the number of guesses remaining gets decremented and the program should display the incorrect characters previously guessed at each step.</p>
+
+<p>When the game ends the program should print out whether the player won or lost. The complete program should look something like the following.</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/word_game/word_game.png" /></p>
+
+<p>Hints:</p>
+
+<ol>
+  <li>Use a data structure to keep track of which characters were guessed already</li>
+  <li>The “break” keyword can be used to immediately exit a loop</li>
+  <li>Break up the logic into different functions to write more manageable code</li>
+</ol>
+
+<h3 id="input">Input</h3>
+
+<p>In order to take user input you need to know about an additional built-in function in Python called input, which takes input from the terminal and saves it to a string variable.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># After the below line executes and the users types in something and presses enter,
+# the variable x will be a string of the user's input.
+</span><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="solution">Solution</h3>
+
+<p>First, we need to import the necessary libraries and read in the words from the csv.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Create a list of all the possible words for the game
+</span><span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'words.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next we will set up the game by asking for the user’s name and selecting a word at random to choose. We will also represent the guessed word as a list of characters, which initially is just a bunch of blank ‘_’ characters.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Game setup
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Hi! What is your name?'</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="c1"># Grab the user's name
+</span><span class="k">print</span><span class="p">(</span><span class="s">f'Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">. Let</span><span class="se">\'</span><span class="s">s play a guessing game...'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Thinking of a word...'</span><span class="p">)</span>
+<span class="n">word</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># This just pauses the program for 5 seconds
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Got it!</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+<span class="c1"># Create a blank slate for the user to start with that looks something like
+# ['_', '_', '_', '_', '_', '_']
+</span><span class="n">guessed_word</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">character</span> <span class="o">==</span> <span class="s">' '</span><span class="p">:</span>
+        <span class="n">guessed_word</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">guessed_word</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'_'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We want to keep track of how many guesses the user has so far, the max guesses allowed, and the set of characters that the users has already guessed. Additionally, we define a helper function to handle the logic of finding matching characters in the target word for the guess that the user made.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Start the game
+</span><span class="n">num_guesses</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">MAX_GUESSES_ALLOWED</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">letters_guessed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># Helper function to handle guesses
+</span><span class="k">def</span> <span class="nf">handle_guess</span><span class="p">(</span><span class="n">correct_word</span><span class="p">,</span> <span class="n">guess</span><span class="p">):</span>
+    <span class="s">'''
+    Returns false if the user guessed an incorrect word, and true otherwise.
+    '''</span>
+
+    <span class="c1"># If the guess is already in the set of inocrrect characters, we return false
+</span>    <span class="c1"># immediately
+</span>    <span class="k">if</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">letters_guessed</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="c1"># Find the indices that match the guess
+</span>    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">correct_word</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">correct_word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">guess</span><span class="p">:</span>
+            <span class="n">indices</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># Replace the '_' characters with the correct guess character
+</span>    <span class="k">for</span> <span class="n">correct_idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="n">guessed_word</span><span class="p">[</span><span class="n">correct_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">guess</span>
+
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Finally, the actual game loop. We want to loop for user input until either we run out of guesses or the user has guessed the correct word. At the beginning of each step, we print out the current state of the game and some useful information as well as ask for the user input.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">current_state</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">guessed_word</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">current_state</span> <span class="o">!=</span> <span class="n">word</span> <span class="ow">and</span> <span class="n">num_guesses</span> <span class="o">&lt;</span> <span class="n">MAX_GUESSES_ALLOWED</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="n">current_state</span> <span class="o">+</span>
+        <span class="s">f'</span><span class="se">\t</span><span class="s">Incorrect guesses: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">letters_guessed</span><span class="p">)</span><span class="si">}</span><span class="s">'</span> <span class="o">+</span>
+        <span class="s">f'</span><span class="se">\t</span><span class="s">Remaining guesses: </span><span class="si">{</span><span class="n">MAX_GUESSES_ALLOWED</span> <span class="o">-</span> <span class="n">num_guesses</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'What is your guess?'</span><span class="p">)</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+
+    <span class="c1"># If the player guessed the whole word
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">word</span><span class="p">:</span>
+            <span class="n">current_state</span> <span class="o">=</span> <span class="n">guess</span>
+            <span class="k">break</span>
+
+        <span class="n">num_guesses</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="n">handle_guess</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">guess</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">:</span>
+            <span class="n">letters_guessed</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+            <span class="n">num_guesses</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">current_state</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">guessed_word</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">current_state</span> <span class="o">==</span> <span class="n">word</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'You won!'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'You lost...'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it! To recap, we used a set data structure to keep track of the currently guessed characters, we used a helper function to handle the logic of updating the current game state, and we used our knowledge of libraries and logical statements to encode the game logic. The full code can be downloaded <a href="/tutorials/assets/word_game.py">here</a>.</p>
+
+<p>Congratulations! You’ve just written your first game that utilized many of the skills we have learned. In future lessons we will explore concepts like those in the previous lesson but in more detail and with newer material. Until then keep practicing and try to make even more interesting programs!</p>
 
 <hr />
 
