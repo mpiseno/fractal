@@ -10,13 +10,19 @@ layout: default
   <!-- {{ content }} -->
 
   <!-- INDEX HEADER -->
-  <div class="landing-banner">
-    <div class="banner-cta">
-      <h3 class="text-left">CS For Everyone</h3>
-      <p class="text-left">We are a non-profit organization that aims to increase access to computer science education in underprivileged communities.</p><br>
-      <button type="button" class="btn btn-primary banner-btn">Apply</button>
+  <div class="row banner-cta">
+    <div class="landing-banner">
+      <div class="col-lg-6 col-md-6 col-sm-12 banner-item" style="flex-direction: column;">
+        <h3 class="text-left">CS For Everyone</h3>
+        <p class="text-left">We are a non-profit organization that aims to increase access to computer science education in underprivileged communities.</p><br>
+        <a href="https://forms.gle/KLYDQmpY7ge3vZ3i6" target="_blank">
+          <button type="button" class="btn btn-primary banner-btn">Apply</button>
+        </a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 banner-item">
+        <img src="imgs/code_background.png" id="banner" class="header">
+      </div>
     </div>
-    <img src="imgs/banner.png" id="banner" class="header" style="width: 50%;">
   </div>
 
   <!-- SECTION -->
@@ -28,7 +34,7 @@ layout: default
                     <h2 class="text-left">Underprivileged Communities in Tech</h2>
                     <div class="stat">
                         <img src="imgs/19_percent.png" class="percent column"/>
-                        <p class="lead text-left column">of computer science graduates are hispanic or black; these groups make over $20,000 less in average household income than white and asian families, according to a 2017 census.gov report.</p> <!-- 19% -->
+                        <p class="lead text-left column">of computer science graduates are hispanic or black; these groups make approximately $20,000 less in average household income than white and asian families, according to a 2017 census.gov report.</p> <!-- 19% -->
                     </div>
                     <hr>
                     <div class="stat">
@@ -54,8 +60,8 @@ layout: default
   <!-- SECTION -->
   <section class="container-fluid px-0">
       <div class="row align-items-center" style="margin-left: 3%; margin-right: 3%;">
-          <div class="col-md-6 order-1 order-md-1">
-              <img src="imgs/dhs-meet-and-greet.jpg" alt="" class="img-fluid">
+          <div class="col-md-6 order-1 order-md-1 people-img">
+              <img src="{{site.baseurl}}/imgs/people.png" alt="" class="img-fluid">
           </div>
           <div class="col-md-6 text-center order-2 order-md-2">
               <div class="row justify-content-center">
@@ -77,6 +83,23 @@ layout: default
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Learn More</button>
       </a> -->
   </section>
+
+  <!-- SPONSORS & PARTNERS -->
+  <!-- <section class="container-fluid px-0" style="margin-top: 50px">
+    <h2 style="text-align: center;">Our Sponsors & Partners</h2>
+    <div class="row align-items-center" style="margin-left: 3%; margin-right: 3%;">
+      <div class="col-md-4 col-sm-6 sponsor-img-container">
+        <img class="sponsor-img" src="{{site.baseurl}}/imgs/sponsors/google.jpeg">
+      </div>
+      <div class="col-md-4 col-sm-6 sponsor-img-container">
+        <img class="sponsor-img" src="{{site.baseurl}}/imgs/sponsors/facebook.png">
+      </div>
+      <div class="col-md-4 col-sm-6 sponsor-img-container">
+        <img class="sponsor-img" src="{{site.baseurl}}/imgs/sponsors/patientco.png">
+      </div>
+    </div>
+    <h6 style="text-align: center; color: gray; font-weight: 100">Sponsors and partners include companies that either donate or our mentors are employed with</h6>
+  </section> -->
 
   <!--
   {%- if site.posts.size > 0 -%}

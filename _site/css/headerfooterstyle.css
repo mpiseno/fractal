@@ -170,10 +170,7 @@ body {
 
 .banner-cta {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-
-    padding-right: 5%;
 }
 
 .banner-btn {
@@ -187,6 +184,11 @@ body {
 .banner-btn:hover {
     background-color: #00337A;
     border-color: #00337A;
+}
+
+.banner-item {
+    display: flex;
+    justify-content: center;
 }
 
 .navbar-logo {
@@ -315,6 +317,24 @@ input[type=submit] {
         width: 10vw;
         padding: 5vh 0.5vw 1vh 0.5vw;
     }
+}
+
+.people-img {
+    display: flex;
+    justify-content: center;
+}
+
+.people-img img {
+    width: 80%;
+}
+
+.sponsor-img-container {
+    padding: 5%;
+    padding-top: 0%;
+}
+
+.sponsor-img {
+    max-width: 100%;
 }
 
 /* CALENDAR */
