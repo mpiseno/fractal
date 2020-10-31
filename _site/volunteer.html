@@ -47,15 +47,15 @@
     <div class="collapse navbar-collapse" id="navLinks">
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/content.html" class="nav-link">Content</a>
+                <a href="/content.html" class="nav-link">Lessons</a>
             </li>
             <li class="nav-item">
                 <a href="/about.html" class="nav-link">About Us</a>
             </li>
-            <!-- <li class="nav-item">
-                <a href="calendar.html" class="nav-link">Events</a>
-            </li>
             <li class="nav-item">
+                <a href="/volunteer.html" class="nav-link">For Mentors</a>
+            </li>
+            <!-- <li class="nav-item">
                 <a href="sponsors.html" class="nav-link">Sponsor Us</a>
             </li>
             <li class="nav-item">
@@ -68,74 +68,81 @@
             </li>
         </ul>
     </div>
-</nav><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+</nav><div>
+    <div class="jumbotron jumbotron-fluid volunteer-banner" style="margin-top: 9vh; height: 65vh;">
+        <div class="container">
+            <div class="mentor-steps">
+                <p style="font-size: 150%; font-family: neue-haas-grotesk-display, sans-serif; font-weight: 500">To get started, fill out the mentor interest form</p>
+                <a href="https://forms.gle/mX3DZLWraD8nQM6K8" target="_blank">
+                    <button type="button" class="btn btn-primary banner-btn" style="width: 100%;">Mentor Interest Form</button>
+                </a>
+            </div>
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">A2C and PPO</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2020-04-12T04:06:43-04:00" itemprop="datePublished">Apr 12, 2020
-      </time></p>
-  </header>
+        </div>
+    </div>
+    <!-- <section class="col banner container-fluid header">
+        <div class="row volunteer-banner">
+            <div class="mentor-steps" style="margin-top: 5%;">
+                <p>To get started, fill out the mentor interest form</p>
+                <a href="https://forms.gle/mX3DZLWraD8nQM6K8" target="_blank">
+                    <button type="button" class="btn btn-primary banner-btn" style="width: 100%;">Mentor Interest Form</button>
+                </a>
+            </div>
+        </div>
+    </section>
+ -->
+    <div class="page-content">
+        <img src="/imgs/mentor-steps.png" style="width: 100%; margin-top: -18vh;">
+        <!-- <div class="mentor-steps" style="margin-top: 5%;">
+            <p>To get started, fill out the mentor interest form</p>
+            <a href="https://forms.gle/mX3DZLWraD8nQM6K8" target="_blank">
+                <button type="button" class="btn btn-primary banner-btn" style="width: 100%;">Mentor Interest Form</button>
+            </a>
+            <img src="/imgs/mentor-steps.png" style="width: 100%;">
+        </div> -->
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <p align="justify">In this guide, I'll be explaining a couple of more advanced methods of reinforcement learning; namely Advantage Actor Critic (A2C) and Proximal Policy Optimization (PPO), but first a recap of actor critic methods.</p>
+       <!--  <div style="display: flex; justify-content: center; padding: 5%; padding-top: 0;">
+        </div> -->
+        <hr width="100%" style="margin-top: 5%;">
+        <h2 class="about-title body-text text-left" style="padding-bottom: 1vh;">Mentor Responsibilities</h2>
 
-<h3 id="recap-of-actor-critic">Recap of Actor Critic</h3>
+        <div class="double-col-info-block">
+            <p class="body-text text-left">
+            As a mentor, you will be the primary point of contact for your mentee(s), and support them in their goals and aspirations. Specifically, you will do the following:
+            </p>
+        </div>
+        <div class="row" style="margin: inherit;">
+            <div class="responsibility-card">
+                <p class="body-text" style="max-width: 10%">1.</p>
+                <p class="body-text" style="font-size: 75%;">Work with your mentee(s) to develop goals for them to aspire towards over the mentorship time period (e.g. applying for scholarships, making a personal website, securing an internship).</p>
+                <img src="/imgs/lesson_icons/hello_world.png">
+            </div>
+        </div>
+        <div class="row" style="margin: inherit;">
+            <div class="responsibility-card">
+                <p class="body-text" style="max-width: 10%">2.</p>
+                <p class="body-text" style="font-size: 75%;">Meet with your mentee(s) regularly (e.g. every 2 weeks or every month) to discuss their progress and keep them on track.</p>
+                <img src="/imgs/lesson_icons/hello_world.png">
+            </div>
+        </div>
+        <div class="row" style="margin: inherit;">
+            <div class="responsibility-card">
+                <p class="body-text" style="max-width: 10%">3.</p>
+                <p class="body-text" style="font-size: 75%;">Offer advice and resources to your mentees (e.g. how to be successful in interviews or how to ask for letters of recommendation).</p>
+                <img src="/imgs/lesson_icons/hello_world.png">
+            </div>
+        </div>
 
-<p>Recall computing the policy gradient</p>
+        <h2 class="about-title body-text text-left" style="padding-bottom: 1vh;">Why Mentor?</h2>
 
-\[\begin{align*}
-\nabla_{\theta}J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_{\theta}}[\nabla_{\theta}\log{\pi_{\theta}(\tau)}R(\tau)] \\
-&amp;= \Big(\sum_{t=0}^{T - 1}\nabla_{\theta}\log{\pi_{\theta}(a_{t}|s_{t})}\Big) \cdot \sum_{t=0}^{T - 1} r_{t}
-\end{align*}\]
-
-<p align="justify">This works fine, but for a trajectory $\tau = (s_{0}, a_{0}, ..., s_{T-1}, a_{T-1})$, we might not get a reward signal until the very end, making it incredible difficult to determine which actions in that trajectory were actually influential in leading to that final (hopefully good) reward. Essentially, vanilla policy gradients is very sample inefficient. One way we can deal with this, is by replacing the $R(\tau)$ term with something that incorporates both state and action pairs at each time step. The Q value does this!</p>
-
-\[Q(s_{t}, a_{t}) = \mathbb{E}_{s_{t}, a_{t}, ..., s_{T-1}, a_{T-1}}\Big[\sum_{t'=t}^{T-1}r_{t'}\Big]\]
-
-<p align="justify">Recall that $Q(s, a)$ is the expected future reward of taking action $a$ in state $s$. Of course we can also discount the reward by $\gamma$.</p>
-
-\[\mathbb{E}_{s_{t}, a_{t}, ..., s_{T-1}, a_{T-1}}\Big[\sum_{t'=t}^{T-1}\gamma^{t' - t}r_{t'}\Big]\]
-
-<p align="justify">There's just one issue; how do we actually calculate this Q value? Well we can use a neural network parameterized by some $w$ to estimate the Q values. This network is known as the "critic" in actor critic. We call this form of actor critic "Q actor critic".</p>
-
-<center>
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <figure class="figure">
-        <img src="/assets/A2C-PPO/actor-critic.png" />
-        <figcaption class="figure-caption text-center">Image Credit: Chris Yoon's "Understanding Actor Critic Methods and A2C" medium post</figcaption>
-      </figure>   
-  </div>
-</center>
-
-<h3 id="advantage-actor-critic">Advantage Actor Critic</h3>
-
-<p align="justify">
-Q actor critic still suffers from high variance during training in practice, causing slow convergence. One thing we can do to reduce this variance is to define the advantage function.</p>
-
-\[A(s_{t}, a_{t}) = Q(s_{t}, a_{t}) - V(s_{t})\]
-
-<p align="justify">One intuitive way of thinking about why this decreases the variance is the following: The Q function tells us the expected future reward of being in state $s_{t}$ and taking action $a_{t}$, following some policy $\pi$. The value function tells us the expected future reward of being in state $s_{t}$ and following policy $\pi$. So in a sense, we're taking $Q(s_{t}, a_{t})$, which has high variance, and subtracting the value of $s_{t}$. The policy $\pi$ might tell us that action $a^{1}$ is best to take in $s_{t}$. Some actions are better, some actions are worse. Consequentially, some Q values are better and some are worse, depending on the action. But by subtracting $V(s_{t})$, we get advantage values $A(s_{t}, a_{t})$ that are closer together. Recall the Bellman equation.</p>
-
-\[Q(s_{t}, a_{t}) = r_{t} + \gamma\mathbb{E}[V(s_{t+1})]\]
-
-<p align="justify">We can use this to substitute $Q(s_{t}, a_{t})$ in the advantage calculation.</p>
-
-\[\begin{align*}
-A(s_{t}, s_{t}) &amp;= Q(s_{t}, a_{t}) - V(s_{t}) \\
-&amp;= r_{t} + \gamma V(s_{t+1}) - V(s_{t})
-\end{align*}\]
-
-<p align="justify">Now instead of using a neural network to estimate the Q function, we use it to estimate the value function $V(\cdot)$.</p>
-
-<h3 id="proximal-policy-optimization">Proximal Policy Optimization</h3>
-
-<p align="justify">Proximal Policy Optimization (PPO) improve further upon Advantage Actor Critic (A2C).</p>
-
-
-  </div><a class="u-url" href="/unfinished_guides/2020-04-27-a2c-ppo.html" hidden></a>
-</article>
-<!-- FOOTER -->
+        <div class="double-col-info-block">
+            <p class="body-text text-left">
+            As a mentor, you have the opportunity to positively impact the intellectual development and pursuits of students in underprivieged communitys who may otherwise lack such positive influences. In doing so, you directly contribute to increasing representation of these students in the field of computer science and pushing them to reach their maximum potential, all for a relatively low time commitment. Mentors like you are what make Fractal possible, and we thank you for your dedication to uplifting brilliant young minds.
+            </p>
+            <img src="/imgs/people.png" alt="" class="img-fluid">
+        </div>
+    </div>
+</div><!-- FOOTER -->
 <footer class="container-fluid footer text-center align-items-center justify-content-center">
     <section class="container-fluid px-0 text-center align-items-center justify-content-center pink-bg">
         <h3 class="mb-4">Stay Informed!</h3>

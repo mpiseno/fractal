@@ -69,6 +69,20 @@ body {
     height: 30vw;
 }
 
+.banner-with-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volunteer-banner {
+    /*background-image: url("../imgs/design-assets/pink-white-background.png");*/
+    background-color: #fbefef;
+    background-position: center;
+    background-size: cover;
+    height: 30vw;
+}
+
 .committees-banner {
     background-image: url("../imgs/headers/about.jpg");
     background-position: center;

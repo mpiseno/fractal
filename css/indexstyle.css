@@ -108,6 +108,56 @@ body {
 }
 
 
+/* Informational Styling */
+
+.page-content {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.double-col-info-block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.double-col-info-block img {
+    width: 40%;
+}
+
+.responsibility-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+}
+
+.responsibility-card img {
+    max-width: 20%;
+    padding: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.responsibility-card p {
+    margin: 0;
+    padding: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    max-width: 60%;
+}
+
+.mentor-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 10%;
+}
+
+
 /* Lesson Styling */
 
 .lesson-img {
