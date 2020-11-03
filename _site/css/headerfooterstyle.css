@@ -75,13 +75,70 @@ body {
     align-items: center;
 }
 
-.volunteer-banner {
-    /*background-image: url("../imgs/design-assets/pink-white-background.png");*/
+/* Mentor Banner */
+
+.mentor-banner {
+    display: flex;
+    align-items: center;
+
+    padding: 5%;
+    padding-bottom: 15%;
+
     background-color: #fbefef;
     background-position: center;
     background-size: cover;
     height: 30vw;
 }
+
+.mentor-banner-title {
+    display: flex;
+    align-items: center;
+
+    color: var(--cskblue);
+    padding-bottom: 2%;
+}
+
+.mentor-banner-title h2 {
+    font-weight: 100;
+    font-size: 100%;
+
+    margin: 0;
+    padding: 0;
+    padding-right: 3%;
+}
+
+.mentor-banner-title hr {
+    background-color: var(--cskblue);
+}
+
+.mentor-banner-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+
+    width: 60%
+    padding: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    font-size: 70%;
+    color: var(--cskblue);
+}
+
+.mentor-banner-img {
+    display: flex;
+    justify-content: center;
+
+    width: 40%;
+    padding-top: 8%;
+}
+
+.mentor-banner-img img {
+    width: 80%;
+}
+
+
 
 .committees-banner {
     background-image: url("../imgs/headers/about.jpg");

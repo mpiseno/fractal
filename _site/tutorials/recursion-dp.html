@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://use.typekit.net/vhi7kwp.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/headerfooterstyle.css">
+    <link rel="stylesheet" href="/css/indexstyle.css">
+    <link rel="stylesheet" href="/css/aboutstyle.css">
+    <link href="/css/code_highlight.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="assets/main.scss"> -->
+
+    <title>Fractal</title>
+    <link rel="icon" type="image/png" href="/imgs/favicon2.png">
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          processEscapes: true,
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] },
+        }
+        );
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head><body><!-- NAVBAR -->
+<nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+    <a class="navbar-brand" href="/index.html">
+        <img src="/imgs/logo.png" id="logo-img" style="padding: 5px;">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/content.html" class="nav-link">Lessons</a>
+            </li>
+            <li class="nav-item">
+                <a href="/volunteer.html" class="nav-link">For Mentors</a>
+            </li>
+            <li class="nav-item">
+                <a href="/about.html" class="nav-link">About Us</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a href="sponsors.html" class="nav-link">Sponsor Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="current_members.html" class="nav-link">Alumni</a>
+            </li> -->
+            <li class="nav-item">
+                <a href="https://forms.gle/KLYDQmpY7ge3vZ3i6" target="_blank">
+                    <button class="btn btn-outline-success my-2 my-sm-0 nav-apply-btn" type="submit">Apply</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav><div class="container-fluid module-container">
+        
+    <h1 id="recursion-and-dynamic-programming">Recursion and Dynamic Programming</h1>
+
+<hr />
+
+<p>This lesson will cover the basics of recursion and dynamic programming, two very power programming concepts. Recursion allows us to call functions from within themselves, while dynamic programming relies on storing results from intermediate computation (i.e. subproblems) to solve a larger problem, and often speeds up recursion.</p>
+
+<h2 id="what-is-recursion">What is Recursion?</h2>
+
+<p>You may have see the idea of recursion or recursive formulas in math class before. For example, a sequence of numbers $(a_{n})_{n=1}^{\infty}$ may be defined recursively by $a_{1} = 1$ and every subsequent term follows the recursive formula</p>
+
+\[a_{n} = 2a_{n-1} + 1 \quad n = 2, 3, ...\]
+
+<p>The first few terms of this recursively defined sequence would be $(1, 3, 7, 15, 31, …)$. Here’s a question: How would you write a program to compute the $N$th term in this sequence? You might just use a for loop and iterate n times to generate the term like this:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compute_nth_term</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">a</span>
+</code></pre></div></div>
+
+<p>This is completely correct, and this method is called determining the $N$th term “iteratively”, because we iterate to find the answer. Notice how we calculated the answer in a “bottom-up” way, starting from the first term and gradually computing later terms in the sequnce until we reached the $N$th one. Another approach is to start from the $N$th term, which we have an equation for and work backwards. We will prsent the code and then explain it:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compute_nth_term_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">compute_nth_term_recursive</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Notice how the recursive function above calls itself in order to determine the $(n-1)$st term, and once it has that, it can construct the $n$th term using the formula. But we can’t keep calling the function inside itself forever; we need a stopping point. That’s where the if statement above comes in. If we get to the case where $n = 1$, then we return the 1st term. In this way, we construct the answer from the “top down” and this is called determining the $N$th term “recursively”.</p>
+
+<p>A recursive function has two parts, a base case and a recursive call to itself. In the above example, the base case is when $n=1$ and the recursive call to itself determines the answer to a subproblem (the answer of the $(n-1)$st term) and uses the answer to that subproblem to get the answer of the current problem (the $n$th term). Notice that each time the function is recursively called, the function parameter $n$ is different.</p>
+
+<p>The computation forms a “chain” where we keep asking for the answers to subproblems before solving the answers to the current problem. For example, the case where $N=5$:</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/recursion-dp/sequence-rec.png" /></p>
+
+<h2 id="fibonacci">Fibonacci</h2>
+
+<p>The Fibonacci sequence is a famous recursive sequence defined as $a_{1} = a_{2} = 1$ and</p>
+
+\[a_{n} = a_{n-1} + a_{n-2} \quad n = 3, 4, 5, ...\]
+
+<p>Again, we can iteratively find the $N$th term of the Fibannaci sequence as follows:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="c1"># Add the previous 2 terms
+</span>        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="c1"># update what is considered "previous terms"
+</span>        <span class="n">a</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">n</span>
+</code></pre></div></div>
+
+<p>And as you might have guessed, we could just as easily use recursion to take a “top-down” approach to computing the $N$th Fibonacci number:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib_rec</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Base case
+</span>    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="c1"># Recursive step
+</span>    <span class="k">return</span> <span class="n">fib_rec</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib_rec</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Again, we start with a problem that we want to solve, the $n$th Fibonacci number, and we use recursion to get the answers to the subproblems (i.e. the $(n-1)$st and $(n-2)nd$ Fibonacci numbers). Then we use the answers to those subproblems to construct the answer to the current problem using the formula. Of course we still need the base case, which here is the case when $n=1$ or $n = 2$.</p>
+
+<p>Notice that for each recursive step there are two branches of computation that we have to get answers to (i.e. two subproblems), so instead of a chain, we will actually have a tree of subproblems. For example, to recursively compute the $5$th Fibonacci number:</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/recursion-dp/fib-tree.png" /></p>
+
+<p>The above computation tree can get extremely large when $N$ is large. For each problem, we have to solve 2 subproblems, meaning the number of function calls is roughly $2^{N}$. You can test this phenominon out yourself; try to compute a large Fibonacci number recursively and observe that as you increase $N$ the time it takes to get the answer exponentially increases.</p>
+
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+
+<p>In the last section we ended with a discussion about how computing the $N$th Fibonacci number takes a long time when $N$ is large. The first question you might ask is, can we do better? Observing the computation tree, we can see that many of the subtrees are repeated.</p>
+
+<p>For example, the subtree Fib(3) is repeated twice in the full computation tree. There’s no need to repeat this computation twice. Fib(3) is always Fib(3) no matter how many different times we compute it, so if we store the answer to Fib(3) the first time we compute it, the next time we need that number we can just immediately return it. That’s the whole idea behind dynamic programming - storing the answer to repeated subproblems so that we don’t have to recompute those answers.</p>
+
+<p>To store the answers to repeated subproblems, we can use a dictionary that maps an int (the Fibonacci number corresponding to the subproblem we are currently on) to the answer for that subproblem.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib_dp</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dp</span><span class="p">):</span>
+    <span class="c1"># Base case
+</span>    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="c1"># Check if we already have the answer to the subproblem
+</span>    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="c1"># The answer was not in the dp table, so we need to compute it
+</span>    <span class="n">answer</span> <span class="o">=</span> <span class="n">fib_dp</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib_dp</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+    <span class="c1"># After we have computed the answer, store it in the dp table for later use
+</span>    <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">answer</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib_dp</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">{}))</span>
+</code></pre></div></div>
+
+<p>The computation tree using dynamic programming eliminates the second Fib(3) subtree, and looks like this:</p>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/recursion-dp/fib-tree-dp.png" /></p>
+
+<p>We can test how much time this saves for large values of $N$. Let’s plot computation time versus $N$ for both straight up recursion and for dynamic programming. Here we are using a library that we did not cover previously called matplotlib, which is a third-party library and does not come with Python.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">max_N</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">rec_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_N</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">fib_rec</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">time_taken</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">rec_times</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_taken</span><span class="p">)</span>
+
+<span class="n">dp_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_N</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">fib_dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">time_taken</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">dp_times</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_taken</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_N</span><span class="p">)),</span> <span class="n">rec_times</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Recursion'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_N</span><span class="p">)),</span> <span class="n">dp_times</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'DP'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'N'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Computation time (seconds)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img class="lesson-img" src="/imgs/lesson_imgs/recursion-dp/rec-vs-dp.png" /></p>
+
+<p>As we can see, the computation time for recursion is exponential in $N$, while the dyanmic programming time is linear. Storing the answers to repeated subproblems for later use dramatically decreases the computation time for large $N$. This is the motivation behind dynamic programming - using extra space (in this case a dictionary to store values) to save on time. This time-space tradeoff is an extremely common theme in computer science and one that you will see many times in your career.</p>
+
+<p>We have discussed recursion and how to compute the answers to recursive problems by considering subproblems and using the answers to those subproblems to construct the answer to the current problem. We have also seen how to use extra storage space to save on computation time using dynamic programming. See you all next time!</p>
+
+<hr />
+
+<div class="next-prev-btn-wrapper">
+    <button class="next-prev-btn"><a href="/tutorials/word_guess.html">Previous Lesson</a></button>
+    <div></div>
+</div>
+
+
+</div><!-- FOOTER -->
+<footer class="container-fluid footer text-center align-items-center justify-content-center">
+    <section class="container-fluid px-0 text-center align-items-center justify-content-center pink-bg">
+        <h3 class="mb-4">Stay Informed!</h3>
+        <!-- <form action="emails.php">
+            <input type="text" placeholder="Email Address" name="mail" required="">
+            <input type="submit" value="Submit">
+        </form> -->
+        <a href="https://forms.gle/HQpw1VeFUPN8uki4A" target="_">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Join our mailing list!</button>
+        </a>
+    </section>
+    <section class="container-fluid px-0 text-center align-items-center justify-content-center row">
+        <!-- <div class="col-md-2 mx-0 align-items-center justify-content-center">
+            <h5 class="font-weight-bold text-uppercase mt-5 mb-4">About Us</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="about.html" class="lead">Our Mission</a>
+                </li>
+                <li>
+                    <a href="committees.html" class="lead">Our Team</a>
+                </li>
+            </ul>
+        </div> -->
+        <!-- <div class="col-md-2 mx-0 align-items-center justify-content-center">
+            <h5 class="font-weight-bold text-uppercase mt-5 mb-4">Impact</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="about.html#about-press" class="lead">Press</a>
+                </li>
+                <li>
+                    <a href="https://sites.google.com/umich.edu/cskickstart/home" class="lead" target="_">Sister Program</a>
+                </li>
+            </ul>
+        </div> -->
+        <div class="col-md-2 mx-0 align-items-center justify-content-center">
+            <h5 class="font-weight-bold text-uppercase mt-5 mb-4">Our Program</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="https://forms.gle/KLYDQmpY7ge3vZ3i6" class="lead">Apply</a>
+                </li>
+                <li>
+                    <a href="/about.html" class="lead">Learn More</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="col-md-2 mx-0 align-items-center justify-content-center">
+            <h5 class="font-weight-bold text-uppercase mt-5 mb-4">Get Involved</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="current_members.html" class="lead">Current Members</a>
+                </li>
+                <li>
+                    <a href="sponsors.html" class="lead">Support Us</a>
+                </li>
+            </ul>
+        </div> -->
+
+        <div class="col-md-3 mx-0 align-items-center justify-content-center" id="social-hosting">
+            <div id="social-media">
+                <a class="social-logo" href="https://www.facebook.com/fractalcs.org/" target="_"><img src="/imgs/facebook.svg"></a>
+                <!-- <a class="social-logo" href="https://www.instagram.com/cs.fractal.ai/" target="_"><img src="/imgs/instagram.svg"></a> -->
+                <!-- <a class="social-logo" href="https://medium.com/@cskickstart" target="_"><img src="imgs/medium.svg"></a> -->
+                <!-- <a class="social-logo" href="https://twitter.com/kickstartcs" target="_"><img src="imgs/twitter.svg"></a> -->
+            </div>
+        </div>
+    </section>
+    <br><br>
+</footer></body>
+
+</html>

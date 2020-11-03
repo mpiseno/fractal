@@ -150,5 +150,5 @@ Congratulations! You've just written your first game that utilized many of the s
 
 <div class="next-prev-btn-wrapper">
     <button class="next-prev-btn"><a href="{% link tutorials/libraries.md %}">Previous Lesson</a></button>
-    <div></div>
+    <button class="next-prev-btn"><a href="{% link tutorials/recursion-dp.md %}">Next Lesson</a></button>
 </div>
