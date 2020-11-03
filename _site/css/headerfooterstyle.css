@@ -226,7 +226,7 @@ body {
 
     #logo-img {
         padding-top: 0;
-        height: 5vh;
+        
         width: auto;
     }
 }
@@ -245,7 +245,7 @@ body {
 }
 
 .banner-btn {
-    width: 40%;
+    /*width: 40%;*/
     border-radius: 10px;
     font-size: 1rem;
     background-color: var(--cskblue);
@@ -260,6 +260,17 @@ body {
 .banner-item {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .banner-item button {
+        width: 200%;
+    }
+
+    .banner-item {
+        align-items: center;
+        padding-top: 10vh;
+    }
 }
 
 .navbar-logo {
