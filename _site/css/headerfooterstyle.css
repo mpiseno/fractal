@@ -62,11 +62,19 @@ body {
     padding-bottom: 0%;
 }
 
-.about-banner {
-    background-image: url("../imgs/productivity.jpg");
+.shapes-banner {
+    display: flex;
+    align-items: center;
+
+    padding: 5%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+
+    background-image: url("../imgs/design-assets/banner-with-shapes.png");
+    background-color: #fbefef;
     background-position: center;
     background-size: cover;
-    height: 30vw;
+    height: 20vw;
 }
 
 .banner-with-button {
@@ -99,7 +107,7 @@ body {
 }
 
 .mentor-banner-title h2 {
-    font-weight: 100;
+    font-weight: bold;
     font-size: 100%;
 
     margin: 0;
@@ -226,7 +234,7 @@ body {
 
     #logo-img {
         padding-top: 0;
-        
+        height: 5vh;
         width: auto;
     }
 }
@@ -245,7 +253,7 @@ body {
 }
 
 .banner-btn {
-    /*width: 40%;*/
+    width: 40%;
     border-radius: 10px;
     font-size: 1rem;
     background-color: var(--cskblue);
@@ -260,17 +268,6 @@ body {
 .banner-item {
     display: flex;
     justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .banner-item button {
-        width: 200%;
-    }
-
-    .banner-item {
-        align-items: center;
-        padding-top: 10vh;
-    }
 }
 
 .navbar-logo {

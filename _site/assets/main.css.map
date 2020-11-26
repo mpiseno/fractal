@@ -3,10 +3,10 @@
 	"file": "main.css",
 	"sources": [
 		"main.scss",
-		"../../../../../usr/local/lib/ruby/gems/2.5.0/gems/minima-2.5.1/_sass/minima.scss",
-		"../../../../../usr/local/lib/ruby/gems/2.5.0/gems/minima-2.5.1/_sass/minima/_base.scss",
-		"../../../../../usr/local/lib/ruby/gems/2.5.0/gems/minima-2.5.1/_sass/minima/_layout.scss",
-		"../../../../../usr/local/lib/ruby/gems/2.5.0/gems/minima-2.5.1/_sass/minima/_syntax-highlighting.scss"
+		"../../../../../Ruby27-x64/lib/ruby/gems/2.7.0/gems/minima-2.5.1/_sass/minima.scss",
+		"../../../../../Ruby27-x64/lib/ruby/gems/2.7.0/gems/minima-2.5.1/_sass/minima/_base.scss",
+		"../../../../../Ruby27-x64/lib/ruby/gems/2.7.0/gems/minima-2.5.1/_sass/minima/_layout.scss",
+		"../../../../../Ruby27-x64/lib/ruby/gems/2.7.0/gems/minima-2.5.1/_sass/minima/_syntax-highlighting.scss"
 	],
 	"sourcesContent": [
 		"@import \"minima\";\n\n.site-header {\n  border-top: 1px solid black;\n  border-bottom: 1px solid black;\n  min-height: 55.95px;\n  position: relative;\n  background-color: #FF0000; }\n\n.site-title {\n  font-size: 26px;\n  font-weight: 300;\n  line-height: 54px;\n  letter-spacing: -1px;\n  margin-bottom: 0;\n  float: left; }\n  .site-title, .site-title:visited {\n    color: white; }\n\n.site-nav .page-link {\n  color: white;\n  line-height: 1.5; }\n\nimg {\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\n.team-photo {\n  border-radius: 10px;\n  max-height: 200px;\n  max-width: 200px;\n  object-fit: fill;\n}\n\nfooter {\n  //...footer styling\n\n  .newsletter-container {\n      max-width: 400px;\n      max-height: 200px;\n      border-radius: 1em;\n      display: flex;\n      flex-direction: column;\n      padding: 1em 0;\n      //background: #444;\n      box-shadow: 0 6px 4px 0 rgba(255, 0, 0, 0.2);\n      margin-bottom: 2em;\n  }\n  .newsletter-container * {\n      align-self: center;\n      padding: 0;\n  }\n  .newsletter-form {\n      text-align: center;\n  }\n  .newsletter-title {\n      font-size: 1.5em;\n      margin: 0;\n      color: gray;\n      //font-family: $lato;\n      text-transform: uppercase;\n  }\n  .newsletter-text {\n      //font-family: $lato;\n      font-weight: 300;\n      color: gray;\n      text-align: center;\n  }\n  .newsletter-email,\n  .newsletter-submit {\n      display: inline-block;\n      border-radius: 4px;\n      padding: 5;\n      align-self: center;\n  }\n  .newsletter-email {\n      //font-family: $serif-primary;\n      text-align: center;\n      font-size: 0.9em;\n  }\n  .newsletter-submit {\n      font-size: .6em;\n      margin-left: 1em;\n      padding: 0.5em;\n      border: none;\n      background: #f5f5f5;\n      text-transform: uppercase;\n      font-weight: 600;\n  }\n\n  @media screen and (min-width: 400px) {\n      .newsletter-title {\n          font-size: 2.5em;\n      }\n      .newsletter-text {\n          font-size: 1.5em;\n      }\n      .newsletter-submit {\n          font-size: .7em;\n      }\n  }\n}\n",

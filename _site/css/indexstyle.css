@@ -54,7 +54,8 @@ body {
     overflow: hidden;
 
     border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px #ccc;
+    /*box-shadow: 2px 2px 2px 2px #ccc;*/
+    box-shadow: 0px 0px 15px rgb(0,0,0,0.15);
 }
 
 .content-card-img-wrapper {
@@ -85,7 +86,7 @@ body {
 
 .content-card:hover {
   background-color: var(--lavblush);
-  box-shadow: 6px 6px 6px 6px #ccc;
+  /*box-shadow: 6px 6px 6px 6px #ccc;*/
   color: var(--cskblue);
 }
 
